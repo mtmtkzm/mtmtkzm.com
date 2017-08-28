@@ -2,10 +2,10 @@
 // https://github.com/frontainer/frontplate-cli/wiki/6.%E8%A8%AD%E5%AE%9A
 module.exports = function(production) {
   global.FRP_SRC = 'src';
-  global.FRP_DEST = 'public';
+  global.FRP_DEST = 'docs';
   return {
     clean: {},
-    html: {},
+    html: { src: `${FRP_SRC}/view/**/*.{ejs,svg,html}` },
     style: production ? {} : {},
     script: production ? {} : {},
     server: {},
