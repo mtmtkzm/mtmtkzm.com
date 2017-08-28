@@ -3,7 +3,10 @@
   "version": "5.0.0",
   "description": "フロントエンド開発の効率をあげるフルスタックテンプレート",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "axios": "^0.16.2",
+    "xml2js": "^0.4.19"
+  },
   "scripts": {
     "start": "frp build && frp serve -t",
     "test": "frp task test",
