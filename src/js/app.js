@@ -1,13 +1,3 @@
-/**
- * @constructor
- */
-export class App {
-  constructor(val) {
-    this.val = val;
-  }
-}
+import getCodepen from 'get-codepen';
 
-let m = new App('main');
-if (process.env.NODE_ENV === 'development') {
-  console.debug('main value:', m.val);
-}
+new getCodepen();
