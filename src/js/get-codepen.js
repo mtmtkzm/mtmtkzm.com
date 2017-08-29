@@ -27,7 +27,9 @@ export default class getCodepen {
           link: i.link[0]
         })
       });
-      return data;
+
+      console.log(data);
+      // return data;
     });
   }
 
