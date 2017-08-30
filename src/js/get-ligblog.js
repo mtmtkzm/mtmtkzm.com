@@ -30,10 +30,11 @@ export default class getLigblog {
     let necessaryData = [];
     let pushEventArray = response.data.forEach( item => {
       necessaryData.push({
+        type: 'ligblog',
         date: Date.parse(item.date),
         title: item.title.rendered,
         desc: item.excerpt.rendered,
-        link: item.link,
+        url: item.link,
       });
     });
   

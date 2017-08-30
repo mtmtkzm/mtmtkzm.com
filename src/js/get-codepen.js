@@ -32,10 +32,11 @@ export default class getCodepen {
       let necessaryData = [];
       result.rss.channel[0].item.forEach( i => {
         necessaryData.push({
+          type: 'codepen',
           date: Date.parse(this.removeSpaces(i['dc:date'][0])),
           title: i.title[0],
           desc: this.removeSpaces(i.description[0]),
-          link: i.link[0]
+          url: i.link[0]
         })
       });
 

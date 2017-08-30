@@ -28,10 +28,11 @@ export default class getGithub {
       if (item.type === 'PushEvent') { return true }
     }).forEach( item => {
       necessaryData.push({
+        type: 'github',
         date: Date.parse(item.created_at),
         title: item.repo.name,
         desc: item.payload.commits[item.payload.commits.length - 1].message,
-        link: `https://github.com/${item.repo.name}/commit/${item.payload.commits[item.payload.commits.length - 1].sha}`,
+        url: `https://github.com/${item.repo.name}/commit/${item.payload.commits[item.payload.commits.length - 1].sha}`,
       });
     });
  

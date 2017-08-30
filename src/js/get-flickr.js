@@ -65,10 +65,11 @@ export default class getFlickr {
     let pushEventArray = response.forEach( item => {
       let photo = item.data.photo;
       necessaryData.push({
+        type: 'flickr',
         date: Number(photo.dates.lastupdate + '000'), // Flickrは ミリ秒 ではなく 秒 を返す
         title: photo.title._content,
         desc: photo.description._content,
-        link: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`,
+        url: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`,
       });
     });
   

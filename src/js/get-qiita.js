@@ -31,10 +31,11 @@ export default class getQiita {
     let necessaryData = [];
     let pushEventArray = response.data.forEach( item => {
       necessaryData.push({
+        type: 'qiita',
         date: Date.parse(item.updated_at),
         title: item.title,
         desc: item.rendered_body,
-        link: item.url,
+        url: item.url,
       });
     });
   
