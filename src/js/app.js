@@ -13,8 +13,6 @@ let ligblog = new getLigblog();
 let flickr = new getFlickr();
 let github = new getGithub();
 
-
-
 Promise
 	.all([
 		new Promise( (resolve, reject) => {
@@ -34,10 +32,11 @@ Promise
 		})
 	])
 	.then( () => {
-		codepen.returnData();
-		qiita.returnData();
-		ligblog.returnData();
-		flickr.returnData();
-		github.returnData();
+		let myActivities = codepen.returnData().concat(
+			qiita.returnData(),
+			ligblog.returnData(),
+			flickr.returnData(),
+			github.returnData()
+		);
+		console.log(myActivities);
 	});
-
