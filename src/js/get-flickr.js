@@ -1,11 +1,15 @@
 const axios = require('axios');
 
-export default class getLigblog {
+export default class getFlickr {
   constructor() {
     this.API_PATH = 'https://api.flickr.com/services/rest';
     this.request();
+    this.currentPhotoLength = 0;
+    this.wholePhotoLength = 0;
+    this.responses = [];
   }
 
+  // まずはIDを取得
   request() {
     axios.get(this.API_PATH, {
       params: {
@@ -17,7 +21,33 @@ export default class getLigblog {
       }
     })
       .then(response => {
-        this.selectNecessaryData(response);
+        this.wholePhotoLength = response.data.photos.photo.length;
+        response.data.photos.photo.forEach( item => {
+          this.requestPostedDate(item.id);
+        });        
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
+  }
+
+  // その後、IDに基づいて全情報を取得しに行く
+  requestPostedDate (photoId) {
+    axios.get(this.API_PATH, {
+      params: {
+        'method':'flickr.photos.getInfo',
+        'api_key': 'ca30f5ed9e9016cdd5a47455053319da',
+        'photo_id': photoId,
+        'format': 'json',
+        'nojsoncallback': 1,
+      }
+    })
+      .then(response => {
+        this.responses.push(response);
+        this.currentPhotoLength++;
+        if (this.currentPhotoLength >= this.wholePhotoLength) {
+          this.selectNecessaryData(this.responses);
+        };
       })
       .catch(error => {
         console.log('error', error);
@@ -26,16 +56,16 @@ export default class getLigblog {
 
   selectNecessaryData (response) {
     let necessaryData = [];
-    let pushEventArray = response.data.photos.photo.forEach( item => {
+    let pushEventArray = response.forEach( item => {
+      let photo = item.data.photo;
       necessaryData.push({
-        date: new Date(),
-        title: item.title,
-        desc: item.title,
-        link: `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_n.jpg`,
+        date: Number(photo.dates.lastupdate + '000'), // Flickrは ミリ秒 ではなく 秒 を返す
+        title: photo.title._content,
+        desc: photo.description._content,
+        link: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`,
       });
     });
   
     console.log(necessaryData);
   }
-
 }

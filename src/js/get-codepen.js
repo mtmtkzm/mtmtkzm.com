@@ -26,7 +26,7 @@ export default class getCodepen {
       result.rss.channel[0].item.forEach( i => {
         data.push({
           title: i.title[0],
-          date: new Date(this.removeSpaces(i['dc:date'][0])),
+          date: Date.parse(this.removeSpaces(i['dc:date'][0])),
           desc: this.removeSpaces(i.description[0]),
           link: i.link[0]
         })

@@ -25,7 +25,7 @@ export default class getQiita {
     let necessaryData = [];
     let pushEventArray = response.data.forEach( item => {
       necessaryData.push({
-        date: new Date(item.updated_at),
+        date: Date.parse(item.updated_at),
         title: item.title,
         desc: item.rendered_body,
         link: item.url,

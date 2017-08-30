@@ -24,7 +24,7 @@ export default class getLigblog {
     let necessaryData = [];
     let pushEventArray = response.data.forEach( item => {
       necessaryData.push({
-        date: new Date(item.date),
+        date: Date.parse(item.date),
         title: item.title.rendered,
         desc: item.excerpt.rendered,
         link: item.link,
