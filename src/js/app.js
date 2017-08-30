@@ -13,6 +13,7 @@ let ligblog = new getLigblog();
 let flickr = new getFlickr();
 let github = new getGithub();
 
+console.time('通信にかかった時間：');
 Promise
     .all([
         new Promise( (resolve, reject) => {
@@ -45,4 +46,5 @@ Promise
             return 0;
         });
         console.log(myActivities);
+        console.timeEnd('通信にかかった時間：');
     });
