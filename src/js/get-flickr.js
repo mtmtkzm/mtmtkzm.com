@@ -17,11 +17,25 @@ export default class getLigblog {
       }
     })
       .then(response => {
-        console.log(response);
+        this.selectNecessaryData(response);
       })
       .catch(error => {
         console.log('error', error);
       });
+  }
+
+  selectNecessaryData (response) {
+    let necessaryData = [];
+    let pushEventArray = response.data.photos.photo.forEach( item => {
+      necessaryData.push({
+        date: new Date(),
+        title: item.title,
+        desc: item.title,
+        link: `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_n.jpg`,
+      });
+    });
+  
+    console.log(necessaryData);
   }
 
 }
