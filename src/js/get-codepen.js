@@ -10,12 +10,16 @@ export default class getCodepen {
   request () {
     axios.get(this.API_PATH)
       .then( response => {
-        this.parseData(response);
+        this.selectNecessaryData(response);
       })
       .catch( error => { console.log('error', error) });
   }
 
-  parseData (response) {
+  removeSpaces (str) {
+    return str.replace(/\r?\n/g,"").replace(/\s/g, "");
+  }
+
+  selectNecessaryData (response) {
     let xmlString = response.request.responseText;
     parseString(xmlString, (err, result) => {
       let data = [];
@@ -29,12 +33,6 @@ export default class getCodepen {
       });
 
       console.log(data);
-      // return data;
     });
   }
-
-  removeSpaces (str) {
-    return str.replace(/\r?\n/g,"").replace(/\s/g, "");
-  }
-
 }
