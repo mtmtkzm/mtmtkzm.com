@@ -13,11 +13,25 @@ export default class getLigblog {
       }
     })
       .then(response => {
-        console.log(response);
+        this.selectNecessaryData(response);
       })
       .catch(error => {
         console.log('error', error);
       });
+  }
+
+  selectNecessaryData (response) {
+    let necessaryData = [];
+    let pushEventArray = response.data.forEach( item => {
+      necessaryData.push({
+        date: new Date(item.date),
+        title: item.title.rendered,
+        desc: item.excerpt.rendered,
+        link: item.link,
+      });
+    });
+  
+    console.log(necessaryData);
   }
 
 }
