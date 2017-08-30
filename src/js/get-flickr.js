@@ -3,14 +3,19 @@ const axios = require('axios');
 export default class getFlickr {
   constructor() {
     this.API_PATH = 'https://api.flickr.com/services/rest';
-    this.request();
     this.currentPhotoLength = 0;
     this.wholePhotoLength = 0;
     this.responses = [];
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
   // まずはIDを取得
-  request() {
+  request (resolve, reject) {
+    this.resolve = resolve;
+    this.reject = reject;
+
     axios.get(this.API_PATH, {
       params: {
         'method':'flickr.people.getPhotos',
@@ -28,6 +33,7 @@ export default class getFlickr {
       })
       .catch(error => {
         console.log('error', error);
+        this.reject();
       });
   }
 
@@ -66,6 +72,12 @@ export default class getFlickr {
       });
     });
   
-    console.log(necessaryData);
+    this.necessaryData = necessaryData;
+    this.resolve();
+  }
+
+  returnData () {
+    console.log(this.necessaryData);
+    return this.necessaryData;
   }
 }

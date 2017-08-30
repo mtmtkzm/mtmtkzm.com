@@ -3,10 +3,11 @@ const axios = require('axios');
 export default class getHatena {
   constructor() {
     this.API_PATH = 'https://blog.hatena.ne.jp/mtmtkzm/mtmtkzm.hatenablog.com/atom/entry';
-    // this.request();
+    this.resolve;
+    this.reject;
   }
 
-  request() {
+  request (resolve, reject) {
     axios.get(this.API_PATH, {
       params: {}
     })

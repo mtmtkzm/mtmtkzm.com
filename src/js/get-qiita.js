@@ -3,10 +3,15 @@ const axios = require('axios');
 export default class getQiita {
   constructor() {
     this.API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
-  request() {
+  request (resolve, reject) {
+    this.resolve = resolve;
+    this.reject = reject;
+
     axios.get(this.API_PATH, {
       params: {
         'page': 1,
@@ -17,7 +22,8 @@ export default class getQiita {
         this.selectNecessaryData(response);
       })
       .catch(error => {
-        console.log('error', error)
+        console.log('error', error);
+        this.reject();
       });
   }
 
@@ -32,7 +38,13 @@ export default class getQiita {
       });
     });
   
-    console.log(necessaryData);
+    this.necessaryData = necessaryData;
+    this.resolve();
+  }
+
+  returnData () {
+    console.log(this.necessaryData);
+    return this.necessaryData;
   }
 
 }
