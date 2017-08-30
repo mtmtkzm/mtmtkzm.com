@@ -1872,12 +1872,13 @@ var getHatena = function () {
     _classCallCheck(this, getHatena);
 
     this.API_PATH = 'https://blog.hatena.ne.jp/mtmtkzm/mtmtkzm.hatenablog.com/atom/entry';
-    // this.request();
+    this.resolve;
+    this.reject;
   }
 
   _createClass(getHatena, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
       axios.get(this.API_PATH, {
         params: {}
       }).then(function (response) {

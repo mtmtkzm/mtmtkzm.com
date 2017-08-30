@@ -8645,45 +8645,56 @@ var getCodepen = function () {
     _classCallCheck(this, getCodepen);
 
     this.API_PATH = 'https://codepen.io/mtmtkzm/public/feed';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
   _createClass(getCodepen, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
       var _this = this;
 
+      this.resolve = resolve;
+      this.reject = reject;
       axios.get(this.API_PATH).then(function (response) {
-        _this.parseData(response);
+        _this.selectNecessaryData(response);
       }).catch(function (error) {
         console.log('error', error);
-      });
-    }
-  }, {
-    key: 'parseData',
-    value: function parseData(response) {
-      var _this2 = this;
-
-      var xmlString = response.request.responseText;
-      parseString(xmlString, function (err, result) {
-        var data = [];
-        result.rss.channel[0].item.forEach(function (i) {
-          data.push({
-            title: i.title[0],
-            date: new Date(_this2.removeSpaces(i['dc:date'][0])),
-            desc: _this2.removeSpaces(i.description[0]),
-            link: i.link[0]
-          });
-        });
-
-        console.log(data);
-        // return data;
+        _this.reject;
       });
     }
   }, {
     key: 'removeSpaces',
     value: function removeSpaces(str) {
       return str.replace(/\r?\n/g, "").replace(/\s/g, "");
+    }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var _this2 = this;
+
+      var xmlString = response.request.responseText;
+      parseString(xmlString, function (err, result) {
+        var necessaryData = [];
+        result.rss.channel[0].item.forEach(function (i) {
+          necessaryData.push({
+            type: 'codepen',
+            date: Date.parse(_this2.removeSpaces(i['dc:date'][0])),
+            title: i.title[0],
+            desc: _this2.removeSpaces(i.description[0]),
+            url: i.link[0]
+          });
+        });
+
+        _this2.necessaryData = necessaryData;
+        _this2.resolve();
+      });
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
     }
   }]);
 
@@ -8709,17 +8720,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var axios = __webpack_require__(3);
 
-var getLigblog = function () {
-  function getLigblog() {
-    _classCallCheck(this, getLigblog);
+var getFlickr = function () {
+  function getFlickr() {
+    _classCallCheck(this, getFlickr);
 
     this.API_PATH = 'https://api.flickr.com/services/rest';
-    this.request();
+    this.currentPhotoLength = 0;
+    this.wholePhotoLength = 0;
+    this.responses = [];
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
-  _createClass(getLigblog, [{
+  // まずはIDを取得
+
+
+  _createClass(getFlickr, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
+      var _this = this;
+
+      this.resolve = resolve;
+      this.reject = reject;
+
       axios.get(this.API_PATH, {
         params: {
           'method': 'flickr.people.getPhotos',
@@ -8729,17 +8753,70 @@ var getLigblog = function () {
           'nojsoncallback': 1
         }
       }).then(function (response) {
-        console.log(response);
+        _this.wholePhotoLength = response.data.photos.photo.length;
+        response.data.photos.photo.forEach(function (item) {
+          _this.requestPostedDate(item.id);
+        });
+      }).catch(function (error) {
+        console.log('error', error);
+        _this.reject();
+      });
+    }
+
+    // その後、IDに基づいて全情報を取得しに行く
+
+  }, {
+    key: 'requestPostedDate',
+    value: function requestPostedDate(photoId) {
+      var _this2 = this;
+
+      axios.get(this.API_PATH, {
+        params: {
+          'method': 'flickr.photos.getInfo',
+          'api_key': 'ca30f5ed9e9016cdd5a47455053319da',
+          'photo_id': photoId,
+          'format': 'json',
+          'nojsoncallback': 1
+        }
+      }).then(function (response) {
+        _this2.responses.push(response);
+        _this2.currentPhotoLength++;
+        if (_this2.currentPhotoLength >= _this2.wholePhotoLength) {
+          _this2.selectNecessaryData(_this2.responses);
+        };
       }).catch(function (error) {
         console.log('error', error);
       });
     }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var necessaryData = [];
+      var pushEventArray = response.forEach(function (item) {
+        var photo = item.data.photo;
+        necessaryData.push({
+          type: 'flickr',
+          date: Number(photo.dates.lastupdate + '000'), // Flickrは ミリ秒 ではなく 秒 を返す
+          title: photo.title._content,
+          desc: photo.description._content,
+          url: 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_n.jpg'
+        });
+      });
+
+      this.necessaryData = necessaryData;
+      this.resolve();
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
+    }
   }]);
 
-  return getLigblog;
+  return getFlickr;
 }();
 
-exports.default = getLigblog;
+exports.default = getFlickr;
 
 /***/ },
 /* 67 */
@@ -8758,74 +8835,66 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var axios = __webpack_require__(3);
 
-var getLigblog = function () {
-  function getLigblog() {
-    _classCallCheck(this, getLigblog);
+var getGithub = function () {
+  function getGithub() {
+    _classCallCheck(this, getGithub);
 
     this.API_PATH = 'https://api.github.com/users/mtmtkzm/events';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
-  _createClass(getLigblog, [{
+  _createClass(getGithub, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
+      var _this = this;
+
+      this.resolve = resolve;
+      this.reject = reject;
+
       axios.get(this.API_PATH).then(function (response) {
-        console.log(response);
+        _this.selectNecessaryData(response);
       }).catch(function (error) {
         console.log('error', error);
+        _this.reject();
       });
+    }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var necessaryData = [];
+      var pushEventArray = response.data.filter(function (item) {
+        if (item.type === 'PushEvent') {
+          return true;
+        }
+      }).forEach(function (item) {
+        necessaryData.push({
+          type: 'github',
+          date: Date.parse(item.created_at),
+          title: item.repo.name,
+          desc: item.payload.commits[item.payload.commits.length - 1].message,
+          url: 'https://github.com/' + item.repo.name + '/commit/' + item.payload.commits[item.payload.commits.length - 1].sha
+        });
+      });
+
+      this.necessaryData = necessaryData;
+      this.resolve();
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
     }
   }]);
 
-  return getLigblog;
+  return getGithub;
 }();
 
-exports.default = getLigblog;
+exports.default = getGithub;
 
 /***/ },
-/* 68 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(3);
-
-var getHatena = function () {
-  function getHatena() {
-    _classCallCheck(this, getHatena);
-
-    this.API_PATH = 'https://blog.hatena.ne.jp/mtmtkzm/mtmtkzm.hatenablog.com/atom/entry';
-    // this.request();
-  }
-
-  _createClass(getHatena, [{
-    key: 'request',
-    value: function request() {
-      axios.get(this.API_PATH, {
-        params: {}
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log('error', error);
-      });
-    }
-  }]);
-
-  return getHatena;
-}();
-
-exports.default = getHatena;
-
-/***/ },
+/* 68 */,
 /* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -8847,21 +8916,51 @@ var getLigblog = function () {
     _classCallCheck(this, getLigblog);
 
     this.API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
   _createClass(getLigblog, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
+      var _this = this;
+
+      this.resolve = resolve;
+      this.reject = reject;
+
       axios.get(this.API_PATH, {
         params: {
           'author': '396'
         }
       }).then(function (response) {
-        console.log(response);
+        _this.selectNecessaryData(response);
       }).catch(function (error) {
         console.log('error', error);
+        _this.reject();
       });
+    }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var necessaryData = [];
+      var pushEventArray = response.data.forEach(function (item) {
+        necessaryData.push({
+          type: 'ligblog',
+          date: Date.parse(item.date),
+          title: item.title.rendered,
+          desc: item.excerpt.rendered,
+          url: item.link
+        });
+      });
+
+      this.necessaryData = necessaryData;
+      this.resolve();
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
     }
   }]);
 
@@ -8892,22 +8991,52 @@ var getQiita = function () {
     _classCallCheck(this, getQiita);
 
     this.API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
   _createClass(getQiita, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
+      var _this = this;
+
+      this.resolve = resolve;
+      this.reject = reject;
+
       axios.get(this.API_PATH, {
         params: {
           'page': 1,
           'per_page': 10
         }
       }).then(function (response) {
-        console.log(response);
+        _this.selectNecessaryData(response);
       }).catch(function (error) {
         console.log('error', error);
+        _this.reject();
       });
+    }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var necessaryData = [];
+      var pushEventArray = response.data.forEach(function (item) {
+        necessaryData.push({
+          type: 'qiita',
+          date: Date.parse(item.updated_at),
+          title: item.title,
+          desc: item.rendered_body,
+          url: item.url
+        });
+      });
+
+      this.necessaryData = necessaryData;
+      this.resolve();
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
     }
   }]);
 
@@ -12601,10 +12730,6 @@ var _getQiita = __webpack_require__(70);
 
 var _getQiita2 = _interopRequireDefault(_getQiita);
 
-var _getHatena = __webpack_require__(68);
-
-var _getHatena2 = _interopRequireDefault(_getHatena);
-
 var _getLigblog = __webpack_require__(69);
 
 var _getLigblog2 = _interopRequireDefault(_getLigblog);
@@ -12619,12 +12744,36 @@ var _getGithub2 = _interopRequireDefault(_getGithub);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-new _getCodepen2.default();
-new _getQiita2.default();
-new _getHatena2.default();
-new _getLigblog2.default();
-new _getFlickr2.default();
-new _getGithub2.default();
+var codepen = new _getCodepen2.default(); // import getHatena from 'get-hatena';
+// let hatena = new getHatena();
+
+var qiita = new _getQiita2.default();
+var ligblog = new _getLigblog2.default();
+var flickr = new _getFlickr2.default();
+var github = new _getGithub2.default();
+
+console.time('通信にかかった時間：');
+Promise.all([new Promise(function (resolve, reject) {
+    codepen.request(resolve, reject);
+}), new Promise(function (resolve, reject) {
+    qiita.request(resolve, reject);
+}), new Promise(function (resolve, reject) {
+    ligblog.request(resolve, reject);
+}), new Promise(function (resolve, reject) {
+    flickr.request(resolve, reject);
+}), new Promise(function (resolve, reject) {
+    github.request(resolve, reject);
+})]).then(function () {
+    var myActivities = [].concat(codepen.returnData(), qiita.returnData(), ligblog.returnData(), flickr.returnData(), github.returnData());
+
+    myActivities.sort(function (a, b) {
+        if (a.date > b.date) return -1;
+        if (a.date < b.date) return 1;
+        return 0;
+    });
+    console.log(myActivities);
+    console.timeEnd('通信にかかった時間：');
+});
 
 /***/ }
 /******/ ]);

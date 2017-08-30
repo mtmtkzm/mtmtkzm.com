@@ -1873,21 +1873,51 @@ var getLigblog = function () {
     _classCallCheck(this, getLigblog);
 
     this.API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
   _createClass(getLigblog, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
+      var _this = this;
+
+      this.resolve = resolve;
+      this.reject = reject;
+
       axios.get(this.API_PATH, {
         params: {
           'author': '396'
         }
       }).then(function (response) {
-        console.log(response);
+        _this.selectNecessaryData(response);
       }).catch(function (error) {
         console.log('error', error);
+        _this.reject();
       });
+    }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var necessaryData = [];
+      var pushEventArray = response.data.forEach(function (item) {
+        necessaryData.push({
+          type: 'ligblog',
+          date: Date.parse(item.date),
+          title: item.title.rendered,
+          desc: item.excerpt.rendered,
+          url: item.link
+        });
+      });
+
+      this.necessaryData = necessaryData;
+      this.resolve();
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
     }
   }]);
 

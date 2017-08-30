@@ -1874,22 +1874,52 @@ var getQiita = function () {
     _classCallCheck(this, getQiita);
 
     this.API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
   _createClass(getQiita, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
+      var _this = this;
+
+      this.resolve = resolve;
+      this.reject = reject;
+
       axios.get(this.API_PATH, {
         params: {
           'page': 1,
           'per_page': 10
         }
       }).then(function (response) {
-        console.log(response);
+        _this.selectNecessaryData(response);
       }).catch(function (error) {
         console.log('error', error);
+        _this.reject();
       });
+    }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var necessaryData = [];
+      var pushEventArray = response.data.forEach(function (item) {
+        necessaryData.push({
+          type: 'qiita',
+          date: Date.parse(item.updated_at),
+          title: item.title,
+          desc: item.rendered_body,
+          url: item.url
+        });
+      });
+
+      this.necessaryData = necessaryData;
+      this.resolve();
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
     }
   }]);
 

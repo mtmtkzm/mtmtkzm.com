@@ -1866,29 +1866,63 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var axios = __webpack_require__(3);
 
-var getLigblog = function () {
-  function getLigblog() {
-    _classCallCheck(this, getLigblog);
+var getGithub = function () {
+  function getGithub() {
+    _classCallCheck(this, getGithub);
 
     this.API_PATH = 'https://api.github.com/users/mtmtkzm/events';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
-  _createClass(getLigblog, [{
+  _createClass(getGithub, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
+      var _this = this;
+
+      this.resolve = resolve;
+      this.reject = reject;
+
       axios.get(this.API_PATH).then(function (response) {
-        console.log(response);
+        _this.selectNecessaryData(response);
       }).catch(function (error) {
         console.log('error', error);
+        _this.reject();
       });
+    }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var necessaryData = [];
+      var pushEventArray = response.data.filter(function (item) {
+        if (item.type === 'PushEvent') {
+          return true;
+        }
+      }).forEach(function (item) {
+        necessaryData.push({
+          type: 'github',
+          date: Date.parse(item.created_at),
+          title: item.repo.name,
+          desc: item.payload.commits[item.payload.commits.length - 1].message,
+          url: 'https://github.com/' + item.repo.name + '/commit/' + item.payload.commits[item.payload.commits.length - 1].sha
+        });
+      });
+
+      this.necessaryData = necessaryData;
+      this.resolve();
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
     }
   }]);
 
-  return getLigblog;
+  return getGithub;
 }();
 
-exports.default = getLigblog;
+exports.default = getGithub;
 
 /***/ }
 /******/ ]);

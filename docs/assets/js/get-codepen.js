@@ -8645,45 +8645,56 @@ var getCodepen = function () {
     _classCallCheck(this, getCodepen);
 
     this.API_PATH = 'https://codepen.io/mtmtkzm/public/feed';
-    this.request();
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
   _createClass(getCodepen, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
       var _this = this;
 
+      this.resolve = resolve;
+      this.reject = reject;
       axios.get(this.API_PATH).then(function (response) {
-        _this.parseData(response);
+        _this.selectNecessaryData(response);
       }).catch(function (error) {
         console.log('error', error);
-      });
-    }
-  }, {
-    key: 'parseData',
-    value: function parseData(response) {
-      var _this2 = this;
-
-      var xmlString = response.request.responseText;
-      parseString(xmlString, function (err, result) {
-        var data = [];
-        result.rss.channel[0].item.forEach(function (i) {
-          data.push({
-            title: i.title[0],
-            date: new Date(_this2.removeSpaces(i['dc:date'][0])),
-            desc: _this2.removeSpaces(i.description[0]),
-            link: i.link[0]
-          });
-        });
-
-        console.log(data);
-        // return data;
+        _this.reject;
       });
     }
   }, {
     key: 'removeSpaces',
     value: function removeSpaces(str) {
       return str.replace(/\r?\n/g, "").replace(/\s/g, "");
+    }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var _this2 = this;
+
+      var xmlString = response.request.responseText;
+      parseString(xmlString, function (err, result) {
+        var necessaryData = [];
+        result.rss.channel[0].item.forEach(function (i) {
+          necessaryData.push({
+            type: 'codepen',
+            date: Date.parse(_this2.removeSpaces(i['dc:date'][0])),
+            title: i.title[0],
+            desc: _this2.removeSpaces(i.description[0]),
+            url: i.link[0]
+          });
+        });
+
+        _this2.necessaryData = necessaryData;
+        _this2.resolve();
+      });
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
     }
   }]);
 

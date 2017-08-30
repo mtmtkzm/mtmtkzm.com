@@ -1865,17 +1865,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var axios = __webpack_require__(3);
 
-var getLigblog = function () {
-  function getLigblog() {
-    _classCallCheck(this, getLigblog);
+var getFlickr = function () {
+  function getFlickr() {
+    _classCallCheck(this, getFlickr);
 
     this.API_PATH = 'https://api.flickr.com/services/rest';
-    this.request();
+    this.currentPhotoLength = 0;
+    this.wholePhotoLength = 0;
+    this.responses = [];
+    this.necessaryData = [];
+    this.resolve;
+    this.reject;
   }
 
-  _createClass(getLigblog, [{
+  // まずはIDを取得
+
+
+  _createClass(getFlickr, [{
     key: 'request',
-    value: function request() {
+    value: function request(resolve, reject) {
+      var _this = this;
+
+      this.resolve = resolve;
+      this.reject = reject;
+
       axios.get(this.API_PATH, {
         params: {
           'method': 'flickr.people.getPhotos',
@@ -1885,17 +1898,70 @@ var getLigblog = function () {
           'nojsoncallback': 1
         }
       }).then(function (response) {
-        console.log(response);
+        _this.wholePhotoLength = response.data.photos.photo.length;
+        response.data.photos.photo.forEach(function (item) {
+          _this.requestPostedDate(item.id);
+        });
+      }).catch(function (error) {
+        console.log('error', error);
+        _this.reject();
+      });
+    }
+
+    // その後、IDに基づいて全情報を取得しに行く
+
+  }, {
+    key: 'requestPostedDate',
+    value: function requestPostedDate(photoId) {
+      var _this2 = this;
+
+      axios.get(this.API_PATH, {
+        params: {
+          'method': 'flickr.photos.getInfo',
+          'api_key': 'ca30f5ed9e9016cdd5a47455053319da',
+          'photo_id': photoId,
+          'format': 'json',
+          'nojsoncallback': 1
+        }
+      }).then(function (response) {
+        _this2.responses.push(response);
+        _this2.currentPhotoLength++;
+        if (_this2.currentPhotoLength >= _this2.wholePhotoLength) {
+          _this2.selectNecessaryData(_this2.responses);
+        };
       }).catch(function (error) {
         console.log('error', error);
       });
     }
+  }, {
+    key: 'selectNecessaryData',
+    value: function selectNecessaryData(response) {
+      var necessaryData = [];
+      var pushEventArray = response.forEach(function (item) {
+        var photo = item.data.photo;
+        necessaryData.push({
+          type: 'flickr',
+          date: Number(photo.dates.lastupdate + '000'), // Flickrは ミリ秒 ではなく 秒 を返す
+          title: photo.title._content,
+          desc: photo.description._content,
+          url: 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_n.jpg'
+        });
+      });
+
+      this.necessaryData = necessaryData;
+      this.resolve();
+    }
+  }, {
+    key: 'returnData',
+    value: function returnData() {
+      return this.necessaryData;
+    }
   }]);
 
-  return getLigblog;
+  return getFlickr;
 }();
 
-exports.default = getLigblog;
+exports.default = getFlickr;
 
 /***/ }
 /******/ ]);
