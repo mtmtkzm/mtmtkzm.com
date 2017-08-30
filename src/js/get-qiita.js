@@ -14,11 +14,25 @@ export default class getQiita {
       }
     })
       .then(response => {
-        console.log(response);
+        this.selectNecessaryData(response);
       })
       .catch(error => {
         console.log('error', error)
       });
+  }
+
+  selectNecessaryData (response) {
+    let necessaryData = [];
+    let pushEventArray = response.data.forEach( item => {
+      necessaryData.push({
+        date: new Date(item.updated_at),
+        title: item.title,
+        desc: item.rendered_body,
+        link: item.url,
+      });
+    });
+  
+    console.log(necessaryData);
   }
 
 }
