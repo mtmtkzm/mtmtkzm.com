@@ -16,24 +16,15 @@ let github = new getGithub();
 console.time('通信にかかった時間：');
 Promise
     .all([
-        new Promise( (resolve, reject) => {
-            codepen.request(resolve, reject);
-        }),
-        new Promise( (resolve, reject) => {
-            qiita.request(resolve, reject);
-        }),
-        new Promise( (resolve, reject) => {
-            ligblog.request(resolve, reject);
-        }),
-        new Promise( (resolve, reject) => {
-            flickr.request(resolve, reject);
-        }),
-        new Promise( (resolve, reject) => {
-            github.request(resolve, reject);
-        })
+        new Promise( (resolve, reject) => {codepen.request(resolve, reject) }),
+        new Promise( (resolve, reject) => {qiita.request(resolve, reject) }),
+        new Promise( (resolve, reject) => {ligblog.request(resolve, reject) }),
+        new Promise( (resolve, reject) => {flickr.request(resolve, reject) }),
+        new Promise( (resolve, reject) => {github.request(resolve, reject) })
     ])
     .then( () => {
-        let myActivities = codepen.returnData().concat(
+        let myActivities = [].concat(
+            codepen.returnData(),
             qiita.returnData(),
             ligblog.returnData(),
             flickr.returnData(),
