@@ -77,7 +77,6 @@ export default class getFlickr {
   }
 
   returnData () {
-    console.log(this.necessaryData);
     return this.necessaryData;
   }
 }

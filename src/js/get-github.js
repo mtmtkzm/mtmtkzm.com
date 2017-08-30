@@ -40,7 +40,6 @@ export default class getGithub {
   }
 
   returnData () {
-    console.log(this.necessaryData);
     return this.necessaryData;
   }
 

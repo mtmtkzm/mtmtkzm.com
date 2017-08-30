@@ -43,7 +43,6 @@ export default class getQiita {
   }
 
   returnData () {
-    console.log(this.necessaryData);
     return this.necessaryData;
   }
 

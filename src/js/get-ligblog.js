@@ -42,7 +42,6 @@ export default class getLigblog {
   }
 
   returnData () {
-    console.log(this.necessaryData);
     return this.necessaryData;
   }
 
