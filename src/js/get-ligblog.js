@@ -3,22 +3,16 @@ const axios = require('axios');
 export default class getLigblog {
   constructor() {
     this.API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
-    this.necessaryData = [];
-    this.resolve;
-    this.reject;
   }
 
-  request (resolve, reject) {
-    this.resolve = resolve;
-    this.reject = reject;
-
-    axios.get(this.API_PATH, {
+  request () {
+    return axios.get(this.API_PATH, {
       params: {
         'author': '396'
       }
     })
       .then(response => {
-        this.selectNecessaryData(response);
+        return this.selectNecessaryData(response);
       })
       .catch(error => {
         console.log('error', error);
@@ -38,12 +32,7 @@ export default class getLigblog {
       });
     });
   
-    this.necessaryData = necessaryData;
-    this.resolve();
-  }
-
-  returnData () {
-    return this.necessaryData;
+    return necessaryData;
   }
 
 }

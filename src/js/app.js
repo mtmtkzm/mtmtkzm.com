@@ -16,26 +16,19 @@ let github = new getGithub();
 console.time('通信にかかった時間：');
 Promise
     .all([
-        new Promise( (resolve, reject) => {codepen.request(resolve, reject) }),
-        new Promise( (resolve, reject) => {qiita.request(resolve, reject) }),
-        new Promise( (resolve, reject) => {ligblog.request(resolve, reject) }),
-        new Promise( (resolve, reject) => {flickr.request(resolve, reject) }),
-        new Promise( (resolve, reject) => {github.request(resolve, reject) })
+        codepen.request(),
+        qiita.request(),
+        ligblog.request(),
+        flickr.request(),
+        github.request()
     ])
-    .then( () => {
-        let myActivities = [].concat(
-            codepen.returnData(),
-            qiita.returnData(),
-            ligblog.returnData(),
-            flickr.returnData(),
-            github.returnData()
-        );
-
-        myActivities.sort(function(a, b){
+    .then( value => {
+        let myActivities = [].concat(value);
+        myActivities.sort( (a, b) => {
             if(a.date > b.date) return -1;
             if(a.date < b.date) return 1;
             return 0;
         });
-        console.log(myActivities);
+        console.log('↓↓ myActivities ↓↓ \n', myActivities);
         console.timeEnd('通信にかかった時間：');
     });

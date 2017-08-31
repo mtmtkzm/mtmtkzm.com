@@ -3,18 +3,12 @@ const axios = require('axios');
 export default class getGithub {
   constructor() {
     this.API_PATH = 'https://api.github.com/users/mtmtkzm/events';
-    this.necessaryData = [];
-    this.resolve;
-    this.reject;
   }
 
-  request (resolve, reject) {
-    this.resolve = resolve;
-    this.reject = reject;
-
-    axios.get(this.API_PATH)
+  request () {
+    return axios.get(this.API_PATH)
       .then(response => {
-        this.selectNecessaryData(response);
+        return this.selectNecessaryData(response);
       })
       .catch(error => {
         console.log('error', error);
@@ -36,12 +30,6 @@ export default class getGithub {
       });
     });
  
-    this.necessaryData = necessaryData;
-    this.resolve();
+    return necessaryData;
   }
-
-  returnData () {
-    return this.necessaryData;
-  }
-
 }
