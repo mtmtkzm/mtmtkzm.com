@@ -24,7 +24,7 @@ export default class getCodepen {
   }
 
   removeSpaces (str) {
-    return str.replace(/\r?\n/g,"").replace(/\s/g, "");
+    return str.replace(/\r?\n/g,"");
   }
 
   selectNecessaryData (response) {
