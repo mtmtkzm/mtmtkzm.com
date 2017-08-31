@@ -24,11 +24,11 @@ Promise
     ])
     .then( value => {
         let myActivities = [].concat(value);
-        myActivities.sort( (a, b) => {
-            if(a.date > b.date) return -1;
-            if(a.date < b.date) return 1;
+        myActivities = Array.prototype.concat.apply([], myActivities).sort( (a, b) => {
+            if ( a.date > b.date ) return -1;
+            if ( a.date < b.date ) return 1;
             return 0;
         });
-        console.log('↓↓ myActivities ↓↓ \n', myActivities);
         console.timeEnd('通信にかかった時間：');
+        console.log('↓↓ myActivities ↓↓ \n', myActivities);        
     });
