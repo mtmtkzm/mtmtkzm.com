@@ -23,25 +23,32 @@ export default class getCodepen {
       });
   }
 
-  removeSpaces (str) {
+  // 改行を削除
+  removeParagraphs (str) {
     return str.replace(/\r?\n/g,"");
+  }
+
+  // スペースを削除
+  removeSpaces (str) {
+    return str.replace(/\s/g, "");
   }
 
   selectNecessaryData (response) {
     let xmlString = response.request.responseText;
     let necessaryData = [];
-    parseString(xmlString, (err, result) => {
-      
+
+    parseString(xmlString, (err, result) => {     
       result.rss.channel[0].item.forEach( i => {
         necessaryData.push({
           type: 'codepen',
-          date: Date.parse(this.removeSpaces(i['dc:date'][0])),
+          date: Date.parse(this.removeParagraphs(this.removeSpaces(i['dc:date'][0]))),
           title: i.title[0],
-          desc: this.removeSpaces(i.description[0]),
+          desc: this.removeParagraphs(i.description[0]),
           url: i.link[0]
         })
       });
     });
+ 
     return necessaryData;
   }
 }

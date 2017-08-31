@@ -49,7 +49,7 @@ export default class getFlickr {
       .then( response => {
         return this.selectNecessaryData(response);
       })
-      .catch(error => {
+      .catch( error => {
         console.error('error', error);
       });
   }
