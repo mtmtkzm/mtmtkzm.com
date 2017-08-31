@@ -10,7 +10,7 @@ export default function getFlickr () {
       'user_id': '144899726@N03',
       'min_upload_date': '',
       'extras': 'last_update,description',
-      'per_page': 10,
+      'per_page': 20,
       'format': 'json',
       'nojsoncallback': 1,
     }

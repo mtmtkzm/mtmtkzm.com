@@ -4,7 +4,8 @@ const API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
 export default function getLigblog () {
   return axios.get(API_PATH, {
     params: {
-      'author': '396'
+      'author': '396',
+      'per_page': '5'
     }
   })
     .then(response => {
