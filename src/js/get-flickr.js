@@ -10,14 +10,14 @@ export default class getFlickr {
   request () {
     return axios.get(this.API_PATH, {
       params: {
-        'method':'flickr.people.getPhotos',
+        'method': 'flickr.people.getPhotos',
         'api_key': 'ca30f5ed9e9016cdd5a47455053319da',
         'user_id': '144899726@N03',
         'format': 'json',
         'nojsoncallback': 1,
       }
     })
-      .then(response => {
+      .then( response => {
         let allPromises = [];
 
         response.data.photos.photo.forEach( item => {
@@ -27,9 +27,7 @@ export default class getFlickr {
         return Promise
           .all(allPromises)
           .then( value => {
-            let data = [];
-            value.forEach( item => data.push(item[0]) );
-            return data;
+            return Array.prototype.concat.apply([], value);
           });
       })
       .catch( error => {
@@ -48,7 +46,7 @@ export default class getFlickr {
         'nojsoncallback': 1,
       }
     })
-      .then(response => {
+      .then( response => {
         return this.selectNecessaryData(response);
       })
       .catch(error => {
