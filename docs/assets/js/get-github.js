@@ -658,10 +658,6 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -1859,70 +1855,39 @@ function isSlowBuffer (obj) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(3);
-
-var getGithub = function () {
-  function getGithub() {
-    _classCallCheck(this, getGithub);
-
-    this.API_PATH = 'https://api.github.com/users/mtmtkzm/events';
-    this.necessaryData = [];
-    this.resolve;
-    this.reject;
-  }
-
-  _createClass(getGithub, [{
-    key: 'request',
-    value: function request(resolve, reject) {
-      var _this = this;
-
-      this.resolve = resolve;
-      this.reject = reject;
-
-      axios.get(this.API_PATH).then(function (response) {
-        _this.selectNecessaryData(response);
-      }).catch(function (error) {
-        console.log('error', error);
-        _this.reject();
-      });
-    }
-  }, {
-    key: 'selectNecessaryData',
-    value: function selectNecessaryData(response) {
-      var necessaryData = [];
-      var pushEventArray = response.data.filter(function (item) {
-        if (item.type === 'PushEvent') {
-          return true;
-        }
-      }).forEach(function (item) {
-        necessaryData.push({
-          type: 'github',
-          date: Date.parse(item.created_at),
-          title: item.repo.name,
-          desc: item.payload.commits[item.payload.commits.length - 1].message,
-          url: 'https://github.com/' + item.repo.name + '/commit/' + item.payload.commits[item.payload.commits.length - 1].sha
-        });
-      });
-
-      this.necessaryData = necessaryData;
-      this.resolve();
-    }
-  }, {
-    key: 'returnData',
-    value: function returnData() {
-      return this.necessaryData;
-    }
-  }]);
-
-  return getGithub;
-}();
-
 exports.default = getGithub;
+var axios = __webpack_require__(3);
+var API_PATH = 'https://api.github.com/users/mtmtkzm/events';
+
+// 取得件数は決められないらしい
+// Events support pagination, however the per_page option is unsupported.
+// The fixed page size is 30 items.
+// Fetching up to ten pages is supported, for a total of 300 events.
+
+function getGithub() {
+  return axios.get(API_PATH).then(function (response) {
+    return selectNecessaryData(response);
+  }).catch(function (error) {
+    console.log('error', error);
+  });
+}
+
+function selectNecessaryData(response) {
+  var necessaryData = [];
+  var pushEventArray = response.data.filter(function (item) {
+    if (item.type === 'PushEvent') return true;
+  }).forEach(function (item) {
+    necessaryData.push({
+      type: 'github',
+      date: Date.parse(item.created_at),
+      title: item.repo.name,
+      desc: item.payload.commits[item.payload.commits.length - 1].message, // ひとつのPushEventの中にある最後のコミット情報のみ
+      url: 'https://github.com/' + item.repo.name + '/commit/' + item.payload.commits[item.payload.commits.length - 1].sha
+    });
+  });
+
+  return necessaryData;
+}
 
 /***/ }
 /******/ ]);

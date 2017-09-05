@@ -658,10 +658,6 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -1858,110 +1854,44 @@ function isSlowBuffer (obj) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(3);
-
-var getFlickr = function () {
-  function getFlickr() {
-    _classCallCheck(this, getFlickr);
-
-    this.API_PATH = 'https://api.flickr.com/services/rest';
-    this.currentPhotoLength = 0;
-    this.wholePhotoLength = 0;
-    this.responses = [];
-    this.necessaryData = [];
-    this.resolve;
-    this.reject;
-  }
-
-  // まずはIDを取得
-
-
-  _createClass(getFlickr, [{
-    key: 'request',
-    value: function request(resolve, reject) {
-      var _this = this;
-
-      this.resolve = resolve;
-      this.reject = reject;
-
-      axios.get(this.API_PATH, {
-        params: {
-          'method': 'flickr.people.getPhotos',
-          'api_key': 'ca30f5ed9e9016cdd5a47455053319da',
-          'user_id': '144899726@N03',
-          'format': 'json',
-          'nojsoncallback': 1
-        }
-      }).then(function (response) {
-        _this.wholePhotoLength = response.data.photos.photo.length;
-        response.data.photos.photo.forEach(function (item) {
-          _this.requestPostedDate(item.id);
-        });
-      }).catch(function (error) {
-        console.log('error', error);
-        _this.reject();
-      });
-    }
-
-    // その後、IDに基づいて全情報を取得しに行く
-
-  }, {
-    key: 'requestPostedDate',
-    value: function requestPostedDate(photoId) {
-      var _this2 = this;
-
-      axios.get(this.API_PATH, {
-        params: {
-          'method': 'flickr.photos.getInfo',
-          'api_key': 'ca30f5ed9e9016cdd5a47455053319da',
-          'photo_id': photoId,
-          'format': 'json',
-          'nojsoncallback': 1
-        }
-      }).then(function (response) {
-        _this2.responses.push(response);
-        _this2.currentPhotoLength++;
-        if (_this2.currentPhotoLength >= _this2.wholePhotoLength) {
-          _this2.selectNecessaryData(_this2.responses);
-        };
-      }).catch(function (error) {
-        console.log('error', error);
-      });
-    }
-  }, {
-    key: 'selectNecessaryData',
-    value: function selectNecessaryData(response) {
-      var necessaryData = [];
-      var pushEventArray = response.forEach(function (item) {
-        var photo = item.data.photo;
-        necessaryData.push({
-          type: 'flickr',
-          date: Number(photo.dates.lastupdate + '000'), // Flickrは ミリ秒 ではなく 秒 を返す
-          title: photo.title._content,
-          desc: photo.description._content,
-          url: 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_n.jpg'
-        });
-      });
-
-      this.necessaryData = necessaryData;
-      this.resolve();
-    }
-  }, {
-    key: 'returnData',
-    value: function returnData() {
-      return this.necessaryData;
-    }
-  }]);
-
-  return getFlickr;
-}();
-
 exports.default = getFlickr;
+var axios = __webpack_require__(3);
+var API_PATH = 'https://api.flickr.com/services/rest';
+
+function getFlickr() {
+  // まずはIDを取得
+  return axios.get(API_PATH, {
+    params: {
+      'method': 'flickr.people.getPhotos',
+      'api_key': 'ca30f5ed9e9016cdd5a47455053319da',
+      'user_id': '144899726@N03',
+      'min_upload_date': '',
+      'extras': 'last_update,description',
+      'per_page': 20,
+      'format': 'json',
+      'nojsoncallback': 1
+    }
+  }).then(function (response) {
+    return selectNecessaryData(response);
+  }).catch(function (error) {
+    console.error('error', error);
+  });
+}
+
+function selectNecessaryData(response) {
+  var necessaryData = [];
+  response.data.photos.photo.forEach(function (item) {
+    necessaryData.push({
+      type: 'flickr',
+      date: Number(item.lastupdate + '000'), // Flickrは ミリ秒 ではなく 秒 を返す
+      title: item.title,
+      desc: item.description._content,
+      url: 'https://farm' + item.farm + '.staticflickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_n.jpg'
+    });
+  });
+
+  return necessaryData;
+}
 
 /***/ }
 /******/ ]);

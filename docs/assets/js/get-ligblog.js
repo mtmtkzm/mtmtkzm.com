@@ -64,7 +64,7 @@ console.warn("This script is development version.");
 /******/ 	__webpack_require__.p = "/assets/js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 69);
+/******/ 	return __webpack_require__(__webpack_require__.s = 68);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -658,10 +658,6 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -1851,8 +1847,7 @@ function isSlowBuffer (obj) {
 /* 65 */,
 /* 66 */,
 /* 67 */,
-/* 68 */,
-/* 69 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1861,70 +1856,37 @@ function isSlowBuffer (obj) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(3);
-
-var getLigblog = function () {
-  function getLigblog() {
-    _classCallCheck(this, getLigblog);
-
-    this.API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
-    this.necessaryData = [];
-    this.resolve;
-    this.reject;
-  }
-
-  _createClass(getLigblog, [{
-    key: 'request',
-    value: function request(resolve, reject) {
-      var _this = this;
-
-      this.resolve = resolve;
-      this.reject = reject;
-
-      axios.get(this.API_PATH, {
-        params: {
-          'author': '396'
-        }
-      }).then(function (response) {
-        _this.selectNecessaryData(response);
-      }).catch(function (error) {
-        console.log('error', error);
-        _this.reject();
-      });
-    }
-  }, {
-    key: 'selectNecessaryData',
-    value: function selectNecessaryData(response) {
-      var necessaryData = [];
-      var pushEventArray = response.data.forEach(function (item) {
-        necessaryData.push({
-          type: 'ligblog',
-          date: Date.parse(item.date),
-          title: item.title.rendered,
-          desc: item.excerpt.rendered,
-          url: item.link
-        });
-      });
-
-      this.necessaryData = necessaryData;
-      this.resolve();
-    }
-  }, {
-    key: 'returnData',
-    value: function returnData() {
-      return this.necessaryData;
-    }
-  }]);
-
-  return getLigblog;
-}();
-
 exports.default = getLigblog;
+var axios = __webpack_require__(3);
+var API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
+
+function getLigblog() {
+  return axios.get(API_PATH, {
+    params: {
+      'author': '396',
+      'per_page': '5'
+    }
+  }).then(function (response) {
+    return selectNecessaryData(response);
+  }).catch(function (error) {
+    console.log('error', error);
+  });
+}
+
+function selectNecessaryData(response) {
+  var necessaryData = [];
+  var pushEventArray = response.data.forEach(function (item) {
+    necessaryData.push({
+      type: 'ligblog',
+      date: Date.parse(item.date),
+      title: item.title.rendered,
+      desc: item.excerpt.rendered,
+      url: item.link
+    });
+  });
+
+  return necessaryData;
+}
 
 /***/ }
 /******/ ]);

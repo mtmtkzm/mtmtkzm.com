@@ -64,7 +64,7 @@ console.warn("This script is development version.");
 /******/ 	__webpack_require__.p = "/assets/js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 70);
+/******/ 	return __webpack_require__(__webpack_require__.s = 69);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -658,10 +658,6 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -1852,8 +1848,7 @@ function isSlowBuffer (obj) {
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */,
-/* 70 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1862,71 +1857,36 @@ function isSlowBuffer (obj) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
+exports.default = getCodepen;
 var axios = __webpack_require__(3);
-
-var getQiita = function () {
-  function getQiita() {
-    _classCallCheck(this, getQiita);
-
-    this.API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
-    this.necessaryData = [];
-    this.resolve;
-    this.reject;
-  }
-
-  _createClass(getQiita, [{
-    key: 'request',
-    value: function request(resolve, reject) {
-      var _this = this;
-
-      this.resolve = resolve;
-      this.reject = reject;
-
-      axios.get(this.API_PATH, {
-        params: {
-          'page': 1,
-          'per_page': 10
-        }
-      }).then(function (response) {
-        _this.selectNecessaryData(response);
-      }).catch(function (error) {
-        console.log('error', error);
-        _this.reject();
-      });
+var API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
+function getCodepen() {
+  return axios.get(API_PATH, {
+    params: {
+      'page': 1,
+      'per_page': 10
     }
-  }, {
-    key: 'selectNecessaryData',
-    value: function selectNecessaryData(response) {
-      var necessaryData = [];
-      var pushEventArray = response.data.forEach(function (item) {
-        necessaryData.push({
-          type: 'qiita',
-          date: Date.parse(item.updated_at),
-          title: item.title,
-          desc: item.rendered_body,
-          url: item.url
-        });
-      });
+  }).then(function (response) {
+    return selectNecessaryData(response);
+  }).catch(function (error) {
+    console.log('error', error);
+  });
+}
 
-      this.necessaryData = necessaryData;
-      this.resolve();
-    }
-  }, {
-    key: 'returnData',
-    value: function returnData() {
-      return this.necessaryData;
-    }
-  }]);
+function selectNecessaryData(response) {
+  var necessaryData = [];
+  var pushEventArray = response.data.forEach(function (item) {
+    necessaryData.push({
+      type: 'qiita',
+      date: Date.parse(item.updated_at),
+      title: item.title,
+      desc: item.rendered_body,
+      url: item.url
+    });
+  });
 
-  return getQiita;
-}();
-
-exports.default = getQiita;
+  return necessaryData;
+}
 
 /***/ }
 /******/ ]);
