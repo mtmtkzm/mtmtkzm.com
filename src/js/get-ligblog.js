@@ -19,7 +19,7 @@ export default function () {
 
 function selectNecessaryData (response) {
   let necessaryData = [];
-  let pushEventArray = response.data.forEach( item => {
+  response.data.forEach( item => {
     necessaryData.push({
       type: 'ligblog',
       date: Date.parse(item.date),
