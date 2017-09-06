@@ -20,13 +20,19 @@ function selectNecessaryData (response) {
         type: 'codepen',
         date: Date.parse(removeParagraphs(removeSpaces(i['dc:date'][0]))),
         title: i.title[0],
-        desc: removeParagraphs(i.description[0]),
+        desc: parseDescription(i.description[0]),
         url: i.link[0]
       })
     });
   });
 
   return necessaryData;
+}
+
+function parseDescription (str) {
+  let temp = document.createElement('p');
+  temp.innerHTML = str;
+  return temp.querySelector('p:nth-child(3)').innerHTML;
 }
 
 // 改行を削除
