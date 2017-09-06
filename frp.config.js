@@ -9,7 +9,7 @@ module.exports = function(production) {
     style: production ? {} : {},
     script: production ? {} : {},
     server: {},
-    copy: {},
+    copy: { 'src/svg/**/*': FRP_DEST + '/assets/svg' },
     sprite: [],
     test: {}
   }
