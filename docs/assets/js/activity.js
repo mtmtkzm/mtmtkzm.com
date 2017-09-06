@@ -64,7 +64,7 @@ console.warn("This script is development version.");
 /******/ 	__webpack_require__.p = "/assets/js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 89);
+/******/ 	return __webpack_require__(__webpack_require__.s = 88);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -12286,21 +12286,6 @@ function createMyActivities(activities) {
   document.querySelector('.js-activity').innerHTML = myActivities;
 }
 
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _activity = __webpack_require__(88);
-
-var _activity2 = _interopRequireDefault(_activity);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-new _activity2.default();
-
 /***/ }
 /******/ ]);
-//# sourceMappingURL=maps/app.map
+//# sourceMappingURL=maps/activity.map
