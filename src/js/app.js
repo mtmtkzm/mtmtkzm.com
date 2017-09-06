@@ -5,27 +5,25 @@ import getLigblog from 'get-ligblog';
 import getFlickr from 'get-flickr';
 import getGithub from 'get-github';
 
-function requestMyActivities () {
-  console.time('通信にかかった時間：');
-  Promise
-    .all([
-      getCodepen(),
-      getQiita(),
-      getLigblog(),
-      getFlickr(),
-      getGithub()
-    ])
-    .then( value => {
-      let myActivities = [].concat(value);
-      myActivities = Array.prototype.concat.apply([], myActivities).sort( (a, b) => {
-        if ( a.date > b.date ) return -1;
-        if ( a.date < b.date ) return 1;
-        return 0;
-      });
-      console.timeEnd('通信にかかった時間：');
-      createMyActivities(myActivities);
+console.time('通信にかかった時間：');
+Promise
+  .all([
+    getCodepen(),
+    getQiita(),
+    getLigblog(),
+    getFlickr(),
+    getGithub()
+  ])
+  .then( value => {
+    let myActivities = [].concat(value);
+    myActivities = Array.prototype.concat.apply([], myActivities).sort( (a, b) => {
+      if ( a.date > b.date ) return -1;
+      if ( a.date < b.date ) return 1;
+      return 0;
     });
-}
+    console.timeEnd('通信にかかった時間：');
+    createMyActivities(myActivities);
+  });
 
 function createMyActivities (activities) {
   console.log(activities);
@@ -35,7 +33,7 @@ function createMyActivities (activities) {
   activities.forEach( item => {
     let itemDateYear = new Date(item.date).getFullYear();
     let itemDateMonth = new Date(item.date).getMonth() + 1;
-    let itemDateDay = new Date(item.date).getDay();
+    let itemDateDay = new Date(item.date).getDate();
 
     let judgeDateOverlapsCondition = (
       ( itemDateYear !== new Date(date).getFullYear()) ||
@@ -50,21 +48,21 @@ function createMyActivities (activities) {
         <h1>${itemDateYear}.${itemDateMonth}.${itemDateDay}</h1>
       `;
     }
+
     myActivities += `
-      <a class="item ${item.type}" href="${item.url}" target="_blank">
-        <h2 class="item-title">${item.title}</h2>
-        <p class="item-date">${item.date}</p>
-        <p class="item-desc">${item.desc}</p>
-        
-      </a>
+      <article class="item ${item.type}">
+        <a href="${item.url}" target="_blank">
+          <h2 class="item-title">${item.title}</h2>
+          <p class="item-date">${item.date}</p>
+          <p class="item-desc">${item.desc}</p>
+        </a>
+      </article>
     `;
   });
-  document.querySelector('.activity').innerHTML =
-    `
-      <div class="my-activities">
-        ${myActivities}
-      </div>
-    `;
-}
 
-requestMyActivities();
+  document.querySelector('.activity').innerHTML = `
+    <div class="my-activities">
+      ${myActivities}
+    </div>
+  `;
+}
