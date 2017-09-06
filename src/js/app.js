@@ -29,14 +29,21 @@ function requestMyActivities () {
 
 function creatMyActivities (activities) {
   console.log(activities);
+  let myActivities = '';
   activities.forEach( item => {
-    let myActivity = `
-      <div>
-        <h2>${item.title}</h2>
-        <p>${item.desc}</p>
+    myActivities += `
+      <a class="item ${item.type}" href="${item.url}" target="_blank">
+        <h2 class="item-title">${item.title}</h2>
+        <p class="item-desc">${item.desc}</p>
+      </a>
+    `;
+  });
+  document.querySelector('.activity').innerHTML =
+    `
+      <div class="my-activities">
+        ${myActivities}
       </div>
     `;
-  })
 }
 
 requestMyActivities();

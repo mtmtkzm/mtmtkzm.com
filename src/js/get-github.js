@@ -6,13 +6,14 @@ const API_PATH = 'https://api.github.com/users/mtmtkzm/events';
 // The fixed page size is 30 items.
 // Fetching up to ten pages is supported, for a total of 300 events.
 
-export default function getGithub () {
+export default function () {
   return axios.get(API_PATH)
     .then( response => {
       return selectNecessaryData(response);
     })
     .catch( error => {
-      console.log('error', error);
+      console.error(error);
+      return [];
     });
 }
 

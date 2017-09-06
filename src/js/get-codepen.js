@@ -2,11 +2,12 @@ const parseString = require('xml2js').parseString;
 const axios = require('axios');
 const API_PATH = 'https://codepen.io/mtmtkzm/public/feed';
 
-export default function getCodepen () {
+export default function () {
   return axios.get(API_PATH)
     .then( response => selectNecessaryData(response) )
     .catch( error => {
-      console.log('error', error);
+      console.error(error);
+      return [];
     });
 }
 
@@ -30,8 +31,9 @@ function selectNecessaryData (response) {
 }
 
 function parseDescription (str) {
-  let temp = document.createElement('p');
+  let temp = document.createElement('div');
   temp.innerHTML = str;
+  // 3番目の <p> に格納されていた
   return temp.querySelector('p:nth-child(3)').innerHTML;
 }
 

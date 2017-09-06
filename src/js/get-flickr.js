@@ -1,7 +1,7 @@
 const axios = require('axios');
 const API_PATH = 'https://api.flickr.com/services/rest';
 
-export default function getFlickr () {
+export default function () {
   // まずはIDを取得
   return axios.get(API_PATH, {
     params: {
@@ -19,7 +19,8 @@ export default function getFlickr () {
       return selectNecessaryData(response);
     })
     .catch( error => {
-      console.error('error', error);
+      console.error(error);
+      return [];
     });
 }
 

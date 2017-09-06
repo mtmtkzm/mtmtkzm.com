@@ -1,7 +1,7 @@
 const axios = require('axios');
 const API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
 
-export default function getLigblog () {
+export default function () {
   return axios.get(API_PATH, {
     params: {
       'author': '396',
@@ -12,7 +12,8 @@ export default function getLigblog () {
       return selectNecessaryData(response);
     })
     .catch(error => {
-      console.log('error', error);
+      console.error(error);
+      return [];
     });
 }
 

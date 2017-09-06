@@ -1,6 +1,7 @@
 const axios = require('axios');
 const API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
-export default function getCodepen () {
+
+export default function () {
   return axios.get(API_PATH, {
     params: {
       'page': 1,
@@ -11,13 +12,14 @@ export default function getCodepen () {
       return selectNecessaryData(response);
     })
     .catch(error => {
-      console.log('error', error);
+      console.error(error);
+      return [];
     });
 }
 
 function selectNecessaryData (response) {
   let necessaryData = [];
-  let pushEventArray = response.data.forEach( item => {
+  response.data.forEach( item => {
     necessaryData.push({
       type: 'qiita',
       date: Date.parse(item.updated_at),
