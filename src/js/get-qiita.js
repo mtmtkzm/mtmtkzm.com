@@ -24,10 +24,17 @@ function selectNecessaryData (response) {
       type: 'qiita',
       date: Date.parse(item.updated_at),
       title: item.title,
-      desc: item.rendered_body,
+      desc: extractDescription(item.rendered_body),
       url: item.url,
     });
   });
 
   return necessaryData;
+}
+
+function extractDescription (str) {
+  // 先頭から n文字 切り出す
+  let temp = document.createElement('div');
+  temp.innerHTML = str;
+  return temp.innerText.substr(0,60);
 }
