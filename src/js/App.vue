@@ -12,12 +12,13 @@
 </template>
 
 <script>
-  import activity from 'components/Activity.vue';
+  import activity from 'components/activity.vue';
 
   export default {
     name: 'App',
     components: {
       activity,
-    }
+    },
+
   }
 </script>

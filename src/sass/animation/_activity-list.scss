@@ -2,9 +2,9 @@
   $this: &;
 
   &-item {
-    opacity: 0;
-    transform: translateX(20px);
-    pointer-events: none;
+    //opacity: 0;
+    //transform: translateX(20px);
+    //pointer-events: none;
     transition-timing-function: ease-in-out;
     transition-duration: 500ms;
     transition-property: all;
