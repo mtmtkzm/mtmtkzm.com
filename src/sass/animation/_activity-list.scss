@@ -1,0 +1,25 @@
+.js-fade-activity-list {
+  $this: &;
+
+  &-item {
+    opacity: 0;
+    transform: translateX(20px);
+    pointer-events: none;
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: all;
+    @for $i from 1 through 100 {
+      &:nth-child(#{$i}) {
+        transition-delay: $i * 80ms;
+      }
+    }
+  }
+
+  &.is-show {
+    #{$this}-item {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+  }
+}

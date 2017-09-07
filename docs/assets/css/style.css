@@ -132,4 +132,208 @@ body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-font-smoo
 
 @keyframes wave { from { transform: rotate(0deg); }
   to { transform: rotate(360deg); } }
+
+.js-fade-activity-list-item { opacity: 0; transform: translateX(20px); pointer-events: none; transition-timing-function: ease-in-out; transition-duration: 500ms; transition-property: all; }
+
+.js-fade-activity-list-item:nth-child(1) { transition-delay: 80ms; }
+
+.js-fade-activity-list-item:nth-child(2) { transition-delay: 160ms; }
+
+.js-fade-activity-list-item:nth-child(3) { transition-delay: 240ms; }
+
+.js-fade-activity-list-item:nth-child(4) { transition-delay: 320ms; }
+
+.js-fade-activity-list-item:nth-child(5) { transition-delay: 400ms; }
+
+.js-fade-activity-list-item:nth-child(6) { transition-delay: 480ms; }
+
+.js-fade-activity-list-item:nth-child(7) { transition-delay: 560ms; }
+
+.js-fade-activity-list-item:nth-child(8) { transition-delay: 640ms; }
+
+.js-fade-activity-list-item:nth-child(9) { transition-delay: 720ms; }
+
+.js-fade-activity-list-item:nth-child(10) { transition-delay: 800ms; }
+
+.js-fade-activity-list-item:nth-child(11) { transition-delay: 880ms; }
+
+.js-fade-activity-list-item:nth-child(12) { transition-delay: 960ms; }
+
+.js-fade-activity-list-item:nth-child(13) { transition-delay: 1040ms; }
+
+.js-fade-activity-list-item:nth-child(14) { transition-delay: 1120ms; }
+
+.js-fade-activity-list-item:nth-child(15) { transition-delay: 1200ms; }
+
+.js-fade-activity-list-item:nth-child(16) { transition-delay: 1280ms; }
+
+.js-fade-activity-list-item:nth-child(17) { transition-delay: 1360ms; }
+
+.js-fade-activity-list-item:nth-child(18) { transition-delay: 1440ms; }
+
+.js-fade-activity-list-item:nth-child(19) { transition-delay: 1520ms; }
+
+.js-fade-activity-list-item:nth-child(20) { transition-delay: 1600ms; }
+
+.js-fade-activity-list-item:nth-child(21) { transition-delay: 1680ms; }
+
+.js-fade-activity-list-item:nth-child(22) { transition-delay: 1760ms; }
+
+.js-fade-activity-list-item:nth-child(23) { transition-delay: 1840ms; }
+
+.js-fade-activity-list-item:nth-child(24) { transition-delay: 1920ms; }
+
+.js-fade-activity-list-item:nth-child(25) { transition-delay: 2000ms; }
+
+.js-fade-activity-list-item:nth-child(26) { transition-delay: 2080ms; }
+
+.js-fade-activity-list-item:nth-child(27) { transition-delay: 2160ms; }
+
+.js-fade-activity-list-item:nth-child(28) { transition-delay: 2240ms; }
+
+.js-fade-activity-list-item:nth-child(29) { transition-delay: 2320ms; }
+
+.js-fade-activity-list-item:nth-child(30) { transition-delay: 2400ms; }
+
+.js-fade-activity-list-item:nth-child(31) { transition-delay: 2480ms; }
+
+.js-fade-activity-list-item:nth-child(32) { transition-delay: 2560ms; }
+
+.js-fade-activity-list-item:nth-child(33) { transition-delay: 2640ms; }
+
+.js-fade-activity-list-item:nth-child(34) { transition-delay: 2720ms; }
+
+.js-fade-activity-list-item:nth-child(35) { transition-delay: 2800ms; }
+
+.js-fade-activity-list-item:nth-child(36) { transition-delay: 2880ms; }
+
+.js-fade-activity-list-item:nth-child(37) { transition-delay: 2960ms; }
+
+.js-fade-activity-list-item:nth-child(38) { transition-delay: 3040ms; }
+
+.js-fade-activity-list-item:nth-child(39) { transition-delay: 3120ms; }
+
+.js-fade-activity-list-item:nth-child(40) { transition-delay: 3200ms; }
+
+.js-fade-activity-list-item:nth-child(41) { transition-delay: 3280ms; }
+
+.js-fade-activity-list-item:nth-child(42) { transition-delay: 3360ms; }
+
+.js-fade-activity-list-item:nth-child(43) { transition-delay: 3440ms; }
+
+.js-fade-activity-list-item:nth-child(44) { transition-delay: 3520ms; }
+
+.js-fade-activity-list-item:nth-child(45) { transition-delay: 3600ms; }
+
+.js-fade-activity-list-item:nth-child(46) { transition-delay: 3680ms; }
+
+.js-fade-activity-list-item:nth-child(47) { transition-delay: 3760ms; }
+
+.js-fade-activity-list-item:nth-child(48) { transition-delay: 3840ms; }
+
+.js-fade-activity-list-item:nth-child(49) { transition-delay: 3920ms; }
+
+.js-fade-activity-list-item:nth-child(50) { transition-delay: 4000ms; }
+
+.js-fade-activity-list-item:nth-child(51) { transition-delay: 4080ms; }
+
+.js-fade-activity-list-item:nth-child(52) { transition-delay: 4160ms; }
+
+.js-fade-activity-list-item:nth-child(53) { transition-delay: 4240ms; }
+
+.js-fade-activity-list-item:nth-child(54) { transition-delay: 4320ms; }
+
+.js-fade-activity-list-item:nth-child(55) { transition-delay: 4400ms; }
+
+.js-fade-activity-list-item:nth-child(56) { transition-delay: 4480ms; }
+
+.js-fade-activity-list-item:nth-child(57) { transition-delay: 4560ms; }
+
+.js-fade-activity-list-item:nth-child(58) { transition-delay: 4640ms; }
+
+.js-fade-activity-list-item:nth-child(59) { transition-delay: 4720ms; }
+
+.js-fade-activity-list-item:nth-child(60) { transition-delay: 4800ms; }
+
+.js-fade-activity-list-item:nth-child(61) { transition-delay: 4880ms; }
+
+.js-fade-activity-list-item:nth-child(62) { transition-delay: 4960ms; }
+
+.js-fade-activity-list-item:nth-child(63) { transition-delay: 5040ms; }
+
+.js-fade-activity-list-item:nth-child(64) { transition-delay: 5120ms; }
+
+.js-fade-activity-list-item:nth-child(65) { transition-delay: 5200ms; }
+
+.js-fade-activity-list-item:nth-child(66) { transition-delay: 5280ms; }
+
+.js-fade-activity-list-item:nth-child(67) { transition-delay: 5360ms; }
+
+.js-fade-activity-list-item:nth-child(68) { transition-delay: 5440ms; }
+
+.js-fade-activity-list-item:nth-child(69) { transition-delay: 5520ms; }
+
+.js-fade-activity-list-item:nth-child(70) { transition-delay: 5600ms; }
+
+.js-fade-activity-list-item:nth-child(71) { transition-delay: 5680ms; }
+
+.js-fade-activity-list-item:nth-child(72) { transition-delay: 5760ms; }
+
+.js-fade-activity-list-item:nth-child(73) { transition-delay: 5840ms; }
+
+.js-fade-activity-list-item:nth-child(74) { transition-delay: 5920ms; }
+
+.js-fade-activity-list-item:nth-child(75) { transition-delay: 6000ms; }
+
+.js-fade-activity-list-item:nth-child(76) { transition-delay: 6080ms; }
+
+.js-fade-activity-list-item:nth-child(77) { transition-delay: 6160ms; }
+
+.js-fade-activity-list-item:nth-child(78) { transition-delay: 6240ms; }
+
+.js-fade-activity-list-item:nth-child(79) { transition-delay: 6320ms; }
+
+.js-fade-activity-list-item:nth-child(80) { transition-delay: 6400ms; }
+
+.js-fade-activity-list-item:nth-child(81) { transition-delay: 6480ms; }
+
+.js-fade-activity-list-item:nth-child(82) { transition-delay: 6560ms; }
+
+.js-fade-activity-list-item:nth-child(83) { transition-delay: 6640ms; }
+
+.js-fade-activity-list-item:nth-child(84) { transition-delay: 6720ms; }
+
+.js-fade-activity-list-item:nth-child(85) { transition-delay: 6800ms; }
+
+.js-fade-activity-list-item:nth-child(86) { transition-delay: 6880ms; }
+
+.js-fade-activity-list-item:nth-child(87) { transition-delay: 6960ms; }
+
+.js-fade-activity-list-item:nth-child(88) { transition-delay: 7040ms; }
+
+.js-fade-activity-list-item:nth-child(89) { transition-delay: 7120ms; }
+
+.js-fade-activity-list-item:nth-child(90) { transition-delay: 7200ms; }
+
+.js-fade-activity-list-item:nth-child(91) { transition-delay: 7280ms; }
+
+.js-fade-activity-list-item:nth-child(92) { transition-delay: 7360ms; }
+
+.js-fade-activity-list-item:nth-child(93) { transition-delay: 7440ms; }
+
+.js-fade-activity-list-item:nth-child(94) { transition-delay: 7520ms; }
+
+.js-fade-activity-list-item:nth-child(95) { transition-delay: 7600ms; }
+
+.js-fade-activity-list-item:nth-child(96) { transition-delay: 7680ms; }
+
+.js-fade-activity-list-item:nth-child(97) { transition-delay: 7760ms; }
+
+.js-fade-activity-list-item:nth-child(98) { transition-delay: 7840ms; }
+
+.js-fade-activity-list-item:nth-child(99) { transition-delay: 7920ms; }
+
+.js-fade-activity-list-item:nth-child(100) { transition-delay: 8000ms; }
+
+.js-fade-activity-list.is-show .js-fade-activity-list-item { opacity: 1; transform: translateX(0); pointer-events: auto; }
 /*# sourceMappingURL=maps/style.css.map */

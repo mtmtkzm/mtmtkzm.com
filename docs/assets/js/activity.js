@@ -12277,10 +12277,10 @@ function createMyActivities(activities) {
 
     if (judgeDateOverlapsCondition) {
       date = item.date;
-      myActivities += '\n        <p class="activity-list__date-divider">' + itemDateYear + '.' + itemDateMonth + '.' + itemDateDay + '</p>\n      ';
+      myActivities += '\n        <p class="activity-list__date-divider js-fade-activity-list-item">' + itemDateYear + '.' + itemDateMonth + '.' + itemDateDay + '</p>\n      ';
     }
 
-    myActivities += '\n      <article class="activity-list__item activity-list__item--' + item.type + '">\n        <a href="' + item.url + '" target="_blank">\n          <img src="./assets/svg/' + item.type + '.svg">\n          <h2>' + item.title + '</h2>\n          <p>' + item.desc + '</p>\n        </a>\n      </article>\n    ';
+    myActivities += '\n      <article class="activity-list__item activity-list__item--' + item.type + ' js-fade-activity-list-item">\n        <a href="' + item.url + '" target="_blank">\n          <img src="./assets/svg/' + item.type + '.svg">\n          <h2>' + item.title + '</h2>\n          <p>' + item.desc + '</p>\n        </a>\n      </article>\n    ';
   });
 
   document.querySelector('.js-activity').innerHTML = myActivities;

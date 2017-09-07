@@ -44,12 +44,12 @@ function createMyActivities (activities) {
     if (judgeDateOverlapsCondition) {
       date = item.date;
       myActivities += `
-        <p class="activity-list__date-divider">${itemDateYear}.${itemDateMonth}.${itemDateDay}</p>
+        <p class="activity-list__date-divider js-fade-activity-list-item">${itemDateYear}.${itemDateMonth}.${itemDateDay}</p>
       `;
     }
 
     myActivities += `
-      <article class="activity-list__item activity-list__item--${item.type}">
+      <article class="activity-list__item activity-list__item--${item.type} js-fade-activity-list-item">
         <a href="${item.url}" target="_blank">
           <img src="./assets/svg/${item.type}.svg">
           <h2>${item.title}</h2>
