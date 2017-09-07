@@ -1,18 +1,61 @@
-# frontplate
+# vue-frontplate
 
-フロントエンド開発の効率を上げるテンプレート
+vue starter kit with frontplate-cli
 
-[CHANGELOG](https://github.com/frontainer/frontplate/blob/master/CHANGELOG.md)
-
-[過去バージョン](https://github.com/frontainer/frontplate/releases)
+This template is still beta.
 
 ## Dependence
 
 * [NodeJS](https://nodejs.org/) 5.0以上
-* [frontplate-cli](https://www.npmjs.com/package/frontplate-cli) 3.0以上
+* [frontplate-cli](https://www.npmjs.com/package/frontplate-cli)
 
-## Usage
+## Get Started
 
-詳しくは[wiki](https://github.com/frontainer/frontplate-cli/wiki)を参照ください
+frontplate-cliをインストールします。
 
-https://github.com/frontainer/frontplate-cli/wiki
+```
+npm i frontplate-cli -g
+```
+
+```
+npm i
+npm start
+```
+
+### 全体をビルド
+
+すべてのファイルをビルドします。開発を始める前に必ず一度はビルドしましょう。
+
+```
+npm run build
+```
+
+### ファイル監視の実行 & サーバー起動
+
+以下のコマンドを実行するとブラウザで開発中のページが開きます。この状態でCSSやJSを修正するとユニットテストやLintも同時に実行され、ブラウザが自動的に更新されます。
+
+```
+# srcディレクトリを監視
+npm run serve
+```
+
+### リリースファイル作成
+
+ひと通りの開発が完了した時点で、リリース用のファイルを作成します。
+productionタスクではJSとCSSのソースマップが出力されなくなり、高度に圧縮されます。
+```
+npm run production
+```
+
+## ToDo
+
+- ユニットテスト
+- webpackのDLLバンドルによるビルド高速化
+
+## Dependencies documentation
+
+このテンプレートは[frontplate-cli](https://github.com/frontainer/frontplate-cli)がベースになっています。
+
+詳細なドキュメントはCLIのドキュメントを参照してください。
+
+[frontplate-cli](https://github.com/frontainer/frontplate-cli)

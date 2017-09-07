@@ -1,9 +1,13 @@
 {
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "mocha": true,
     "es6": true
   },
+  "plugins": [
+    "html"
+  ],
   "parserOptions": {
     "sourceType": "module"
   },
