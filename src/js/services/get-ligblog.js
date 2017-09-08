@@ -1,3 +1,4 @@
+import * as u from '../utils'
 const axios = require('axios');
 const API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
 
@@ -24,16 +25,11 @@ function selectNecessaryData (response) {
       type: 'ligblog',
       date: Date.parse(item.date),
       title: item.title.rendered,
-      desc: parseDescription(item.excerpt.rendered),
+      desc: u.extractDescription(item.excerpt.rendered, 60),
       url: item.link,
     });
+
   });
 
   return necessaryData;
-}
-
-function parseDescription (str) {
-  let temp = document.createElement('div');
-  temp.innerHTML = str;
-  return temp.innerText;
 }

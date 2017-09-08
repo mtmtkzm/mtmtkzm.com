@@ -1,3 +1,4 @@
+import * as u from '../utils'
 const axios = require('axios');
 const API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
 
@@ -24,7 +25,7 @@ function selectNecessaryData (response) {
       type: 'qiita',
       date: Date.parse(item.updated_at),
       title: item.title,
-      desc: extractDescription(item.rendered_body),
+      desc: u.extractDescription(item.rendered_body),
       url: item.url,
     });
   });
@@ -32,9 +33,3 @@ function selectNecessaryData (response) {
   return necessaryData;
 }
 
-function extractDescription (str) {
-  // 先頭から n文字 切り出す
-  let temp = document.createElement('div');
-  temp.innerHTML = str;
-  return temp.innerText.substr(0,60);
-}
