@@ -15,7 +15,7 @@ export const getActivitiesData = ({ commit, state }) => {
       getQiita(),
       getLigblog(),
       getFlickr(),
-      getGithub()
+      // getGithub()
     ])
     .then( value => {
       let myActivities = [].concat(value);
@@ -24,45 +24,36 @@ export const getActivitiesData = ({ commit, state }) => {
         if ( a.date < b.date ) return 1;
         return 0;
       });
-      console.log(myActivities);
       console.timeEnd('通信と整形にかかった時間：');
-      commit(types.UPDATE_ACTIVITIES, myActivities);
+      commit(types.UPDATE_ACTIVITIES, insertDate(myActivities));
     });
 
-    // function createMyActivities (activities) {
-    //   console.log(activities);
-    //   let myActivities = '';
-    //   let date = 0;
-    //
-    //   activities.forEach( item => {
-    //     let itemDateYear = new Date(item.date).getFullYear();
-    //     let itemDateMonth = new Date(item.date).getMonth() + 1;
-    //     let itemDateDay = new Date(item.date).getDate();
-    //
-    //     let judgeDateOverlapsCondition = (
-    //       ( itemDateYear !== new Date(date).getFullYear()) ||
-    //       ( itemDateMonth !== new Date(date).getMonth() + 1) ||
-    //       ( itemDateDay !== new Date(date).getDate())
-    //     );
-    //
-    //     if (judgeDateOverlapsCondition) {
-    //       date = item.date;
-    //       myActivities += `
-    //         <p class="activity-list__date-divider js-fade-activity-list-item">${itemDateYear}.${itemDateMonth}.${itemDateDay}</p>
-    //       `;
-    //     }
-    //
-    //     myActivities += `
-    //       <article class="activity-list__item activity-list__item--${item.type} js-fade-activity-list-item">
-    //         <a href="${item.url}" target="_blank">
-    //           <img src="./assets/svg/${item.type}.svg">
-    //           <h2>${item.title}</h2>
-    //           <p>${item.desc}</p>
-    //         </a>
-    //       </article>
-    //     `;
-    //   });
-    //
-    //   document.querySelector('.js-activity').innerHTML = myActivities;
-    // }
+    function insertDate (activities) {
+      let activitiesWithDate = [].concat(activities);
+      let date = 0;
+      let insertedDateCount = 0;
+
+      activities.forEach( (item, index) => {
+        let itemDateYear = new Date(item.date).getFullYear();
+        let itemDateMonth = new Date(item.date).getMonth() + 1;
+        let itemDateDay = new Date(item.date).getDate();
+
+        // 前回の投稿とくらべて、投稿日が変わったとき
+        if ( ( itemDateYear !== new Date(date).getFullYear()) ||
+             ( itemDateMonth !== new Date(date).getMonth() + 1) ||
+             ( itemDateDay !== new Date(date).getDate()) ) {
+
+          // 配列に日付を挿入する
+          activitiesWithDate.splice(index + insertedDateCount, 0, {
+            type: 'date',
+            date: `${itemDateYear}.${('00'+String(itemDateMonth)).slice(-2)}.${('00'+String(itemDateDay)).slice(-2)}`,
+          });
+
+          date = item.date;    // 日付が変わったので、まず前回の日付を更新
+          insertedDateCount++; // 配列の総数が変わり、挿入した位置がひとつ後ろにずれる
+        }
+      });
+
+      return activitiesWithDate;
+    }
 };

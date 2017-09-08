@@ -3,7 +3,7 @@
     <div class="activity-nav">
       <h3>Activity</h3>
       <ul>
-        <li><a href="">GitHub</a></li>
+        <!--<li><a href="">GitHub</a></li>-->
         <li><a href="">Qiita</a></li>
         <li><a href="">LIG BLOG</a></li>
         <li><a href="">Flickr</a></li>

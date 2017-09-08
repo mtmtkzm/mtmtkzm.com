@@ -1,9 +1,13 @@
 <template>
   <div class="activity-list js-activity js-fade-activity-list">
-    <article
-      v-for="activity in activities"
-      :class="[ 'activity-list__item', 'activity-list__item--'+activity.type, 'js-fade-activity-list-item', {'is-show': true} ]">
+    <article v-for="activity in activities"
+             :class="['activity-list__item',
+                       'activity-list__item--'+activity.type,
+                       'js-fade-activity-list-item',
+                       {'is-show': true} ]">
 
+      <!-- Date (日付)-->
+      <p v-if="activity.type === 'date'">{{ activity.date }}</p>
 
       <!-- GitHub -->
       <a v-if="activity.type === 'github'" :href="activity.url" target="_blank">

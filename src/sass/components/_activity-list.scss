@@ -9,22 +9,22 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-
-  &__date-divider {
-    height: 100%;
-    margin-left: 100px;
-    writing-mode: vertical-lr;
-    letter-spacing: .2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  $item-width: 400px;
+  
   &__item {
+    $item-width: 400px;
     max-width: $item-width;
     margin: 25px 0 25px 50px;
-
+  
+    &--date {
+      height: 100%;
+      margin-left: 100px;
+      writing-mode: vertical-lr;
+      letter-spacing: .2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
     &--flickr {
       width: $item-width * 0.9;
       height: $item-width * 0.75 * 0.9; // Keep ratio 4:3
