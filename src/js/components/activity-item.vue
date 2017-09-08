@@ -13,28 +13,28 @@
       <a v-if="activity.type === 'github'" :href="activity.url" target="_blank">
         <img :src="'./assets/svg/'+activity.type+'.svg'">
         <h2>{{ activity.title }}</h2>
-        <p v-html="activity.desc"></p>
+        <p>{{ activity.desc }}</p>
       </a>
 
       <!-- CodePen -->
       <a v-if="activity.type === 'codepen'" :href="activity.url" target="_blank">
         <img :src="'./assets/svg/'+activity.type+'.svg'">
         <h2>{{ activity.title }}</h2>
-        <p v-html="activity.desc"></p>
+        <p>{{ activity.desc }}</p>
       </a>
 
       <!-- Qiita -->
       <a v-if="activity.type === 'qiita'" :href="activity.url" target="_blank">
         <img :src="'./assets/svg/'+activity.type+'.svg'">
         <h2>{{ activity.title }}</h2>
-        <p v-html="activity.desc"></p>
+        <p>{{ activity.desc }}</p>
       </a>
 
       <!-- LIG BLOG -->
       <a v-if="activity.type === 'ligblog'" :href="activity.url" target="_blank">
         <img :src="'./assets/svg/'+activity.type+'.svg'">
         <h2>{{ activity.title }}</h2>
-        <p v-html="activity.desc"></p>
+        <p>{{ activity.desc }}</p>
       </a>
 
       <!-- Flickr -->
@@ -51,7 +51,7 @@
       <a v-if="activity.type === 'hatena'" :href="activity.url" target="_blank">
         <img :src="'./assets/svg/'+activity.type+'.svg'">
         <h2>{{ activity.title }}</h2>
-        <p v-html="activity.desc"></p>
+        <p>{{ activity.desc }}</p>
       </a>
 
     </article>

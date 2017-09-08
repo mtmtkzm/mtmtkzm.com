@@ -24,10 +24,17 @@ function selectNecessaryData (response) {
       type: 'ligblog',
       date: Date.parse(item.date),
       title: item.title.rendered,
-      desc: item.excerpt.rendered,
+      desc: parseDescription(item.excerpt.rendered),
       url: item.link,
     });
   });
 
   return necessaryData;
+}
+
+function parseDescription (str) {
+  let temp = document.createElement('div');
+  temp.innerHTML = str;
+  // 3番目の <p> に格納されていた
+  return temp.innerText;
 }

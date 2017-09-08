@@ -27,33 +27,33 @@ export const getActivitiesData = ({ commit, state }) => {
       console.timeEnd('通信と整形にかかった時間：');
       commit(types.UPDATE_ACTIVITIES, insertDate(myActivities));
     });
+};
 
-    function insertDate (activities) {
-      let activitiesWithDate = [].concat(activities);
-      let date = 0;
-      let insertedDateCount = 0;
+function insertDate (activities) {
+  let activitiesWithDate = [].concat(activities);
+  let date = 0;
+  let insertedDateCount = 0;
 
-      activities.forEach( (item, index) => {
-        let itemDateYear = new Date(item.date).getFullYear();
-        let itemDateMonth = new Date(item.date).getMonth() + 1;
-        let itemDateDay = new Date(item.date).getDate();
+  activities.forEach( (item, index) => {
+    let itemDateYear = new Date(item.date).getFullYear();
+    let itemDateMonth = new Date(item.date).getMonth() + 1;
+    let itemDateDay = new Date(item.date).getDate();
 
-        // 前回の投稿とくらべて、投稿日が変わったとき
-        if ( ( itemDateYear !== new Date(date).getFullYear()) ||
-             ( itemDateMonth !== new Date(date).getMonth() + 1) ||
-             ( itemDateDay !== new Date(date).getDate()) ) {
+    // 前回の投稿とくらべて、投稿日が変わったとき
+    if ( ( itemDateYear !== new Date(date).getFullYear()) ||
+      ( itemDateMonth !== new Date(date).getMonth() + 1) ||
+      ( itemDateDay !== new Date(date).getDate()) ) {
 
-          // 配列に日付を挿入する
-          activitiesWithDate.splice(index + insertedDateCount, 0, {
-            type: 'date',
-            date: `${itemDateYear}.${('00'+String(itemDateMonth)).slice(-2)}.${('00'+String(itemDateDay)).slice(-2)}`,
-          });
-
-          date = item.date;    // 日付が変わったので、まず前回の日付を更新
-          insertedDateCount++; // 配列の総数が変わり、挿入した位置がひとつ後ろにずれる
-        }
+      // 配列に日付を挿入する
+      activitiesWithDate.splice(index + insertedDateCount, 0, {
+        type: 'date',
+        date: `${itemDateYear}.${('00'+String(itemDateMonth)).slice(-2)}.${('00'+String(itemDateDay)).slice(-2)}`,
       });
 
-      return activitiesWithDate;
+      date = item.date;    // 日付が変わったので、まず前回の日付を更新
+      insertedDateCount++; // 配列の総数が変わり、挿入した位置がひとつ後ろにずれる
     }
-};
+  });
+
+  return activitiesWithDate;
+}
