@@ -32,4 +32,3 @@ function selectNecessaryData (response) {
 
   return necessaryData;
 }
-

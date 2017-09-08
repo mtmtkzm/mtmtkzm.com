@@ -1,12 +1,11 @@
 import * as types from './mutation-types'
 import * as u from '../utils'
-
-// import getHatena from '../services/get-hatena';
-// import getGithub from '../services/get-github';
 import getCodepen from '../services/get-codepen';
 import getQiita from '../services/get-qiita';
 import getLigblog from '../services/get-ligblog';
 import getFlickr from '../services/get-flickr';
+// import getHatena from '../services/get-hatena';
+// import getGithub from '../services/get-github';
 
 export const getActivitiesData = ({ commit }) => {
   console.time('通信と整形にかかった時間：');
@@ -17,6 +16,10 @@ export const getActivitiesData = ({ commit }) => {
     .then( value => {
       let myActivities = [].concat(value);
       myActivities = Array.prototype.concat.apply([], myActivities)
+        .filter( item => {
+          // 直近30日限定にする
+          if (new Date().getTime() - item.date < 1000*60*60*24*30) return true;
+        })
         .sort( (a, b) => {
           if ( a.date > b.date ) return -1;
           if ( a.date < b.date ) return 1;
