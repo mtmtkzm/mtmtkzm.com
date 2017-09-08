@@ -41,7 +41,7 @@
       <a v-if="activity.type === 'flickr'"
          :href="activity.url"
          target="_blank"
-         :style="'background-image: url('+ activity.url +')'"
+         :style="'background-image: url('+ activity.photo +')'"
       >
         <img :src="'./assets/svg/'+activity.type+'.svg'">
         <h2>{{ activity.title }}</h2>

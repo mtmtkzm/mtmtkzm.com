@@ -35,6 +35,5 @@ function selectNecessaryData (response) {
 function parseDescription (str) {
   let temp = document.createElement('div');
   temp.innerHTML = str;
-  // 3番目の <p> に格納されていた
   return temp.innerText;
 }
