@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.loading { width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: 99; background-color: beige; transition: all .2s ease-in-out; }
+
+.loading.is-loaded { opacity: 0; pointer-events: none; }
+
 /*! sanitize.css | CC0 Public Domain | github.com/jonathantneal/sanitize.css */
 /* Normalization */
 :root { -ms-overflow-style: -ms-autohiding-scrollbar; overflow-y: scroll; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -122,7 +126,7 @@ body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-font-smoo
 
 .activity-list__item > a > p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 5px 0 0; }
 
-.activity-nav { width: 1000px; height: 60px; margin: 0 auto; padding: 0 36px; border-radius: 5px; background-color: #fff; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); display: flex; justify-content: space-between; align-items: center; }
+.activity-nav { display: flex; align-items: center; }
 
 .activity-nav > ul { display: flex; align-items: center; justify-content: center; }
 
@@ -137,207 +141,209 @@ body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-font-smoo
 @keyframes wave { from { transform: rotate(0deg); }
   to { transform: rotate(360deg); } }
 
-.js-fade-activity-list-item { transition-timing-function: ease-in-out; transition-duration: 500ms; transition-property: all; }
+.activity-list__item-enter-active, .activity-list__item-leave-active { transition-timing-function: ease-in-out; transition-duration: 450ms; transition-property: all; }
 
-.js-fade-activity-list-item:nth-child(1) { transition-delay: 80ms; }
+.activity-list__item-enter-active:nth-child(1), .activity-list__item-leave-active:nth-child(1) { transition-delay: 100ms; }
 
-.js-fade-activity-list-item:nth-child(2) { transition-delay: 160ms; }
+.activity-list__item-enter-active:nth-child(2), .activity-list__item-leave-active:nth-child(2) { transition-delay: 150ms; }
 
-.js-fade-activity-list-item:nth-child(3) { transition-delay: 240ms; }
+.activity-list__item-enter-active:nth-child(3), .activity-list__item-leave-active:nth-child(3) { transition-delay: 200ms; }
 
-.js-fade-activity-list-item:nth-child(4) { transition-delay: 320ms; }
+.activity-list__item-enter-active:nth-child(4), .activity-list__item-leave-active:nth-child(4) { transition-delay: 250ms; }
 
-.js-fade-activity-list-item:nth-child(5) { transition-delay: 400ms; }
+.activity-list__item-enter-active:nth-child(5), .activity-list__item-leave-active:nth-child(5) { transition-delay: 300ms; }
 
-.js-fade-activity-list-item:nth-child(6) { transition-delay: 480ms; }
+.activity-list__item-enter-active:nth-child(6), .activity-list__item-leave-active:nth-child(6) { transition-delay: 350ms; }
 
-.js-fade-activity-list-item:nth-child(7) { transition-delay: 560ms; }
+.activity-list__item-enter-active:nth-child(7), .activity-list__item-leave-active:nth-child(7) { transition-delay: 400ms; }
 
-.js-fade-activity-list-item:nth-child(8) { transition-delay: 640ms; }
+.activity-list__item-enter-active:nth-child(8), .activity-list__item-leave-active:nth-child(8) { transition-delay: 450ms; }
 
-.js-fade-activity-list-item:nth-child(9) { transition-delay: 720ms; }
+.activity-list__item-enter-active:nth-child(9), .activity-list__item-leave-active:nth-child(9) { transition-delay: 500ms; }
 
-.js-fade-activity-list-item:nth-child(10) { transition-delay: 800ms; }
+.activity-list__item-enter-active:nth-child(10), .activity-list__item-leave-active:nth-child(10) { transition-delay: 550ms; }
 
-.js-fade-activity-list-item:nth-child(11) { transition-delay: 880ms; }
+.activity-list__item-enter-active:nth-child(11), .activity-list__item-leave-active:nth-child(11) { transition-delay: 600ms; }
 
-.js-fade-activity-list-item:nth-child(12) { transition-delay: 960ms; }
+.activity-list__item-enter-active:nth-child(12), .activity-list__item-leave-active:nth-child(12) { transition-delay: 650ms; }
 
-.js-fade-activity-list-item:nth-child(13) { transition-delay: 1040ms; }
+.activity-list__item-enter-active:nth-child(13), .activity-list__item-leave-active:nth-child(13) { transition-delay: 700ms; }
 
-.js-fade-activity-list-item:nth-child(14) { transition-delay: 1120ms; }
+.activity-list__item-enter-active:nth-child(14), .activity-list__item-leave-active:nth-child(14) { transition-delay: 750ms; }
 
-.js-fade-activity-list-item:nth-child(15) { transition-delay: 1200ms; }
+.activity-list__item-enter-active:nth-child(15), .activity-list__item-leave-active:nth-child(15) { transition-delay: 800ms; }
 
-.js-fade-activity-list-item:nth-child(16) { transition-delay: 1280ms; }
+.activity-list__item-enter-active:nth-child(16), .activity-list__item-leave-active:nth-child(16) { transition-delay: 850ms; }
 
-.js-fade-activity-list-item:nth-child(17) { transition-delay: 1360ms; }
+.activity-list__item-enter-active:nth-child(17), .activity-list__item-leave-active:nth-child(17) { transition-delay: 900ms; }
 
-.js-fade-activity-list-item:nth-child(18) { transition-delay: 1440ms; }
+.activity-list__item-enter-active:nth-child(18), .activity-list__item-leave-active:nth-child(18) { transition-delay: 950ms; }
 
-.js-fade-activity-list-item:nth-child(19) { transition-delay: 1520ms; }
+.activity-list__item-enter-active:nth-child(19), .activity-list__item-leave-active:nth-child(19) { transition-delay: 1000ms; }
 
-.js-fade-activity-list-item:nth-child(20) { transition-delay: 1600ms; }
+.activity-list__item-enter-active:nth-child(20), .activity-list__item-leave-active:nth-child(20) { transition-delay: 1050ms; }
 
-.js-fade-activity-list-item:nth-child(21) { transition-delay: 1680ms; }
+.activity-list__item-enter-active:nth-child(21), .activity-list__item-leave-active:nth-child(21) { transition-delay: 1100ms; }
 
-.js-fade-activity-list-item:nth-child(22) { transition-delay: 1760ms; }
+.activity-list__item-enter-active:nth-child(22), .activity-list__item-leave-active:nth-child(22) { transition-delay: 1150ms; }
 
-.js-fade-activity-list-item:nth-child(23) { transition-delay: 1840ms; }
+.activity-list__item-enter-active:nth-child(23), .activity-list__item-leave-active:nth-child(23) { transition-delay: 1200ms; }
 
-.js-fade-activity-list-item:nth-child(24) { transition-delay: 1920ms; }
+.activity-list__item-enter-active:nth-child(24), .activity-list__item-leave-active:nth-child(24) { transition-delay: 1250ms; }
 
-.js-fade-activity-list-item:nth-child(25) { transition-delay: 2000ms; }
+.activity-list__item-enter-active:nth-child(25), .activity-list__item-leave-active:nth-child(25) { transition-delay: 1300ms; }
 
-.js-fade-activity-list-item:nth-child(26) { transition-delay: 2080ms; }
+.activity-list__item-enter-active:nth-child(26), .activity-list__item-leave-active:nth-child(26) { transition-delay: 1350ms; }
 
-.js-fade-activity-list-item:nth-child(27) { transition-delay: 2160ms; }
+.activity-list__item-enter-active:nth-child(27), .activity-list__item-leave-active:nth-child(27) { transition-delay: 1400ms; }
 
-.js-fade-activity-list-item:nth-child(28) { transition-delay: 2240ms; }
+.activity-list__item-enter-active:nth-child(28), .activity-list__item-leave-active:nth-child(28) { transition-delay: 1450ms; }
 
-.js-fade-activity-list-item:nth-child(29) { transition-delay: 2320ms; }
+.activity-list__item-enter-active:nth-child(29), .activity-list__item-leave-active:nth-child(29) { transition-delay: 1500ms; }
 
-.js-fade-activity-list-item:nth-child(30) { transition-delay: 2400ms; }
+.activity-list__item-enter-active:nth-child(30), .activity-list__item-leave-active:nth-child(30) { transition-delay: 1550ms; }
 
-.js-fade-activity-list-item:nth-child(31) { transition-delay: 2480ms; }
+.activity-list__item-enter-active:nth-child(31), .activity-list__item-leave-active:nth-child(31) { transition-delay: 1600ms; }
 
-.js-fade-activity-list-item:nth-child(32) { transition-delay: 2560ms; }
+.activity-list__item-enter-active:nth-child(32), .activity-list__item-leave-active:nth-child(32) { transition-delay: 1650ms; }
 
-.js-fade-activity-list-item:nth-child(33) { transition-delay: 2640ms; }
+.activity-list__item-enter-active:nth-child(33), .activity-list__item-leave-active:nth-child(33) { transition-delay: 1700ms; }
 
-.js-fade-activity-list-item:nth-child(34) { transition-delay: 2720ms; }
+.activity-list__item-enter-active:nth-child(34), .activity-list__item-leave-active:nth-child(34) { transition-delay: 1750ms; }
 
-.js-fade-activity-list-item:nth-child(35) { transition-delay: 2800ms; }
+.activity-list__item-enter-active:nth-child(35), .activity-list__item-leave-active:nth-child(35) { transition-delay: 1800ms; }
 
-.js-fade-activity-list-item:nth-child(36) { transition-delay: 2880ms; }
+.activity-list__item-enter-active:nth-child(36), .activity-list__item-leave-active:nth-child(36) { transition-delay: 1850ms; }
 
-.js-fade-activity-list-item:nth-child(37) { transition-delay: 2960ms; }
+.activity-list__item-enter-active:nth-child(37), .activity-list__item-leave-active:nth-child(37) { transition-delay: 1900ms; }
 
-.js-fade-activity-list-item:nth-child(38) { transition-delay: 3040ms; }
+.activity-list__item-enter-active:nth-child(38), .activity-list__item-leave-active:nth-child(38) { transition-delay: 1950ms; }
 
-.js-fade-activity-list-item:nth-child(39) { transition-delay: 3120ms; }
+.activity-list__item-enter-active:nth-child(39), .activity-list__item-leave-active:nth-child(39) { transition-delay: 2000ms; }
 
-.js-fade-activity-list-item:nth-child(40) { transition-delay: 3200ms; }
+.activity-list__item-enter-active:nth-child(40), .activity-list__item-leave-active:nth-child(40) { transition-delay: 2050ms; }
 
-.js-fade-activity-list-item:nth-child(41) { transition-delay: 3280ms; }
+.activity-list__item-enter-active:nth-child(41), .activity-list__item-leave-active:nth-child(41) { transition-delay: 2100ms; }
 
-.js-fade-activity-list-item:nth-child(42) { transition-delay: 3360ms; }
+.activity-list__item-enter-active:nth-child(42), .activity-list__item-leave-active:nth-child(42) { transition-delay: 2150ms; }
 
-.js-fade-activity-list-item:nth-child(43) { transition-delay: 3440ms; }
+.activity-list__item-enter-active:nth-child(43), .activity-list__item-leave-active:nth-child(43) { transition-delay: 2200ms; }
 
-.js-fade-activity-list-item:nth-child(44) { transition-delay: 3520ms; }
+.activity-list__item-enter-active:nth-child(44), .activity-list__item-leave-active:nth-child(44) { transition-delay: 2250ms; }
 
-.js-fade-activity-list-item:nth-child(45) { transition-delay: 3600ms; }
+.activity-list__item-enter-active:nth-child(45), .activity-list__item-leave-active:nth-child(45) { transition-delay: 2300ms; }
 
-.js-fade-activity-list-item:nth-child(46) { transition-delay: 3680ms; }
+.activity-list__item-enter-active:nth-child(46), .activity-list__item-leave-active:nth-child(46) { transition-delay: 2350ms; }
 
-.js-fade-activity-list-item:nth-child(47) { transition-delay: 3760ms; }
+.activity-list__item-enter-active:nth-child(47), .activity-list__item-leave-active:nth-child(47) { transition-delay: 2400ms; }
 
-.js-fade-activity-list-item:nth-child(48) { transition-delay: 3840ms; }
+.activity-list__item-enter-active:nth-child(48), .activity-list__item-leave-active:nth-child(48) { transition-delay: 2450ms; }
 
-.js-fade-activity-list-item:nth-child(49) { transition-delay: 3920ms; }
+.activity-list__item-enter-active:nth-child(49), .activity-list__item-leave-active:nth-child(49) { transition-delay: 2500ms; }
 
-.js-fade-activity-list-item:nth-child(50) { transition-delay: 4000ms; }
+.activity-list__item-enter-active:nth-child(50), .activity-list__item-leave-active:nth-child(50) { transition-delay: 2550ms; }
 
-.js-fade-activity-list-item:nth-child(51) { transition-delay: 4080ms; }
+.activity-list__item-enter-active:nth-child(51), .activity-list__item-leave-active:nth-child(51) { transition-delay: 2600ms; }
 
-.js-fade-activity-list-item:nth-child(52) { transition-delay: 4160ms; }
+.activity-list__item-enter-active:nth-child(52), .activity-list__item-leave-active:nth-child(52) { transition-delay: 2650ms; }
 
-.js-fade-activity-list-item:nth-child(53) { transition-delay: 4240ms; }
+.activity-list__item-enter-active:nth-child(53), .activity-list__item-leave-active:nth-child(53) { transition-delay: 2700ms; }
 
-.js-fade-activity-list-item:nth-child(54) { transition-delay: 4320ms; }
+.activity-list__item-enter-active:nth-child(54), .activity-list__item-leave-active:nth-child(54) { transition-delay: 2750ms; }
 
-.js-fade-activity-list-item:nth-child(55) { transition-delay: 4400ms; }
+.activity-list__item-enter-active:nth-child(55), .activity-list__item-leave-active:nth-child(55) { transition-delay: 2800ms; }
 
-.js-fade-activity-list-item:nth-child(56) { transition-delay: 4480ms; }
+.activity-list__item-enter-active:nth-child(56), .activity-list__item-leave-active:nth-child(56) { transition-delay: 2850ms; }
 
-.js-fade-activity-list-item:nth-child(57) { transition-delay: 4560ms; }
+.activity-list__item-enter-active:nth-child(57), .activity-list__item-leave-active:nth-child(57) { transition-delay: 2900ms; }
 
-.js-fade-activity-list-item:nth-child(58) { transition-delay: 4640ms; }
+.activity-list__item-enter-active:nth-child(58), .activity-list__item-leave-active:nth-child(58) { transition-delay: 2950ms; }
 
-.js-fade-activity-list-item:nth-child(59) { transition-delay: 4720ms; }
+.activity-list__item-enter-active:nth-child(59), .activity-list__item-leave-active:nth-child(59) { transition-delay: 3000ms; }
 
-.js-fade-activity-list-item:nth-child(60) { transition-delay: 4800ms; }
+.activity-list__item-enter-active:nth-child(60), .activity-list__item-leave-active:nth-child(60) { transition-delay: 3050ms; }
 
-.js-fade-activity-list-item:nth-child(61) { transition-delay: 4880ms; }
+.activity-list__item-enter-active:nth-child(61), .activity-list__item-leave-active:nth-child(61) { transition-delay: 3100ms; }
 
-.js-fade-activity-list-item:nth-child(62) { transition-delay: 4960ms; }
+.activity-list__item-enter-active:nth-child(62), .activity-list__item-leave-active:nth-child(62) { transition-delay: 3150ms; }
 
-.js-fade-activity-list-item:nth-child(63) { transition-delay: 5040ms; }
+.activity-list__item-enter-active:nth-child(63), .activity-list__item-leave-active:nth-child(63) { transition-delay: 3200ms; }
 
-.js-fade-activity-list-item:nth-child(64) { transition-delay: 5120ms; }
+.activity-list__item-enter-active:nth-child(64), .activity-list__item-leave-active:nth-child(64) { transition-delay: 3250ms; }
 
-.js-fade-activity-list-item:nth-child(65) { transition-delay: 5200ms; }
+.activity-list__item-enter-active:nth-child(65), .activity-list__item-leave-active:nth-child(65) { transition-delay: 3300ms; }
 
-.js-fade-activity-list-item:nth-child(66) { transition-delay: 5280ms; }
+.activity-list__item-enter-active:nth-child(66), .activity-list__item-leave-active:nth-child(66) { transition-delay: 3350ms; }
 
-.js-fade-activity-list-item:nth-child(67) { transition-delay: 5360ms; }
+.activity-list__item-enter-active:nth-child(67), .activity-list__item-leave-active:nth-child(67) { transition-delay: 3400ms; }
 
-.js-fade-activity-list-item:nth-child(68) { transition-delay: 5440ms; }
+.activity-list__item-enter-active:nth-child(68), .activity-list__item-leave-active:nth-child(68) { transition-delay: 3450ms; }
 
-.js-fade-activity-list-item:nth-child(69) { transition-delay: 5520ms; }
+.activity-list__item-enter-active:nth-child(69), .activity-list__item-leave-active:nth-child(69) { transition-delay: 3500ms; }
 
-.js-fade-activity-list-item:nth-child(70) { transition-delay: 5600ms; }
+.activity-list__item-enter-active:nth-child(70), .activity-list__item-leave-active:nth-child(70) { transition-delay: 3550ms; }
 
-.js-fade-activity-list-item:nth-child(71) { transition-delay: 5680ms; }
+.activity-list__item-enter-active:nth-child(71), .activity-list__item-leave-active:nth-child(71) { transition-delay: 3600ms; }
 
-.js-fade-activity-list-item:nth-child(72) { transition-delay: 5760ms; }
+.activity-list__item-enter-active:nth-child(72), .activity-list__item-leave-active:nth-child(72) { transition-delay: 3650ms; }
 
-.js-fade-activity-list-item:nth-child(73) { transition-delay: 5840ms; }
+.activity-list__item-enter-active:nth-child(73), .activity-list__item-leave-active:nth-child(73) { transition-delay: 3700ms; }
 
-.js-fade-activity-list-item:nth-child(74) { transition-delay: 5920ms; }
+.activity-list__item-enter-active:nth-child(74), .activity-list__item-leave-active:nth-child(74) { transition-delay: 3750ms; }
 
-.js-fade-activity-list-item:nth-child(75) { transition-delay: 6000ms; }
+.activity-list__item-enter-active:nth-child(75), .activity-list__item-leave-active:nth-child(75) { transition-delay: 3800ms; }
 
-.js-fade-activity-list-item:nth-child(76) { transition-delay: 6080ms; }
+.activity-list__item-enter-active:nth-child(76), .activity-list__item-leave-active:nth-child(76) { transition-delay: 3850ms; }
 
-.js-fade-activity-list-item:nth-child(77) { transition-delay: 6160ms; }
+.activity-list__item-enter-active:nth-child(77), .activity-list__item-leave-active:nth-child(77) { transition-delay: 3900ms; }
 
-.js-fade-activity-list-item:nth-child(78) { transition-delay: 6240ms; }
+.activity-list__item-enter-active:nth-child(78), .activity-list__item-leave-active:nth-child(78) { transition-delay: 3950ms; }
 
-.js-fade-activity-list-item:nth-child(79) { transition-delay: 6320ms; }
+.activity-list__item-enter-active:nth-child(79), .activity-list__item-leave-active:nth-child(79) { transition-delay: 4000ms; }
 
-.js-fade-activity-list-item:nth-child(80) { transition-delay: 6400ms; }
+.activity-list__item-enter-active:nth-child(80), .activity-list__item-leave-active:nth-child(80) { transition-delay: 4050ms; }
 
-.js-fade-activity-list-item:nth-child(81) { transition-delay: 6480ms; }
+.activity-list__item-enter-active:nth-child(81), .activity-list__item-leave-active:nth-child(81) { transition-delay: 4100ms; }
 
-.js-fade-activity-list-item:nth-child(82) { transition-delay: 6560ms; }
+.activity-list__item-enter-active:nth-child(82), .activity-list__item-leave-active:nth-child(82) { transition-delay: 4150ms; }
 
-.js-fade-activity-list-item:nth-child(83) { transition-delay: 6640ms; }
+.activity-list__item-enter-active:nth-child(83), .activity-list__item-leave-active:nth-child(83) { transition-delay: 4200ms; }
 
-.js-fade-activity-list-item:nth-child(84) { transition-delay: 6720ms; }
+.activity-list__item-enter-active:nth-child(84), .activity-list__item-leave-active:nth-child(84) { transition-delay: 4250ms; }
 
-.js-fade-activity-list-item:nth-child(85) { transition-delay: 6800ms; }
+.activity-list__item-enter-active:nth-child(85), .activity-list__item-leave-active:nth-child(85) { transition-delay: 4300ms; }
 
-.js-fade-activity-list-item:nth-child(86) { transition-delay: 6880ms; }
+.activity-list__item-enter-active:nth-child(86), .activity-list__item-leave-active:nth-child(86) { transition-delay: 4350ms; }
 
-.js-fade-activity-list-item:nth-child(87) { transition-delay: 6960ms; }
+.activity-list__item-enter-active:nth-child(87), .activity-list__item-leave-active:nth-child(87) { transition-delay: 4400ms; }
 
-.js-fade-activity-list-item:nth-child(88) { transition-delay: 7040ms; }
+.activity-list__item-enter-active:nth-child(88), .activity-list__item-leave-active:nth-child(88) { transition-delay: 4450ms; }
 
-.js-fade-activity-list-item:nth-child(89) { transition-delay: 7120ms; }
+.activity-list__item-enter-active:nth-child(89), .activity-list__item-leave-active:nth-child(89) { transition-delay: 4500ms; }
 
-.js-fade-activity-list-item:nth-child(90) { transition-delay: 7200ms; }
+.activity-list__item-enter-active:nth-child(90), .activity-list__item-leave-active:nth-child(90) { transition-delay: 4550ms; }
 
-.js-fade-activity-list-item:nth-child(91) { transition-delay: 7280ms; }
+.activity-list__item-enter-active:nth-child(91), .activity-list__item-leave-active:nth-child(91) { transition-delay: 4600ms; }
 
-.js-fade-activity-list-item:nth-child(92) { transition-delay: 7360ms; }
+.activity-list__item-enter-active:nth-child(92), .activity-list__item-leave-active:nth-child(92) { transition-delay: 4650ms; }
 
-.js-fade-activity-list-item:nth-child(93) { transition-delay: 7440ms; }
+.activity-list__item-enter-active:nth-child(93), .activity-list__item-leave-active:nth-child(93) { transition-delay: 4700ms; }
 
-.js-fade-activity-list-item:nth-child(94) { transition-delay: 7520ms; }
+.activity-list__item-enter-active:nth-child(94), .activity-list__item-leave-active:nth-child(94) { transition-delay: 4750ms; }
 
-.js-fade-activity-list-item:nth-child(95) { transition-delay: 7600ms; }
+.activity-list__item-enter-active:nth-child(95), .activity-list__item-leave-active:nth-child(95) { transition-delay: 4800ms; }
 
-.js-fade-activity-list-item:nth-child(96) { transition-delay: 7680ms; }
+.activity-list__item-enter-active:nth-child(96), .activity-list__item-leave-active:nth-child(96) { transition-delay: 4850ms; }
 
-.js-fade-activity-list-item:nth-child(97) { transition-delay: 7760ms; }
+.activity-list__item-enter-active:nth-child(97), .activity-list__item-leave-active:nth-child(97) { transition-delay: 4900ms; }
 
-.js-fade-activity-list-item:nth-child(98) { transition-delay: 7840ms; }
+.activity-list__item-enter-active:nth-child(98), .activity-list__item-leave-active:nth-child(98) { transition-delay: 4950ms; }
 
-.js-fade-activity-list-item:nth-child(99) { transition-delay: 7920ms; }
+.activity-list__item-enter-active:nth-child(99), .activity-list__item-leave-active:nth-child(99) { transition-delay: 5000ms; }
 
-.js-fade-activity-list-item:nth-child(100) { transition-delay: 8000ms; }
+.activity-list__item-enter-active:nth-child(100), .activity-list__item-leave-active:nth-child(100) { transition-delay: 5050ms; }
 
-.js-fade-activity-list.is-show .js-fade-activity-list-item { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.activity-list__item-enter, .activity-list__item-leave-to { opacity: 0; transform: translateX(20px); pointer-events: none; }
+
+.activity-list__item-enter-to, .activity-list__item-leave { opacity: 1; transform: translateX(0); pointer-events: auto; }
 /*# sourceMappingURL=maps/style.css.map */

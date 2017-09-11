@@ -8,11 +8,8 @@ import getFlickr from '../services/get-flickr';
 // import getGithub from '../services/get-github';
 
 export const getActivitiesData = ({ commit }) => {
-  console.time('通信と整形にかかった時間：');
   Promise
-    .all([
-      getCodepen(), getQiita(), getLigblog(), getFlickr()
-    ])
+    .all([ getCodepen(), getQiita(), getLigblog(), getFlickr() ])
     .then( value => {
       let myActivities = [].concat(value);
       myActivities = Array.prototype.concat.apply([], myActivities)
@@ -25,10 +22,13 @@ export const getActivitiesData = ({ commit }) => {
           if ( a.date < b.date ) return 1;
           return 0;
         });
-      console.timeEnd('通信と整形にかかった時間：');
-      commit(types.UPDATE_ACTIVITIES, insertDate(myActivities));
+      onLoadActivities(commit, myActivities);
     });
 };
+
+function onLoadActivities (commit, myActivities) {
+  commit(types.UPDATE_ACTIVITIES, insertDate(myActivities));
+}
 
 function insertDate (activities) {
   let activitiesWithDate = [].concat(activities);
@@ -43,15 +43,12 @@ function insertDate (activities) {
     // 前回の投稿とくらべて、投稿日が変わったとき
     if ( ( itemYear  !== u.toDate(date, 'year')) ||
          ( itemMonth !== u.toDate(date, 'month')) ||
-         ( itemDate   !== u.toDate(date, 'date'))
+         ( itemDate  !== u.toDate(date, 'date'))
     ){
       activitiesWithDate.splice(index + insertedDateCount, 0, {
         type: 'date',
-        date: itemYear + '.' +
-              u.doublenDigit(itemMonth) + '.' +
-              u.doublenDigit(itemDate),
+        date: itemYear+'.'+u.doublenDigit(itemMonth)+'.'+u.doublenDigit(itemDate),
       });
-
       date = item.date;    // 日付が変わったので、まず前回の日付を更新
       insertedDateCount++; // 配列の総数が変わり、挿入した位置がひとつ後ろにずれる
     }

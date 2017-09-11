@@ -1,9 +1,16 @@
 <template>
   <div class="activity">
-    <div class="activity-nav">
-      <h3>Activity</h3>
-    </div>
+    <h3>Activity</h3>
     <activity-item :activities="activities"></activity-item>
+    <div class="activity-nav">
+      <p>View more on</p>
+      <ul>
+        <li>github</li>
+        <li>qiita</li>
+        <li>codepen</li>
+        <li>ligblog</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -16,7 +23,8 @@
       activityItem,
     },
     methods: {
-      getActivitiesData (e) {
+      getActivitiesData () {
+        console.time('通信と整形にかかった時間：');
         this.$store.dispatch('getActivitiesData');
       }
     },
@@ -24,8 +32,7 @@
       this.getActivitiesData();
     },
     computed: mapGetters({
-      activities: 'activities',
-      isShowActivityList: true
+      activities: 'activities'
     })
   }
 </script>
