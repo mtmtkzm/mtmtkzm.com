@@ -9,13 +9,13 @@ import getFlickr from '../services/get-flickr';
 
 export const getActivitiesData = ({ commit }) => {
   Promise
-    .all([ getCodepen(), getQiita(), getLigblog(), getFlickr() ])
+    .all([ getCodepen(), getQiita(), getLigblog(), getFlickr(), /* getGithub() */ ])
     .then( value => {
       let myActivities = [].concat(value);
+      const term = 50; // 直近50日限定にする
       myActivities = Array.prototype.concat.apply([], myActivities)
         .filter( item => {
-          // 直近30日限定にする
-          if (new Date().getTime() - item.date < 1000*60*60*24*30) return true;
+          if (new Date().getTime() - item.date < 1000*60*60*24*term) return true;
         })
         .sort( (a, b) => {
           if ( a.date > b.date ) return -1;
