@@ -1,15 +1,17 @@
 import Vuex from 'vuex'
+import * as actions from './actions'
+import * as getters from './getters'
+import mutations from './mutations'
+
+let state = {
+  isLoaded: true
+};
 
 const store = () => new Vuex.Store({
+  state,
+  getters,
+  actions,
+  mutations
+});
 
-  state: {
-    counter: 0
-  },
-  mutations: {
-    increment (state) {
-      state.counter++
-    }
-  }
-})
-
-export default store
+export default store;

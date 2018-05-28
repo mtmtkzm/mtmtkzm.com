@@ -1,5 +1,5 @@
 import * as u from '../utils'
-const axios = require('axios');
+import axios from 'axios'
 const API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
 
 export default function () {
@@ -30,6 +30,5 @@ function selectNecessaryData (response) {
     });
 
   });
-
   return necessaryData;
 }

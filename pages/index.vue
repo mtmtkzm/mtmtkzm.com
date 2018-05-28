@@ -4,8 +4,7 @@
     <div class="wave"></div>
     <div class="container">
       <main class="main">
-
-        <!--<activity></activity>-->
+        <Activity />
       </main>
     </div>
   </div>
@@ -13,12 +12,12 @@
 
 <script>
   import {mapGetters} from 'vuex';
-  // import activity from 'components/activity';
+  import Activity from '~/components/activity';
 
   export default {
     name: 'App',
     components: {
-      // activity,
+      Activity,
     },
     computed: mapGetters({
       isLoaded: 'isLoaded'
