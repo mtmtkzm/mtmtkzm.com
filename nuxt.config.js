@@ -34,5 +34,9 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  css: [
+    // プロジェクト内の SCSS ファイル
+    '@/assets/css/style.scss'
+  ]
 }
