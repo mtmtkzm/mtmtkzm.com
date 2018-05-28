@@ -18,7 +18,7 @@
         :href="item.url"
         target="_blank"
       >
-        <img :src="`./assets/svg/${item.type}.svg`">
+        <img :src="`/svg/${item.type}.svg`">
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
@@ -28,7 +28,7 @@
         :href="item.url"
         target="_blank"
       >
-        <img :src="`./assets/svg/${item.type}.svg`">
+        <img :src="`/svg/${item.type}.svg`">
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
@@ -38,7 +38,7 @@
         :href="item.url"
         target="_blank"
       >
-        <img :src="`./assets/svg/${item.type}.svg`">
+        <img :src="`/svg/${item.type}.svg`">
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
@@ -48,7 +48,7 @@
         :href="item.url"
         target="_blank"
       >
-        <img :src="`./assets/svg/${item.type}.svg`">
+        <img :src="`/svg/${item.type}.svg`">
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
@@ -59,7 +59,7 @@
         :style="'background-image: url('+ item.photo +')'"
         target="_blank"
       >
-        <img :src="`./assets/svg/${item.type}.svg`">
+        <img :src="`/svg/${item.type}.svg`">
         <h2>{{ item.title }}</h2>
       </a>
 
@@ -68,7 +68,7 @@
         :href="item.url"
         target="_blank"
       >
-        <img :src="`./assets/svg/${item.type}.svg`">
+        <img :src="`/svg/${item.type}.svg`">
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
