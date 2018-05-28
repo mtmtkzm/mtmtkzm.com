@@ -25,7 +25,7 @@ export const getActivitiesData = ({ commit }) => {
           if ( a.date < b.date ) return 1;
           return 0;
         });
-      console.log(myActivities);
+
       onLoadActivities(commit, myActivities);
     });
 };
