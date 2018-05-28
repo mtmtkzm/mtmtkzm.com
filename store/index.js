@@ -4,7 +4,7 @@ import * as getters from './getters'
 import mutations from './mutations'
 
 let state = {
-  isLoaded: true
+  isLoaded: false
 };
 
 const store = () => new Vuex.Store({

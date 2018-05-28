@@ -23,7 +23,6 @@
       ActivityItem,
     },
     created () {
-      console.time('通信と整形にかかった時間：');
       this.$store.dispatch('getActivitiesData');
     },
     computed: mapGetters({
