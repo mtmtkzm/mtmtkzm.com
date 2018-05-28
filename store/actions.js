@@ -10,10 +10,10 @@ import getFlickr from '../assets/js/services/get-flickr';
 
 export const getActivitiesData = ({ commit }) => {
   Promise
-    .all([ getLigblog(), /* getCodepen(), getQiita(), getFlickr(), getGithub() */ ])
+    .all([ getLigblog(), getCodepen(), getQiita(), getFlickr(), /* getGithub(), getHatena() */ ])
     .then( value => {
       let myActivities = [].concat(value);
-      const term = 550; // 直近550日限定にする
+      const term = 100; // 直近100日限定にする
 
       myActivities = Array.prototype.concat.apply([], myActivities)
         .filter( item => {
