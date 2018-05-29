@@ -1,74 +1,43 @@
 <template>
+  <section class="container">
+    <h2 class="heading2">My latest activity on the Web</h2>
     <transition-group
-    name="activity__item"
-    tag="div"
-    :class="['activity', {'is-show': true}]"
-  >
-
-    <div
-      v-for="(item, index) in activities"
-      :key="index"
-      :class="['activity__item', 'activity__item--'+item.type]"
+      :class="['activity', {'is-show': true}]"
+      tag="div"
+      name="activity__item"
     >
 
-      <!-- Date (日付)-->
-      <p v-if="item.type === 'date'">{{ item.date }}</p>
-      <a
-        v-if="item.type === 'github'"
-        :href="item.url"
-        target="_blank"
+      <div
+        v-for="(item, index) in activities" :key="index"
+        :class="['activity__item', 'activity__item--'+item.type]"
       >
-        <img :src="`/svg/${item.type}.svg`">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.desc }}</p>
-      </a>
-      <a
-        v-if="item.type === 'codepen'"
-        :href="item.url"
-        target="_blank"
-      >
-        <img :src="`/svg/${item.type}.svg`">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.desc }}</p>
-      </a>
-      <a
-        v-if="item.type === 'qiita'"
-        :href="item.url"
-        target="_blank"
-      >
-        <img :src="`/svg/${item.type}.svg`">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.desc }}</p>
-      </a>
-      <a
-        v-if="item.type === 'ligblog'"
-        :href="item.url"
-        target="_blank"
-      >
-        <img :src="`/svg/${item.type}.svg`">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.desc }}</p>
-      </a>
-      <a
-        v-if="item.type === 'flickr'"
-        :href="item.url"
-        :style="'background-image: url('+ item.photo +')'"
-        target="_blank"
-      >
-        <img :src="`/svg/${item.type}.svg`">
-        <h2>{{ item.title }}</h2>
-      </a>
-      <a
-        v-if="item.type === 'hatena'"
-        :href="item.url"
-        target="_blank"
-      >
-        <img :src="`/svg/${item.type}.svg`">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.desc }}</p>
-      </a>
-    </div>
-  </transition-group>
+        <p v-if="item.type === 'date'">{{ item.date }}</p>
+        <a
+          v-if="item.type === 'codepen' ||
+                item.type === 'qiita' ||
+                item.type === 'ligblog' ||
+                item.type === 'hatena' ||
+                item.type === 'github'"
+          :href="item.url"
+          target="_blank"
+        >
+          <img :src="`/svg/${item.type}.svg`">
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.desc }}</p>
+        </a>
+        <a
+          v-if="item.type === 'flickr'"
+          :href="item.url"
+          :style="'background-image: url('+ item.photo +')'"
+          target="_blank"
+        >
+          <img :src="`/svg/${item.type}.svg`">
+          <h2>{{ item.title }}</h2>
+        </a>
+      </div>
+
+    </transition-group>
+  </section>
 </template>
 
 <script>
@@ -87,10 +56,15 @@
 <style lang="scss" scoped>
   @import '../assets/css/setting';
 
+  .heading2 {
+    font-size: 24px;
+    text-shadow: 3px 2px 0 #fff;
+  }
+
   .activity {
     width: 100%;
-    height: 400px;
-    padding: 50px 0;
+    height: 360px;
+    padding: 20px 0 0;
     overflow-x: scroll;
     overflow-y: hidden;
 
@@ -99,19 +73,41 @@
     flex-wrap: wrap;
     justify-content: center;
 
+    &::-webkit-scrollbar {
+      height: 5px;
+      &-track {
+        background-color: #dcdcdc;
+      }
+      &-thumb {
+        background: $linear-gradient;
+      }
+    }
+
+    &:after { // spacer
+      content: '';
+      display: block;
+      height: 100%;
+      width: 50px;
+    }
+
     &__item {
-      $item-width: 400px;
+      $item-width: 360px;
       max-width: $item-width;
-      margin: 25px 0 25px 50px;
+      margin: 20px 50px 20px 0;
 
       &--date {
         height: 100%;
-        margin-left: 100px;
+        margin-left: 50px;
         writing-mode: vertical-lr;
+        transform: rotate(180deg);
         letter-spacing: .2em;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &:first-of-type {
+          margin-left: 0;
+        }
       }
 
       &--flickr {
@@ -122,9 +118,8 @@
           height: 100%;
           box-sizing: border-box;
           padding: 12px 20px;
-          background-position: center center;
-          background-size: cover;
-          background-repeat: no-repeat;
+          background: center center/cover no-repeat;
+
           position: relative;
 
           > h2 {
@@ -137,11 +132,6 @@
 
       > a {
         display: block;
-        color: $color-black;
-        text-decoration: none;
-
-        > img {
-        }
 
         > h2 {
           font-size: 16px;
@@ -171,7 +161,8 @@
         transition-timing-function: ease-in-out;
         transition-duration: 450ms;
         transition-property: all;
-        @for $i from 1 through 100 {
+
+        @for $i from 1 through 50 {
           &:nth-child(#{$i}) {
             transition-delay: ($i * 50ms) + 50;
           }

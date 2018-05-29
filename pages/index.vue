@@ -3,16 +3,11 @@
     <div :class="['loading', {'is-loaded': isLoaded}]"></div>
     <div class="wave"></div>
 
-
     <main class="contents">
-
       <About/>
-      <div>
-        <h2 class="heading2">My activities on the Web</h2>
-        <Activity :activities="activities"/>
-      </div>
-
+      <Activity :activities="activities"/>
     </main>
+
   </div>
 </template>
 
@@ -47,7 +42,7 @@
     top: 0;
     left: 0;
     z-index: 99;
-    background-color: beige;
+    background: $linear-gradient;
     transition: all .2s ease-in-out;
 
     &.is-loaded {
@@ -61,7 +56,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    transform: translate3d(0, 0, 0) scale(1.01);
+    transform: translate3d(0, 0, 0);
     z-index: 0;
     filter: blur(5px);
 
@@ -72,7 +67,7 @@
       position: absolute;
       left: -300vw;
       bottom: calc(100vh - 250px);
-      background: linear-gradient(40deg, #4EF980, #34C5EC);
+      background: $linear-gradient;
       border-radius: 49% 48% 49% 48%;
       animation: wave 60s infinite linear;
     }

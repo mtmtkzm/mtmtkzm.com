@@ -14,9 +14,10 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../assets/css/setting';
 
   .about {
-    width: 680px;
+    width: $base-width;
     margin: 0 auto;
 
     padding: 100px 0;
