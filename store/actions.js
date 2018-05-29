@@ -9,11 +9,11 @@ import getFlickr from '../assets/js/services/get-flickr';
 // import getGithub from '../assets/js/services/get-github';
 
 export const getActivitiesData = ({ commit }) => {
+  const term = 100; // 直近100日限定にする
   Promise
     .all([ getLigblog(), getCodepen(), getQiita(), getFlickr(), /* getGithub(), getHatena() */ ])
     .then( value => {
       let myActivities = [].concat(value);
-      const term = 100; // 直近100日限定にする
 
       myActivities = Array.prototype.concat.apply([], myActivities)
         .filter( item => {
@@ -26,13 +26,9 @@ export const getActivitiesData = ({ commit }) => {
           return 0;
         });
 
-      onLoadActivities(commit, myActivities);
+      commit(types.UPDATE_ACTIVITIES, insertDate(myActivities));
     });
 };
-
-function onLoadActivities (commit, myActivities) {
-  commit(types.UPDATE_ACTIVITIES, insertDate(myActivities));
-}
 
 function insertDate (activities) {
   let activitiesWithDate = [].concat(activities);

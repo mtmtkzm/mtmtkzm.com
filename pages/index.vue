@@ -1,14 +1,29 @@
 <template>
-  <div id="app">
+  <div>
     <div :class="['loading', {'is-loaded': isLoaded}]"></div>
-
     <div class="wave"></div>
 
-    <div class="container">
+    <div class="contents">
 
-      <main class="main">
-        <Activity :activities="activities" />
+      <header>
+        <div class="heading">
+          <h1>HELLO!<br>I am Rider</h1>
+        </div>
+        <p>
+          I am Web Developer
+        </p>
+      </header>
+
+      <main>
+        <div class="">
+          <h2 class="heading2">My activities on the Web</h2>
+          <Activity :activities="activities"/>
+        </div>
       </main>
+
+      <footer>
+        <h2>Get in touch with me</h2>
+      </footer>
 
     </div>
   </div>
@@ -28,18 +43,22 @@
       activities: 'activities'
     }),
     created () {
-      this.getActivitiesData();
+      this.$store.dispatch('getActivitiesData');
     },
-    methods: {
-      getActivitiesData: function () {
-        this.$store.dispatch('getActivitiesData');
-      }
-    }
   }
 </script>
 
 <style lang="scss" scoped>
   @import '../assets/css/setting';
+
+  .heading {
+    text-align: center;
+    font-size: 55px;
+  }
+
+  .heading2 {
+    font-size: 32px;
+  }
 
   .loading {
     width: 100vw;
@@ -62,8 +81,9 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale(1.01);
     z-index: 0;
+    filter: blur(5px);
 
     &::before {
       content: '';

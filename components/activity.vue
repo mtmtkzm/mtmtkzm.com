@@ -1,5 +1,5 @@
 <template>
-  <transition-group
+    <transition-group
     name="activity__item"
     tag="div"
     :class="['activity', {'is-show': true}]"
@@ -13,7 +13,6 @@
 
       <!-- Date (日付)-->
       <p v-if="item.type === 'date'">{{ item.date }}</p>
-
       <a
         v-if="item.type === 'github'"
         :href="item.url"
@@ -23,7 +22,6 @@
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
-
       <a
         v-if="item.type === 'codepen'"
         :href="item.url"
@@ -33,7 +31,6 @@
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
-
       <a
         v-if="item.type === 'qiita'"
         :href="item.url"
@@ -43,7 +40,6 @@
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
-
       <a
         v-if="item.type === 'ligblog'"
         :href="item.url"
@@ -53,7 +49,6 @@
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
-
       <a
         v-if="item.type === 'flickr'"
         :href="item.url"
@@ -63,7 +58,6 @@
         <img :src="`/svg/${item.type}.svg`">
         <h2>{{ item.title }}</h2>
       </a>
-
       <a
         v-if="item.type === 'hatena'"
         :href="item.url"
@@ -73,7 +67,6 @@
         <h2>{{ item.title }}</h2>
         <p>{{ item.desc }}</p>
       </a>
-
     </div>
   </transition-group>
 </template>
