@@ -10,7 +10,9 @@
           <h1>HELLO!<br>I am Rider</h1>
         </div>
         <p>
-          I am Web Developer
+          I am a front-end engineer at LIG, mainly engaged in Webservice / Website development.
+          I like Design and Engineering, prefer 'transition' to 'animation', '2D' to '3D'.
+          As well as coding as an engineer, I'd like to talk directly with clients who are enthusiastic about the product and its users and cooperate to create it.
         </p>
       </header>
 
