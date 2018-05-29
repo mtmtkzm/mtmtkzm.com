@@ -3,41 +3,28 @@
     <div :class="['loading', {'is-loaded': isLoaded}]"></div>
     <div class="wave"></div>
 
-    <div class="contents">
 
-      <header>
-        <div class="heading">
-          <h1>HELLO!<br>I am Rider</h1>
-        </div>
-        <p>
-          I am a front-end engineer at LIG, mainly engaged in Webservice / Website development.
-          I like Design and Engineering, prefer 'transition' to 'animation', '2D' to '3D'.
-          As well as coding as an engineer, I'd like to talk directly with clients who are enthusiastic about the product and its users and cooperate to create it.
-        </p>
-      </header>
+    <main class="contents">
 
-      <main>
-        <div class="">
-          <h2 class="heading2">My activities on the Web</h2>
-          <Activity :activities="activities"/>
-        </div>
-      </main>
+      <About/>
+      <div>
+        <h2 class="heading2">My activities on the Web</h2>
+        <Activity :activities="activities"/>
+      </div>
 
-      <footer>
-        <h2>Get in touch with me</h2>
-      </footer>
-
-    </div>
+    </main>
   </div>
 </template>
 
 <script>
   import {mapGetters} from 'vuex';
+  import About from '~/components/about';
   import Activity from '~/components/activity';
 
   export default {
     name: 'App',
     components: {
+      About,
       Activity,
     },
     computed: mapGetters({
@@ -52,15 +39,6 @@
 
 <style lang="scss" scoped>
   @import '../assets/css/setting';
-
-  .heading {
-    text-align: center;
-    font-size: 55px;
-  }
-
-  .heading2 {
-    font-size: 32px;
-  }
 
   .loading {
     width: 100vw;
