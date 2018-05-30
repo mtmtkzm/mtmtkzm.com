@@ -6,12 +6,12 @@ import getLigblog from '../assets/js/services/get-ligblog';
 import getFlickr from '../assets/js/services/get-flickr';
 
 // import getHatena from '../assets/js/services/get-hatena';
-// import getGithub from '../assets/js/services/get-github';
+import getGithub from '../assets/js/services/get-github';
 
 export const getActivitiesData = ({ commit }) => {
   const term = 100; // 直近100日限定にする
   Promise
-    .all([ getLigblog(), getCodepen(), getQiita(), getFlickr(), /* getGithub(), getHatena() */ ])
+    .all([ getLigblog(), getCodepen(), getQiita(), getFlickr(), getGithub(), /* getHatena() */ ])
     .then( value => {
       let myActivities = [].concat(value);
 
