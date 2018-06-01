@@ -14,7 +14,6 @@ export default function () {
 
 function selectNecessaryData (response) {
   let necessaryData = [];
-  console.log(response);
   response.data.filter( item => {
     if (
       item.type === 'PushEvent' &&

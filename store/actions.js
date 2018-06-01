@@ -4,14 +4,13 @@ import getCodepen from '../assets/js/services/get-codepen';
 import getQiita from '../assets/js/services/get-qiita';
 import getLigblog from '../assets/js/services/get-ligblog';
 import getFlickr from '../assets/js/services/get-flickr';
-
-// import getHatena from '../assets/js/services/get-hatena';
 import getGithub from '../assets/js/services/get-github';
+// import getHatena from '../assets/js/services/get-hatena';
 
 export const getActivitiesData = ({ commit }) => {
-  const term = 100; // 直近100日限定にする
+  const term = 100; // 直近100日にする
   Promise
-    .all([ getLigblog(), getCodepen(), getQiita(), getFlickr(), getGithub(), /* getHatena() */ ])
+    .all([ getLigblog(), getCodepen(), getQiita(), getFlickr(), getGithub(), /*getHatena()*/ ])
     .then( value => {
       let myActivities = [].concat(value);
 
