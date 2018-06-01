@@ -55,3 +55,7 @@ function insertDate (activities) {
 
   return activitiesWithDate;
 }
+
+export const setIsLoaded = ({commit}, boolean) => {
+  commit(types.SET_IS_LOADED, boolean);
+}

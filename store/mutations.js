@@ -6,4 +6,8 @@ export default {
     state.activities = data;
     state.isLoaded = true;
   },
+
+  [types.SET_IS_LOADED] (state, bool) {
+    state.isLoaded = bool;
+  },
 }

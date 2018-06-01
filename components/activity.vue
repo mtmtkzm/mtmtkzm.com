@@ -1,8 +1,9 @@
 <template>
   <section class="container">
     <h2 class="heading2">My latest activity on the Web</h2>
+
     <transition-group
-      :class="['activity', {'is-show': true}]"
+      :class="['activity', {'is-show': isShow}]"
       tag="div"
       name="activity__item"
     >
@@ -47,6 +48,11 @@
     props: [
       'activities',
     ],
+    data () {
+      return {
+        isShow: this.isLoaded
+      }
+    },
     computed: mapGetters({
       isLoaded: 'isLoaded',
     })

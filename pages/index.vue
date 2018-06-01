@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :class="['loading', {'is-loaded': isLoaded}]"></div>
+    <Loading/>
     <div class="wave"></div>
 
     <main class="contents">
@@ -14,18 +14,20 @@
 <script>
   import {mapGetters} from 'vuex';
   import About from '~/components/about';
+  import Loading from '~/components/loading';
   import Activity from '~/components/activity';
 
   export default {
     name: 'App',
     components: {
       About,
+      Loading,
       Activity,
     },
-    computed: mapGetters({
-      isLoaded: 'isLoaded',
-      activities: 'activities'
-    }),
+    computed: mapGetters([
+      'isLoaded',
+      'activities'
+    ]),
     created () {
       this.$store.dispatch('getActivitiesData');
     },
