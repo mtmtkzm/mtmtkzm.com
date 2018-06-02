@@ -1,61 +1,22 @@
-# vue-frontplate
+# portfolio
 
-vue starter kit with frontplate-cli
+> portfolio desu
 
-This template is still beta.
+## Build Setup
 
-## Dependence
+``` bash
+# install dependencies
+$ npm install # Or yarn install
 
-* [NodeJS](https://nodejs.org/) 5.0以上
-* [frontplate-cli](https://www.npmjs.com/package/frontplate-cli)
+# serve with hot reload at localhost:3000
+$ npm run dev
 
-## Get Started
+# build for production and launch server
+$ npm run build
+$ npm start
 
-frontplate-cliをインストールします。
-
-```
-npm i frontplate-cli -g
-```
-
-```
-npm i
-npm start
+# generate static project
+$ npm run generate
 ```
 
-### 全体をビルド
-
-すべてのファイルをビルドします。開発を始める前に必ず一度はビルドしましょう。
-
-```
-npm run build
-```
-
-### ファイル監視の実行 & サーバー起動
-
-以下のコマンドを実行するとブラウザで開発中のページが開きます。この状態でCSSやJSを修正するとユニットテストやLintも同時に実行され、ブラウザが自動的に更新されます。
-
-```
-# srcディレクトリを監視
-npm run serve
-```
-
-### リリースファイル作成
-
-ひと通りの開発が完了した時点で、リリース用のファイルを作成します。
-productionタスクではJSとCSSのソースマップが出力されなくなり、高度に圧縮されます。
-```
-npm run production
-```
-
-## ToDo
-
-- ユニットテスト
-- webpackのDLLバンドルによるビルド高速化
-
-## Dependencies documentation
-
-このテンプレートは[frontplate-cli](https://github.com/frontainer/frontplate-cli)がベースになっています。
-
-詳細なドキュメントはCLIのドキュメントを参照してください。
-
-[frontplate-cli](https://github.com/frontainer/frontplate-cli)
+For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).

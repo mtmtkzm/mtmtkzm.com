@@ -1,6 +1,14 @@
-.idea
-.sass-cache
-.DS_Store
+# dependencies
 node_modules
-docs
-guide
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
+
+#IDE
+.idea
