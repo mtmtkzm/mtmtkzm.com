@@ -1,11 +1,11 @@
 <template>
   <section class="about">
-    <h1 class="about-title">HELLO!<br>I am Rider, not a rider</h1>
-    <p class="about-description">
-      I am a front-end engineer at LIG, mainly engaged in Webservice / Website development.
-      I like Design and Engineering, prefer 'transition' to 'animation', '2D' to '3D'.<br>
-      As well as coding as an engineer, I'd like to talk directly with clients who are enthusiastic about the product and its users and cooperate to create it.
-    </p>
+    <!--<h1 class="about-title">HELLO!<br>I am Rider, not a rider</h1>-->
+    <!--<p class="about-description">-->
+      <!--I am a front-end engineer at LIG, mainly engaged in Webservice / Website development.-->
+      <!--I like Design and Engineering, prefer 'transition' to 'animation', '2D' to '3D'.<br>-->
+      <!--As well as coding as an engineer, I'd like to talk directly with clients who are enthusiastic about the product and its users and cooperate to create it.-->
+    <!--</p>-->
   </section>
 </template>
 

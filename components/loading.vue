@@ -28,7 +28,6 @@
     z-index: 99;
     background: $linear-gradient;
     transition: all .2s ease-in-out;
-
     opacity: 1;
     pointer-events: auto;
 

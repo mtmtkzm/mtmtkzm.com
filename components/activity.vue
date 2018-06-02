@@ -10,15 +10,17 @@
 
       <div
         v-for="(item, index) in activities" :key="index"
-        :class="['activity__item', 'activity__item--'+item.type]"
+        class="activity__item"
+        :class="'activity__item--'+item.type"
       >
-        <p v-if="item.type === 'date'">{{ item.date }}</p>
+
+        <p v-if="item.type === 'date'"><span>{{ item.date }}</span></p>
         <a
           v-if="item.type === 'codepen' ||
-                item.type === 'qiita' ||
                 item.type === 'ligblog' ||
                 item.type === 'hatena' ||
-                item.type === 'github'"
+                item.type === 'github'||
+                item.type === 'qiita'"
           :href="item.url"
           target="_blank"
         >
@@ -35,9 +37,10 @@
           <img :src="`/svg/${item.type}.svg`">
           <h2>{{ item.title }}</h2>
         </a>
-      </div>
 
+      </div>
     </transition-group>
+
   </section>
 </template>
 
@@ -53,9 +56,9 @@
         isShow: this.isLoaded
       }
     },
-    computed: mapGetters({
-      isLoaded: 'isLoaded',
-    })
+    computed: mapGetters([
+      'isLoaded',
+    ])
   }
 </script>
 
@@ -73,7 +76,6 @@
     padding: 20px 0 0;
     overflow-x: scroll;
     overflow-y: hidden;
-
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -105,7 +107,6 @@
         height: 100%;
         margin-left: 50px;
         writing-mode: vertical-lr;
-        transform: rotate(180deg);
         letter-spacing: .2em;
         display: flex;
         justify-content: center;
@@ -113,6 +114,11 @@
 
         &:first-of-type {
           margin-left: 0;
+        }
+
+        span {
+          display: block;
+          transform: rotate(180deg);
         }
       }
 

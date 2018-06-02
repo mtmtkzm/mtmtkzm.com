@@ -60,17 +60,18 @@
     overflow: hidden;
     transform: translate3d(0, 0, 0);
     z-index: 0;
-    filter: blur(5px);
 
     &::before {
       content: '';
-      width: 700vw;
-      height: 700vw;
+      width: 500vw;
+      height: 500vw;
       position: absolute;
-      left: -300vw;
+      left: -200vw;
       bottom: calc(100vh - 250px);
       background: $linear-gradient;
-      border-radius: 49% 48% 49% 48%;
+      border-radius: 49% 47% 49% 47%;
+      filter: blur(5px);
+
       animation: wave 60s infinite linear;
     }
 
@@ -82,6 +83,7 @@
         transform: rotate(360deg);
       }
     }
+
   }
 
 </style>
