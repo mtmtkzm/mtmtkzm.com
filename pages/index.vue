@@ -3,9 +3,15 @@
     <Loading/>
     <div class="wave"></div>
 
-    <main class="contents">
-      <About/>
-      <Activity :activities="activities"/>
+    <main>
+      <div class="contents">
+        <Header/>
+        <About/>
+        <Activity :activities="activities"/>
+        <Projects/>
+      </div>
+
+      <Footer/>
     </main>
 
   </div>
@@ -13,16 +19,22 @@
 
 <script>
   import {mapGetters} from 'vuex';
+  import Header from '~/components/common-header';
+  import Footer from '~/components/common-footer';
   import About from '~/components/about';
   import Loading from '~/components/loading';
   import Activity from '~/components/activity';
+  import Projects from '~/components/projects';
 
   export default {
     name: 'App',
     components: {
+      Header,
+      Footer,
       About,
       Loading,
       Activity,
+      Projects
     },
     computed: mapGetters([
       'isLoaded',
@@ -37,53 +49,16 @@
 <style lang="scss" scoped>
   @import '../assets/css/setting';
 
-  .loading {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    background: $linear-gradient;
-    transition: all .2s ease-in-out;
-
-    &.is-loaded {
-      opacity: 0;
-      pointer-events: none;
-    }
+  main {
+    position: relative;
   }
 
-  .wave {
+  .contents {
+    background-color: $color-accent;
     position: absolute;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    transform: translate3d(0, 0, 0);
-    z-index: 0;
+    top: 0;
 
-    &::before {
-      content: '';
-      width: 500vw;
-      height: 500vw;
-      position: absolute;
-      left: -200vw;
-      bottom: calc(100vh - 250px);
-      background: $linear-gradient;
-      border-radius: 49% 47% 49% 47%;
-      filter: blur(5px);
-
-      animation: wave 60s infinite linear;
-    }
-
-    @keyframes wave {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
+    margin-bottom: 300px;
+    z-index: 2;
   }
-
 </style>
