@@ -40,5 +40,11 @@ module.exports = {
   css: [
     // プロジェクト内の SCSS ファイル
     '@/assets/css/style.scss'
-  ]
-}
+  ],
+  modules: [
+    ['nuxt-sass-resources-loader', [
+      '@/assets/css/_setting.scss',
+      '@/assets/css/_mixin.scss',
+    ]],
+  ],
+};

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <my-header/>
-
     <main>
       <section class="hello">
         <h2>Hello,</h2>
@@ -10,7 +8,7 @@
           directly with clients who are enthusiastic about the product and its users and cooperate to create it.
         </p>
         <p>
-          私はLIGのフロントエンドエンジニアであり、主にウェブサービス/ウェブサイト開発に従事しています。<br>私はデザインとエンジニアリングが好きで、2Dから3Dへのアニメーションへの移行を好みます。<br>技術者としてコーディングするだけでなく、製品とそのユーザーに熱心で、協力して作成するクライアントと直接話したいと思います。
+          私はLIGのフロントエンドエンジニアであり、主にウェブサービス/ウェブサイト開発に従事しています。<br>技術者としてコーディングするだけでなく、製品とそのユーザーに熱心で、協力して作成するクライアントと直接話したいと思います。
         </p>
       </section>
 
@@ -31,21 +29,12 @@
       </section>
 
     </main>
-
-    <my-footer/>
   </div>
 </template>
 
 <script>
-  import MyHeader from '../components/common-header'
-  import MyFooter from '../components/common-footer'
-
   export default {
     name: 'App',
-    components: {
-      MyFooter,
-      MyHeader,
-    },
   }
 </script>
 
@@ -56,7 +45,7 @@
 
     h2 {
       font-size: 56px;
-      padding: 32px 0 0;
+      padding: 36px 0 0;
     }
 
     p + p {
@@ -67,7 +56,7 @@
   .works {
     h2 {
       font-size: 56px;
-      padding: 32px 24px 0;
+      padding: 48px 24px 12px;
     }
 
     .works-list {
@@ -79,7 +68,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100px;
+      height: 50vw;
 
       &-l {
         width: 100%;
