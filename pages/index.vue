@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main>
+    <main class="main">
       <section class="hello">
         <h2>Hello,</h2>
         <p>
@@ -32,13 +32,12 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'App',
-  }
-</script>
-
 <style lang="scss" scoped>
+
+  .main {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
 
   .hello {
     padding: 0 24px;
@@ -69,6 +68,7 @@
       align-items: center;
       justify-content: center;
       height: 50vw;
+      max-height: calc(#{$max-width} / 2);
 
       &-l {
         width: 100%;

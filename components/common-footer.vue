@@ -1,21 +1,23 @@
 <template>
   <div>
     <footer class="footer">
+      <div class="footer-inner">
       <h2>Say Hello.</h2>
-      <ul>
-        <li>
-          <a href="//github.com/mtmtkzm">GitHub</a>
-        </li>
-        <li>
-          <a href="//twitter.com/mtmtkzm">Twitter</a>
-        </li>
-        <li>
-          <a href="//www.wantedly.com/users/17812476">Wantedly</a>
-        </li>
-        <li>
-          <p>hello@mtmtkzm.com</p>
-        </li>
-      </ul>
+        <ul>
+          <li>
+            <a href="//github.com/mtmtkzm">GitHub</a>
+          </li>
+          <li>
+            <a href="//twitter.com/mtmtkzm">Twitter</a>
+          </li>
+          <li>
+            <a href="//www.wantedly.com/users/17812476">Wantedly</a>
+          </li>
+          <li>
+            <p>hello@mtmtkzm.com</p>
+          </li>
+        </ul>
+      </div>
     </footer>
   </div>
 </template>
@@ -27,10 +29,16 @@
 </script>
 
 <style lang="scss" scoped>
+
   .footer {
     padding: 32px 24px 48px;
     background-color: #333;
     color: white;
+  }
+
+  .footer-inner {
+    max-width: $max-width;
+    margin: 0 auto;
   }
 
   h2 {

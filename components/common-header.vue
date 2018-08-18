@@ -1,9 +1,11 @@
 <template>
   <header class="header">
-    <h1>
-      <p class="title">MTMTKZM</p>
-      <p class="subtitle"> Rider - Matsumoto Kazuma</p>
-    </h1>
+    <div class="header-inner">
+      <h1>
+        <p class="title">MTMTKZM</p>
+        <p class="subtitle"> Rider - Matsumoto Kazuma</p>
+      </h1>
+    </div>
   </header>
 </template>
 
@@ -14,9 +16,16 @@
 </script>
 
 <style lang="scss" scoped>
+
   .header {
     padding: 32px 24px 0;
   }
+
+  .header-inner {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
 
   h1 {
     font-family: 'Montserrat';

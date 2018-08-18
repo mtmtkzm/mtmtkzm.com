@@ -24,11 +24,13 @@
       MyFooter,
       MyHeader,
     },
+
     data() {
       return {
         footerHeight: '0',
       }
     },
+
     mounted: function () {
       this.footerHeight = `${this.$refs.footer.$el.clientHeight}px`;
     },
@@ -43,6 +45,7 @@
 
   .l-contents {
     width: 100%;
+    min-height: 100vh;
     background-color: #fff;
     position: relative;
     z-index: 1;
