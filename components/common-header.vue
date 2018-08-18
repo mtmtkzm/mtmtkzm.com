@@ -3,7 +3,7 @@
     <div class="header-inner">
       <h1>
         <p class="title">MTMTKZM</p>
-        <p class="subtitle"> Rider - Matsumoto Kazuma</p>
+        <p class="subtitle"> Rider - Kazuma Matsumoto</p>
       </h1>
     </div>
   </header>
