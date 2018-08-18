@@ -3,8 +3,10 @@ import * as actions from './actions'
 import * as getters from './getters'
 import mutations from './mutations'
 
-let state = {
-  isLoaded: false
+const state = () => {
+  return {
+    isLoaded: false
+  }
 };
 
 const store = () => new Vuex.Store({
