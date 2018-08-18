@@ -38,22 +38,18 @@
 </script>
 
 <style lang="scss" scoped>
-
-  .l-container {
-
-  }
-
   .l-contents {
     width: 100%;
     min-height: 100vh;
-    background-color: #fff;
+    background-color: $color-primary;
     position: relative;
     z-index: 1;
+
+    box-shadow: -3px 4px 16px 4px #00000055;
   }
 
   .l-footer {
     width: 100%;
-
     position: fixed;
     bottom: 0;
     left: 0;
