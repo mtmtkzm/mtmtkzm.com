@@ -3,15 +3,14 @@ $base-transition: .3s ease-in-out;
 $max-width: 700px;
 
 // Colors
-
-//:root {
-//  --primary-color: #C01212;
-//  --secondary-color: white;
-//}
-
 :root {
-  --primary-color: #1B3E91;
-  --secondary-color: #00FFD9;
+  /* 赤 */
+  --primary-color: #C01212;
+  --secondary-color: white;
+  
+  /* 青 */
+  //  --primary-color: #1B3E91;
+  //  --secondary-color: #00FFD9;
 }
 
 $color-primary: var(--primary-color);
