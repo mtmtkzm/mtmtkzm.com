@@ -32,7 +32,7 @@
 
   .footer {
     padding: 32px 24px 48px;
-    background-color: #333;
+    background-color: $color-gray;
     color: white;
   }
 

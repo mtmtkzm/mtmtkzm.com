@@ -16,15 +16,24 @@
         <h2>Works</h2>
 
         <div class="works-list">
-          <div class="work work-l">
-            <h3>maner</h3>
-          </div>
-          <div class="work work-m">
-            <h3>LIG BLOG</h3>
-          </div>
-          <div class="work work-m">
-            <h3>LIG Projects</h3>
-          </div>
+          <a
+            href="//maner.gallery"
+            target="_blank"
+            rel="noopener"
+            class="work work-l work-maner"
+          ></a>
+          <a
+            href="//liginc.co.jp/author/kazuma"
+            target="_blank"
+            rel="noopener"
+            class="work work-m work-lig-articles"
+          ></a>
+          <a
+            href="//liginc.co.jp/works/index/user/rider/"
+            target="_blank"
+            rel="noopener"
+            class="work work-m work-lig-projects"
+          ></a>
         </div>
       </section>
 
@@ -53,6 +62,7 @@
   }
 
   .works {
+
     h2 {
       font-size: 56px;
       padding: 48px 24px 12px;
@@ -72,18 +82,27 @@
 
       &-l {
         width: 100%;
-        background-color: gray;
       }
 
       &-m {
         width: 50%;
-        background-color: lightgray;
       }
 
       &-s {
         width: 33.3333%;
-        background-color: darkgray;
       }
+    }
+
+    .work-maner {
+      background: url('/images/maner.png') center center/cover;
+    }
+
+    .work-lig-projects {
+      background: url('/images/lig-projects.png') center center/cover;
+    }
+
+    .work-lig-articles {
+      background: url('/images/lig-articles.png') center center/cover;
     }
 
   }

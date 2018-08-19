@@ -5,15 +5,15 @@
         <path
           v-for="(path, index) in paths"
           :key="index"
-          :d="path[1]"
+          :d="path[0]"
         >
           <animate
             :repeatCount="`indefinite`"
             :attributeName="`d`"
             :attributeType="`XML`"
             :values="path.join(';')"
-            :dur="`4s`"
-          ></animate>
+            :dur="`12s`"
+          />
         </path>
       </svg>
     </div>
@@ -37,33 +37,46 @@
     position: relative;
     width: 100%;
     height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   svg {
-    position: absolute;
+    max-width: 700px;
   }
 
   path {
-    fill: darken(#C01212, 10%);
-    mix-blend-mode: multiply;
-    position: relative;
-    top: 30px;
-    left: 40px;
+    //$color: #C01212;
+    $color: #1B3E91;
 
-    &:nth-child(2) {
-      animation: fuwafuwa 3s infinite linear alternate;
+    fill: $color;
+    mix-blend-mode: multiply;
+    // mix-blend-mode: color-burn;
+    animation: fuwa 9s infinite alternate-reverse;
+
+    &:nth-child(3n-2) {
+      fill: darken($color, 5%);
+      animation: fuwa-reverse 18s infinite alternate-reverse;
     }
   }
 
-  @keyframes fuwafuwa {
+  @keyframes fuwa {
     0% {
-      transform: translate(0, 0) rotate(-10deg);
-    }
-    50% {
-      transform: translate(0, -3vw) rotate(0deg);
+      transform: translate(0, 0) rotate(4deg);
     }
     100% {
-      transform: translate(0, 0) rotate(10deg);
+      transform: translate(0, 2vw) rotate(0deg);
+    }
+  }
+
+  @keyframes fuwa-reverse {
+    0% {
+      transform: translate(0, 1vw) rotate(0deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(8deg);
     }
   }
 </style>

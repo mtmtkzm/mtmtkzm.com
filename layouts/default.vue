@@ -52,9 +52,14 @@
     box-shadow: -3px 4px 16px 4px #00000055;
 
     .l-bg {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+
       position: absolute;
       top: 0;
       left: 0;
+      right: 0;
       z-index: 0;
     }
 
