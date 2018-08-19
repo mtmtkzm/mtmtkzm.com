@@ -1,6 +1,6 @@
 $base-transition: .3s ease-in-out;
 
-$max-width: 700px;
+$max-width: 500px;
 
 // Colors
 :root {
@@ -11,6 +11,9 @@ $max-width: 700px;
   /* 青 */
   //  --primary-color: #1B3E91;
   //  --secondary-color: #00FFD9;
+
+  //--primary-color: #333;
+  //--secondary-color: #fff;
 }
 
 $color-primary: var(--primary-color);
