@@ -53,7 +53,6 @@
 
     fill: $color;
     mix-blend-mode: multiply;
-    // mix-blend-mode: color-burn;
     animation: fuwa 9s infinite alternate-reverse;
 
     &:nth-child(3n-2) {
