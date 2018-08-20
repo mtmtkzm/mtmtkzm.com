@@ -85,8 +85,8 @@
 
   .l-theme-switch {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 20px;
+    right: 20px;
     z-index: 3;
   }
 </style>

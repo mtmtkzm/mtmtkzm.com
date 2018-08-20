@@ -1,13 +1,25 @@
 <template>
   <div>
     <div class="theme-switcher">
-      <div class="toggle">
-        <a href="">{i}</a>
+
+      <div
+        class="toggle"
+        @click="toggleChoices"
+      >
+        {i}
       </div>
-      <ul>
-        <li><a href="">朝</a></li>
-        <li><a href="">昼</a></li>
-        <li><a href="">夜</a></li>
+
+      <ul
+        class="choices"
+        v-show="isChoicesOpen"
+      >
+        <li
+          v-for="theme in themes"
+          :key="theme.label"
+          @click="()=>setTheme(theme.colors)"
+        >
+          {{theme.label}}
+        </li>
       </ul>
     </div>
   </div>
@@ -15,13 +27,25 @@
 
 <script>
   import themes from '../assets/data/color-themes';
+  import themeSwitcher from '../assets/js/theme-switcher';
+
   export default {
     data () {
       return {
-        themes: {
-
-        }
+        themes,
+        isChoicesOpen: false,
       }
+    },
+    methods: {
+      toggleChoices: function () {
+        this.isChoicesOpen = !this.isChoicesOpen;
+      },
+      setTheme: function (colors) {
+        themeSwitcher.update(colors);
+      }
+    },
+    mounted: function () {
+
     }
   }
 </script>
@@ -47,7 +71,7 @@
     margin-left: 10px;
   }
 
-  ul {
+  .choices {
     display: flex;
     list-style: none;
 

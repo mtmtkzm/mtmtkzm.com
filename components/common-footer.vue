@@ -49,6 +49,8 @@
   ul {
     margin-top: 16px;
     margin-left: 20px;
+
+    list-style: circle;
   }
 
 </style>
