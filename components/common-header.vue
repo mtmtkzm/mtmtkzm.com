@@ -2,8 +2,10 @@
   <header class="header">
     <div class="header-inner">
       <h1>
-        <p class="title">MTMTKZM</p>
-        <p class="subtitle"> Rider - Kazuma Matsumoto</p>
+        <nuxt-link to="/">
+          <p class="title">MTMTKZM</p>
+          <p class="subtitle"> Rider - Kazuma Matsumoto</p>
+        </nuxt-link>
       </h1>
     </div>
   </header>

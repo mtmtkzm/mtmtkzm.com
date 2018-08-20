@@ -88,6 +88,7 @@
     align-items: center;
     justify-content: center;
     margin-left: 10px;
+    cursor: pointer;
 
     transition: color var(--base-transition);
   }
@@ -108,7 +109,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
+      cursor: pointer;
     }
   }
 
