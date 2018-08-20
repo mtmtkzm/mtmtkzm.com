@@ -1,7 +1,22 @@
 @charset "utf-8";
-
 @import 'setting';
 
-@import 'base/sanitize';
-@import 'base/base';
-@import 'layout/layout';
+html {
+  background-color: $color-gray;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Inconsolata', "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  letter-spacing: .1em;
+  line-height: 1.75;
+  
+  color: $color-secondary;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

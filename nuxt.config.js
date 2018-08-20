@@ -1,7 +1,4 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: 'portfolio',
     meta: [
@@ -15,14 +12,15 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Inconsolata:400,700' }
     ]
   },
-  /*
-  ** Customize the progress bar color
-  */
   loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
   build: {
+    build: {
+      postcss: [
+        // require('postcss-nested')(),
+        // require('postcss-responsive-type')(),
+        // require('postcss-hexrgba')(),
+      ]
+    },
     /*
     ** Run ESLint on save
     */
@@ -39,7 +37,8 @@ module.exports = {
   },
   css: [
     // プロジェクト内の SCSS ファイル
-    '@/assets/css/style.scss'
+    'reset-css',
+    '@/assets/css/style.scss',
   ],
   modules: [
     ['nuxt-sass-resources-loader', [
