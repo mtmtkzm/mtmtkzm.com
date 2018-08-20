@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="theme-switcher">
+    <div class="theme-switch">
 
       <div
         class="toggle"
@@ -9,18 +9,25 @@
         {i}
       </div>
 
-      <ul
+      <transition-group
+        tag="ul"
         class="choices"
-        v-show="isChoicesOpen"
+        name="choice"
+        @before-enter="beforeEnter"
+        @after-enter="afterEnter"
+        @enter-cancelled="afterEnter"
       >
         <li
-          v-for="theme in themes"
+          v-show="isChoicesOpen"
+          v-for="(theme, index) in themes"
           :key="theme.label"
-          @click="()=>setTheme(theme.colors)"
+          :data-index="index"
+          @click="() => setTheme(theme.colors)"
         >
           {{theme.label}}
         </li>
-      </ul>
+      </transition-group>
+
     </div>
   </div>
 </template>
@@ -30,7 +37,7 @@
   import themeSwitcher from '../assets/js/theme-switcher';
 
   export default {
-    data () {
+    data() {
       return {
         themes,
         isChoicesOpen: false,
@@ -42,16 +49,24 @@
       },
       setTheme: function (colors) {
         themeSwitcher.update(colors);
+      },
+      // enter の初めにインデックス×100でディレイを付ける
+      beforeEnter(el) {
+        el.style.transitionDelay = `${100 * el.dataset.index}ms`
+      },
+      // enter が終わるか中止されたらディレイを消す
+      afterEnter(el) {
+        el.style.transitionDelay = ''
       }
     },
     mounted: function () {
 
-    }
+    },
   }
 </script>
 
 <style scoped>
-  .theme-switcher {
+  .theme-switch {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -89,4 +104,17 @@
       justify-content: center;
     }
   }
+
+  /* For transition group */
+  .choice-enter-active,
+  .choice-leave-active {
+    transition: transform 250ms, opacity 250ms;
+  }
+
+  .choice-enter,
+  .choice-leave-to {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+
 </style>
