@@ -15,6 +15,10 @@
       class="l-footer"
       ref="footer"
     />
+
+    <theme-switch
+      class="l-theme-switch"
+    />
   </div>
 </template>
 
@@ -22,12 +26,14 @@
   import MyHeader from '~/components/common-header'
   import MyFooter from '~/components/common-footer'
   import Bg from '~/components/bg'
+  import ThemeSwitch from '~/components/theme-switch'
 
   export default {
     components: {
       MyFooter,
       MyHeader,
       Bg,
+      ThemeSwitch,
     },
 
     data() {
@@ -47,7 +53,7 @@
     width: 100%;
     min-height: 100vh;
     background-color: $color-primary;
-    position: relative;
+    position: absolute;
     z-index: 1;
     box-shadow: -3px 4px 16px 4px #00000055;
 
@@ -75,6 +81,13 @@
     position: fixed;
     bottom: 0;
     left: 0;
+  }
+
+  .l-theme-switch {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 3;
   }
 
 </style>
