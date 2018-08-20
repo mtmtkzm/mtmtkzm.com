@@ -14,13 +14,11 @@ module.exports = {
   },
   loading: { color: '#3B8070' },
   build: {
-    build: {
-      postcss: [
-        // require('postcss-nested')(),
-        // require('postcss-responsive-type')(),
-        // require('postcss-hexrgba')(),
-      ]
-    },
+    postcss: [
+      // require('postcss-nested')(),
+      // require('postcss-responsive-type')(),
+      // require('postcss-hexrgba')(),
+    ],
     /*
     ** Run ESLint on save
     */
@@ -38,12 +36,6 @@ module.exports = {
   css: [
     // プロジェクト内の SCSS ファイル
     'reset-css',
-    '@/assets/css/style.scss',
-  ],
-  modules: [
-    ['nuxt-sass-resources-loader', [
-      '@/assets/css/_setting.scss',
-      '@/assets/css/_mixin.scss',
-    ]],
+    '@/assets/css/style.css',
   ],
 };

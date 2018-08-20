@@ -20,7 +20,6 @@
 </script>
 
 <style lang="scss" scoped>
-
   .theme-switcher {
     display: flex;
     flex-direction: row-reverse;
@@ -32,7 +31,7 @@
     height: 52px;
     border-radius: 50%;
     background-color: #fff;
-    color: $color-primary;
+    color: var(--primary-color);
 
     display: flex;
     align-items: center;
@@ -52,7 +51,7 @@
       height: 36px;
       border-radius: 20px;
       background-color: #fff;
-      color: $color-primary;
+      color: var(--primary-color);
 
       display: flex;
       align-items: center;

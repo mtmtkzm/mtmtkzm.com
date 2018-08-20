@@ -44,9 +44,8 @@
 </template>
 
 <style lang="scss" scoped>
-
   .main {
-    max-width: $max-width;
+    max-width: var(--max-width);
     margin: 0 auto;
     padding-bottom: 45px;
   }
@@ -56,6 +55,7 @@
 
     h2 {
       font-size: 56px;
+      font-weight: bold;
       padding: 36px 0 0;
     }
 
@@ -91,6 +91,7 @@
 
     h2 {
       font-size: 56px;
+      font-weight: bold;
       padding: 36px 0 0;
     }
 
@@ -107,7 +108,7 @@
           display: block;
           flex: 1;
           height: 1px;
-          background-color: $color-secondary;
+          background-color: var(--secondary-color);
           margin-left: 10px;
           transform: scaleY(0.3);
         }
@@ -119,5 +120,4 @@
       }
     }
   }
-
 </style>

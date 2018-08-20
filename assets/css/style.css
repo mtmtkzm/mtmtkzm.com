@@ -1,8 +1,8 @@
 @charset "utf-8";
-@import 'setting';
+@import '_setting.css';
 
 html {
-  background-color: $color-gray;
+  background-color: var(--color-gray);
 }
 
 body {
@@ -12,8 +12,8 @@ body {
   font-size: 16px;
   letter-spacing: .1em;
   line-height: 1.75;
-  
-  color: $color-secondary;
+
+  color: var(--secondary-color);
 }
 
 a {

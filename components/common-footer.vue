@@ -32,21 +32,23 @@
 
   .footer {
     padding: 32px 24px 48px;
-    background-color: $color-gray;
+    background-color: var(--color-gray);
     color: white;
   }
 
   .footer-inner {
-    max-width: $max-width;
+    max-width: var(--max-width);
     margin: 0 auto;
   }
 
   h2 {
     font-size: 36px;
+    font-weight: bold;
   }
 
   ul {
     margin-top: 16px;
     margin-left: 20px;
   }
+
 </style>

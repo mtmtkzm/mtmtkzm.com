@@ -1,13 +1,12 @@
-$base-transition: .3s ease-in-out;
-$color-gray: #333;
-$max-width: 500px;
-
-// Colors
 :root {
+  --base-transition: .3s ease-in-out;
+  --color-gray: #333;
+  --max-width: 500px;
+
   /* 赤 */
   //--primary-color: #C01212;
   //--secondary-color: white;
-  
+
   /* 青 */
   --primary-color: #1B3E91;
   --secondary-color: #00FFD9;
@@ -15,6 +14,3 @@ $max-width: 500px;
   //--primary-color: #333;
   //--secondary-color: #fff;
 }
-
-$color-primary: var(--primary-color);
-$color-secondary: var(--secondary-color);

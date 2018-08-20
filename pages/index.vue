@@ -45,9 +45,8 @@
 </template>
 
 <style lang="scss" scoped>
-
   .main {
-    max-width: $max-width;
+    max-width: var(--max-width);
     margin: 0 auto;
   }
 
@@ -56,6 +55,7 @@
 
     h2 {
       font-size: 56px;
+      font-weight: bold;
       padding: 36px 0 0;
     }
 
@@ -68,6 +68,7 @@
 
     h2 {
       font-size: 56px;
+      font-weight: bold;
       padding: 48px 24px 12px;
     }
 
@@ -81,7 +82,7 @@
       align-items: center;
       justify-content: center;
       height: 50vw;
-      max-height: calc(#{$max-width} / 2);
+      max-height: calc(var(--max-width) / 2);
       cursor: url('/images/cursor-works.svg') 4 4, pointer;
 
       &-l {

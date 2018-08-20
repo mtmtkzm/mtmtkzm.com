@@ -16,13 +16,12 @@
 </script>
 
 <style lang="scss" scoped>
-
   .header {
     padding: 32px 24px 0;
   }
 
   .header-inner {
-    max-width: $max-width;
+    max-width: var(--max-width);
     margin: 0 auto;
   }
 

@@ -52,7 +52,7 @@
   .l-contents {
     width: 100%;
     min-height: 100vh;
-    background-color: $color-primary;
+    background-color: var(--primary-color);
     position: absolute;
     z-index: 1;
     box-shadow: -3px 4px 16px 4px #00000055;
@@ -89,5 +89,4 @@
     right: 40px;
     z-index: 3;
   }
-
 </style>

@@ -48,15 +48,12 @@
   }
 
   path {
-    // $color: #C01212;
-    $color: #1B3E91;
-
-    fill: $color;
+    fill: #1B3E91;
     mix-blend-mode: multiply;
     animation: fuwa 9s infinite alternate-reverse;
 
     &:nth-child(3n-2) {
-      fill: darken($color, 5%);
+      /* // fill: darken(#1B3E91, 5%); */
       animation: fuwa-reverse 18s infinite alternate-reverse;
     }
   }
@@ -78,4 +75,5 @@
       transform: translate(0, 0) rotate(8deg);
     }
   }
+
 </style>
