@@ -74,7 +74,8 @@
       z-index: 1;
       top: 0;
       left: 0;
-      mix-blend-mode: screen;
+      /*mix-blend-mode: screen;*/
+      opacity: 0.9;
     }
 
     &::before {
@@ -82,7 +83,9 @@
       display: block;
       width: 100%;
       padding-top: 42.9%;
-      background-color: #1B3E91;
+      background-color: var(--primary-color);
+
+      transition: background-color var(--base-transition);
     }
   }
 
@@ -111,6 +114,8 @@
           background-color: var(--secondary-color);
           margin-left: 10px;
           transform: scaleY(0.3);
+
+          transition: background-color var(--base-transition);
         }
       }
 

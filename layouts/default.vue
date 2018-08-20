@@ -57,6 +57,8 @@
     z-index: 1;
     box-shadow: -3px 4px 16px 4px #00000055;
 
+    transition: background-color var(--base-transition);
+
     .l-bg {
       width: 100%;
       height: 100%;

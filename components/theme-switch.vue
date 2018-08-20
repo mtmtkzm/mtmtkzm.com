@@ -22,7 +22,7 @@
           v-for="(theme, index) in themes"
           :key="theme.label"
           :data-index="index"
-          @click="() => setTheme(theme.colors)"
+          @click="() => choiceClickHandler(theme.colors)"
         >
           {{theme.label}}
         </li>
@@ -47,6 +47,10 @@
       toggleChoices: function () {
         this.isChoicesOpen = !this.isChoicesOpen;
       },
+      choiceClickHandler: function (colors) {
+        this.setTheme(colors);
+        this.toggleChoices();
+      },
       setTheme: function (colors) {
         themeSwitcher.update(colors);
       },
@@ -60,7 +64,9 @@
       }
     },
     mounted: function () {
-
+      // random でテーマを変えてみる
+      // const random = Math.floor(Math.random() * this.themes.length);
+      // this.setTheme(this.themes[random].colors);
     },
   }
 </script>
@@ -76,14 +82,14 @@
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--secondary-color);
     color: var(--primary-color);
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-left: 10px;
+
+    transition: color var(--base-transition);
   }
 
   .choices {
@@ -96,12 +102,13 @@
       width: 36px;
       height: 36px;
       border-radius: 20px;
-      background-color: #fff;
+      background-color: var(--secondary-color);
       color: var(--primary-color);
 
       display: flex;
       align-items: center;
       justify-content: center;
+
     }
   }
 
