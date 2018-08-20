@@ -14,12 +14,19 @@
 </template>
 
 <script>
+  import themes from '../assets/data/color-themes';
   export default {
+    data () {
+      return {
+        themes: {
 
+        }
+      }
+    }
   }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
   .theme-switcher {
     display: flex;
     flex-direction: row-reverse;

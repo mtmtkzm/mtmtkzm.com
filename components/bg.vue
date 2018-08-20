@@ -32,12 +32,11 @@
   }
 </script>
 
-<style lang="scss">
+<style scoped>
   .bg {
     position: relative;
     width: 100%;
     height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,12 +47,12 @@
   }
 
   path {
-    fill: #1B3E91;
+    fill: var(--primary-color);
     mix-blend-mode: multiply;
     animation: fuwa 9s infinite alternate-reverse;
 
     &:nth-child(3n-2) {
-      /* // fill: darken(#1B3E91, 5%); */
+      /*fill: darken(var(--primary-color), 5%);*/
       animation: fuwa-reverse 18s infinite alternate-reverse;
     }
   }

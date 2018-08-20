@@ -15,9 +15,10 @@ module.exports = {
   loading: { color: '#3B8070' },
   build: {
     postcss: [
-      // require('postcss-nested')(),
-      // require('postcss-responsive-type')(),
-      // require('postcss-hexrgba')(),
+      require('postcss-sass-color-functions')(),
+      require('postcss-custom-properties')(),
+      require('autoprefixer')(),
+      require('postcss-nested')(),
     ],
     /*
     ** Run ESLint on save
@@ -34,7 +35,6 @@ module.exports = {
     }
   },
   css: [
-    // プロジェクト内の SCSS ファイル
     'reset-css',
     '@/assets/css/style.css',
   ],

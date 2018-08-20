@@ -15,7 +15,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
   .header {
     padding: 32px 24px 0;
   }

@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
   .main {
     max-width: var(--max-width);
     margin: 0 auto;

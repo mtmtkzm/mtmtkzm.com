@@ -1,16 +1,17 @@
 :root {
+  /* COMMON STYLES */
   --base-transition: .3s ease-in-out;
   --color-gray: #333;
   --max-width: 500px;
 
-  /* 赤 */
-  //--primary-color: #C01212;
-  //--secondary-color: white;
 
-  /* 青 */
-  --primary-color: #1B3E91;
-  --secondary-color: #00FFD9;
+  /* COLOR THEME */
+  /*--primary-color: #C01212;*/
+  /*--secondary-color: white;*/
 
-  //--primary-color: #333;
-  //--secondary-color: #fff;
+  /*--primary-color: #1B3E91;*/
+  /*--secondary-color: #00FFD9;*/
+
+  --primary-color: #333333;
+  --secondary-color: #ffffff;
 }

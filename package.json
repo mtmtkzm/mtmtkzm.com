@@ -19,9 +19,12 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "autoprefixer": "^9.1.2",
     "axios": "^0.18.0",
     "nuxt": "^1.0.0",
-    "nuxt-sass-resources-loader": "^2.0.4",
+    "postcss-custom-properties": "^7.0.0",
+    "postcss-nested": "^3.0.0",
+    "postcss-sass-color-functions": "^1.1.0",
     "reset-css": "^4.0.1",
     "xml2js": "^0.4.19"
   },
