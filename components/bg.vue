@@ -48,7 +48,7 @@
   }
 
   path {
-    //$color: #C01212;
+    // $color: #C01212;
     $color: #1B3E91;
 
     fill: $color;
