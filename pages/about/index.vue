@@ -2,18 +2,26 @@
   <div>
     <main class="main">
       <section class="hello">
-        <h2>Hello,</h2>
-        <div class="portrait">
-          <img src="/images/portrait.png">
-        </div>
+        <h2 class="portrait">
+          <img src="/images/portrait.png" alt="MTMTKZM - Kazuma Matsumoto">
+        </h2>
         <p>
           1993年、京都府生まれ。映像制作に興味を持ち浪人を経て大学に入学するも、HTMLを書き始める。
           あれよあれよとWebサイトを作れるようになり、作ったものが世に出て人に見られる快感に溺れる。<br>
           学祭や展示会の告知サイト、ちょっとした受託業務をこなすうちに、株式会社LIGにフロントエンドエンジニアとして就職。
         </p>
         <p>
-          器用貧乏型ジェネラリストで、技術に特化はしてませんがプロジェクト全体を見て立ち回ることが得意です。<br>
-          3Dよりも2D、アニメーションゴリゴリよりAjaxゴリゴリの方が好きです（比喩）。
+          器用貧乏型のジェネラリスト体質です。<br>
+          じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで、プロジェクト全体を見て立ち回ることが得意です。<br>
+          いつか器用大富豪になれることを夢見ています。
+        </p>
+        <p>
+          また、会社への相談はもちろん、個人でも受託Web開発をやっていきたいと思っています。その他 協業でもイベント登壇でもお気軽にご連絡くださればと思います。
+        </p>
+
+        <p class="social-links">
+          <a href="//twitter.com/mtmtkzm">@mtmtkzm</a>
+          <a href="mailto:hello@mtmtkzm.com">hello@mtmtkzm.com</a>
         </p>
       </section>
       <section class="history">
@@ -53,20 +61,21 @@
   .hello {
     padding: 0 24px;
 
-    h2 {
-      font-size: 56px;
-      font-weight: bold;
-      padding: 36px 0 0;
-    }
-
     p {
       margin-top: 32px;
+    }
+
+    .social-links {
+      display: inline-flex;
+      flex-direction: column;
+
     }
   }
 
   .portrait {
     width: 100%;
     position: relative;
+    margin-top: 45px;
 
     img {
       width: 100%;
@@ -121,7 +130,7 @@
 
 
       dd {
-        font-size: 14px;
+        font-size: 13px;
       }
     }
   }

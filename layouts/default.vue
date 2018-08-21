@@ -16,9 +16,7 @@
       ref="footer"
     />
 
-    <theme-switch
-      class="l-theme-switch"
-    />
+    <theme-switch class="l-theme-switch"/>
   </div>
 </template>
 

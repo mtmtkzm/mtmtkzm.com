@@ -4,11 +4,11 @@
       <section class="hello">
         <h2>Hello,</h2>
         <p>
-          I am a front-end engineer at LIG, engaged in Webservice / Website development mainly.<br>As well as coding as an engineer, I'd like to talk
-          directly with clients who are enthusiastic about the product and its users and cooperate to create it.
+          My name is Rider. I am a Front-End Developer engaging in development of Webservice / Website at LIG inc which has Motto "LIFE IS GOOD".<br>
+          Not just coding as an engineer, I'd like to lead products along with my friends/partners/clients to success.
         </p>
         <p>
-          私はLIGのフロントエンドエンジニアであり、主にウェブサービス/ウェブサイト開発に従事しています。<br>技術者としてコーディングするだけでなく、製品とそのユーザーに熱心で、協力して作成するクライアントと直接話したいと思います。
+          初めまして、ライダーです。株式会社LIGでフロントエンドエンジニアとして働いています。じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで得意です。
         </p>
         <p>
           <nuxt-link to="/about">More profile ></nuxt-link>
@@ -43,6 +43,12 @@
     </main>
   </div>
 </template>
+
+<script>
+  export default {
+
+  }
+</script>
 
 <style scoped>
   .main {
