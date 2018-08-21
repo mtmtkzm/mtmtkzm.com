@@ -53,7 +53,7 @@
     width: 100%;
     min-height: 100vh;
     background-color: var(--primary-color);
-    position: absolute;
+    position: relative;
     z-index: 1;
     box-shadow: -3px 4px 16px 4px #00000055;
 
