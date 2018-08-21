@@ -1,26 +1,42 @@
 const path = require('path');
 const spriteSvg = require('nuxt-sprite-svg-inline');
 
+const general = {
+  title: 'MTMTKZM - フロントエンドエンジニア ライダーのポートフォリオサイト',
+  description: '東京で働くフロントエンドエンジニア、ライダーのポートフォリオサイトです。じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで得意です。',
+  url: 'https://mtmtkzm.com',
+  account: '@mtmtkzm'
+};
+
 module.exports = {
   head: {
-    title: 'portfolio',
+    title: general.title,
     meta: [
-      {charset: 'utf-8'},
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'portfolio desu',
-      },
+      // Basic
+      { charset: 'UTF-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: general.description },
+      { name: 'apple-mobile-web-app-title', content: 'maner' },
+      // Open Graph
+      { name: 'og:title', content: general.title },
+      { name: 'og:description', content: general.description },
+      { name: 'og:type', content: 'website' },
+      { name: 'og:url', content: general.url },
+      { name: 'og:image', content: `${general.url}/ogp.png` },
+      // Twitter Card
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: general.url },
+      { name: 'twitter:title', content: general.title },
+      { name: 'twitter:creator', content: general.account },
+      { name: 'twitter:description', content: general.description },
+      { name: 'twitter:image:src', content: `${general.url}/twitter-card.png` },
+      { name: 'twitter:image:alt', content: general.title }
     ],
     link: [
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: '/favicon.ico',
+        href: '/favicon.png',
       },
       {
         rel: 'stylesheet',
@@ -32,7 +48,7 @@ module.exports = {
       },
     ],
   },
-  loading: {color: '#3B8070'},
+  loading: {color: '#ffffff'},
   build: {
     postcss: [
       require('postcss-sass-color-functions')(),
