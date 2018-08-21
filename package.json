@@ -23,6 +23,7 @@
     "autoprefixer": "^9.1.2",
     "axios": "^0.18.0",
     "nuxt": "^1.0.0",
+    "path": "^0.12.7",
     "postcss-custom-properties": "^7.0.0",
     "postcss-nested": "^3.0.0",
     "postcss-sass-color-functions": "^1.1.0",
@@ -36,6 +37,7 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
     "node-sass": "^4.9.3",
+    "nuxt-sprite-svg-inline": "0.0.7",
     "sass-loader": "^7.0.1"
   }
 }

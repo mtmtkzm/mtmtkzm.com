@@ -10,8 +10,10 @@
         <p>
           初めまして、ライダーです。株式会社LIGでフロントエンドエンジニアとして働いています。じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで得意です。
         </p>
-        <p>
-          <nuxt-link to="/about">More profile ></nuxt-link>
+        <p class="link-about">
+          <nuxt-link to="/about">
+            More profile <icon :id="`arrow-right`"/>
+          </nuxt-link>
         </p>
       </section>
 
@@ -45,8 +47,12 @@
 </template>
 
 <script>
-  export default {
+  import icon from '@/components/icon';
 
+  export default {
+    components: {
+      icon
+    }
   }
 </script>
 
@@ -62,11 +68,26 @@
     h2 {
       font-size: 56px;
       font-weight: bold;
-      padding: 36px 0 0;
+      padding: 48px 0 10px;
     }
 
     p + p {
-      margin-top: 32px;
+      margin-top: 36px;
+    }
+
+    .link-about {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      a {
+        display: flex;
+        align-items: center;
+      }
+
+      .icon {
+        margin-left: 12px;
+      }
     }
   }
 

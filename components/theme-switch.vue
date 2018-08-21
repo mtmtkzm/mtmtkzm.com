@@ -6,7 +6,7 @@
         class="toggle"
         @click="toggleChoices"
       >
-        {i}
+        <icon :id="`command`"/>
       </div>
 
       <transition-group
@@ -20,11 +20,13 @@
         <li
           v-show="isChoicesOpen"
           v-for="(theme, index) in themes"
-          :key="theme.label"
+          :key="theme.icon"
           :data-index="index"
+          :style="
+          "
           @click="() => choiceClickHandler(theme.colors)"
         >
-          {{theme.label}}
+          <icon :id="theme.icon"/>
         </li>
       </transition-group>
 
@@ -35,6 +37,7 @@
 <script>
   import themes from '../assets/data/color-themes';
   import themeSwitcher from '../assets/js/theme-switcher';
+  import icon from '@/components/icon';
 
   export default {
     data() {
@@ -42,6 +45,9 @@
         themes,
         isChoicesOpen: false,
       }
+    },
+    components: {
+      icon
     },
     methods: {
       toggleChoices: function () {
@@ -76,6 +82,10 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+
+    .icon {
+      fill: var(--primary-color);
+    }
   }
 
   .toggle {
@@ -91,6 +101,8 @@
     cursor: pointer;
 
     transition: color var(--base-transition);
+
+
   }
 
   .choices {

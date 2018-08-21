@@ -20,8 +20,12 @@
         </p>
 
         <p class="social-links">
-          <a href="//twitter.com/mtmtkzm">@mtmtkzm</a>
-          <a href="mailto:hello@mtmtkzm.com">hello@mtmtkzm.com</a>
+          <a href="//twitter.com/mtmtkzm">
+            <icon :id="`twitter`"/>@mtmtkzm
+          </a>
+          <a href="mailto:hello@mtmtkzm.com">
+            <icon :id="`mail`"/>hello@mtmtkzm.com
+          </a>
         </p>
       </section>
       <section class="history">
@@ -51,6 +55,16 @@
   </div>
 </template>
 
+<script>
+  import icon from '@/components/icon';
+
+  export default {
+    components: {
+      icon
+    }
+  }
+</script>
+
 <style scoped>
   .main {
     max-width: var(--max-width);
@@ -62,13 +76,22 @@
     padding: 0 24px;
 
     p {
-      margin-top: 32px;
+      margin-top: 36px;
     }
 
     .social-links {
       display: inline-flex;
       flex-direction: column;
 
+
+      a {
+        display: flex;
+        align-items: center;
+      }
+
+      .icon {
+        margin-right: 12px;
+      }
     }
   }
 
