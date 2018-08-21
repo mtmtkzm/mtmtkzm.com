@@ -1,9 +1,9 @@
 :root {
   /* COMMON STYLES */
   --base-transition: .3s ease-in-out;
-  --color-gray: #333;
+  --color-gray: #303030;
   --max-width: 500px;
 
   --primary-color: #fff;
-  --secondary-color: #333;
+  --secondary-color: #3f3f3f;
 }
