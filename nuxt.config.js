@@ -2,7 +2,7 @@ const path = require('path');
 const spriteSvg = require('nuxt-sprite-svg-inline');
 
 const general = {
-  title: 'MTMTKZM - フロントエンドエンジニア ライダーのポートフォリオサイト',
+  title: 'MTMTKZM - Front-End Developer ライダーのポートフォリオサイト',
   description: '東京で働くフロントエンドエンジニア、ライダーのポートフォリオサイトです。じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで得意です。',
   url: 'https://mtmtkzm.com',
   account: '@mtmtkzm'
@@ -18,11 +18,11 @@ module.exports = {
       { hid: 'description', name: 'description', content: general.description },
       { name: 'apple-mobile-web-app-title', content: 'maner' },
       // Open Graph
-      { name: 'og:title', content: general.title },
-      { name: 'og:description', content: general.description },
-      { name: 'og:type', content: 'website' },
-      { name: 'og:url', content: general.url },
-      { name: 'og:image', content: `${general.url}/ogp.png` },
+      { property: 'og:title', content: general.title },
+      { property: 'og:description', content: general.description },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: general.url },
+      { property: 'og:image', content: `${general.url}/ogp.png` },
       // Twitter Card
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: general.url },
