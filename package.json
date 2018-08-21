@@ -19,6 +19,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/google-analytics": "^2.0.2",
     "autoprefixer": "^9.1.2",
     "axios": "^0.18.0",
     "nuxt": "^1.0.0",
