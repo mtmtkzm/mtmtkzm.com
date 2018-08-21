@@ -110,7 +110,6 @@
       justify-content: center;
       height: 50vw;
       max-height: calc(var(--max-width) / 2);
-      cursor: url('/images/cursor-works.svg') 4 4, pointer;
 
       &-l {
         width: 100%;
