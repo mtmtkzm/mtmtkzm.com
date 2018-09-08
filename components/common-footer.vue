@@ -2,7 +2,7 @@
   <div>
     <footer class="footer">
       <div class="footer-inner">
-      <h2>Say Hello.</h2>
+        <h2>Say Hello.</h2>
         <ul>
           <li>
             <a href="//github.com/mtmtkzm">GitHub</a>
@@ -24,7 +24,7 @@
 
 <script>
   export default {
-    components: {}
+    components: {},
   }
 </script>
 

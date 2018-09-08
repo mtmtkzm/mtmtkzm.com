@@ -1,20 +1,18 @@
 <template>
   <header class="header">
     <div class="header-inner">
-      <h1>
-        <nuxt-link to="/">
+      <nuxt-link to="/">
+        <h1>
           <p class="title">MTMTKZM</p>
           <p class="subtitle"> Rider - Kazuma Matsumoto</p>
-        </nuxt-link>
-      </h1>
+        </h1>
+      </nuxt-link>
     </div>
   </header>
 </template>
 
 <script>
-  export default {
-
-  }
+  export default {}
 </script>
 
 <style scoped>
@@ -26,7 +24,6 @@
     max-width: var(--max-width);
     margin: 0 auto;
   }
-
 
   h1 {
     font-family: 'Montserrat';

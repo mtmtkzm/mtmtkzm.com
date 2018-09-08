@@ -26,7 +26,7 @@
   export default {
     data() {
       return {
-        paths
+        paths,
       }
     },
   }
@@ -54,7 +54,6 @@
     transition: fill var(--base-transition);
 
     &:nth-child(3n-2) {
-      /*fill: darken(var(--primary-color), 5%);*/
       animation: fuwa-reverse 18s infinite alternate-reverse;
     }
   }

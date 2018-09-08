@@ -22,8 +22,6 @@
           v-for="(theme, index) in themes"
           :key="theme.icon"
           :data-index="index"
-          :style="
-          "
           @click="() => choiceClickHandler(theme.colors)"
         >
           <icon :id="theme.icon"/>
@@ -101,8 +99,6 @@
     cursor: pointer;
 
     transition: color var(--base-transition);
-
-
   }
 
   .choices {

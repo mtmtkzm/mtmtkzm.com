@@ -4,7 +4,8 @@
       <section class="hello">
         <h2>Hello,</h2>
         <p>
-          My name is Rider. I am a Front-End Developer engaging in development of Webservice / Website at LIG inc which has Motto "LIFE IS GOOD".<br>
+          My name is Rider. I am a Front-End Developer engaging in development of Webservice / Website at LIG inc which
+          has Motto "LIFE IS GOOD".<br>
           Not just coding as an engineer, I'd like to lead products along with my friends/partners/clients to success.
         </p>
         <p>
@@ -12,7 +13,8 @@
         </p>
         <p class="link-about">
           <nuxt-link to="/about">
-            More profile <icon :id="`arrow-right`"/>
+            More profile
+            <icon :id="`arrow-right`"/>
           </nuxt-link>
         </p>
       </section>
@@ -51,8 +53,8 @@
 
   export default {
     components: {
-      icon
-    }
+      icon,
+    },
   }
 </script>
 

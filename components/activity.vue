@@ -6,12 +6,15 @@
     >
 
       <div
-        v-for="(item, index) in activities" :key="index"
+        v-for="(item, index) in activities"
+        :key="index"
         class="activity__item"
         :class="'activity__item--'+item.type"
       >
 
-        <p v-if="item.type === 'date'"><span>{{ item.date }}</span></p>
+        <p v-if="item.type === 'date'">
+          <span>{{ item.date }}</span>
+        </p>
         <a
           v-if="item.type === 'codepen' ||
                 item.type === 'ligblog' ||

@@ -20,10 +20,12 @@
 
         <p class="social-links">
           <a href="//twitter.com/mtmtkzm">
-            <icon :id="`twitter`"/>@mtmtkzm
+            <icon :id="`twitter`"/>
+            @mtmtkzm
           </a>
           <a href="mailto:hello@mtmtkzm.com">
-            <icon :id="`mail`"/>hello@mtmtkzm.com
+            <icon :id="`mail`"/>
+            hello@mtmtkzm.com
           </a>
         </p>
       </section>
@@ -59,8 +61,8 @@
 
   export default {
     components: {
-      icon
-    }
+      icon,
+    },
   }
 </script>
 
@@ -81,7 +83,6 @@
     .social-links {
       display: inline-flex;
       flex-direction: column;
-
 
       a {
         display: flex;
@@ -149,7 +150,6 @@
           transition: background-color var(--base-transition);
         }
       }
-
 
       dd {
         font-size: 13px;
