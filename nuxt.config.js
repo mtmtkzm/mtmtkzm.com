@@ -9,6 +9,9 @@ const general = {
 };
 
 module.exports = {
+  generate: {
+    fallback: true,
+  },
   head: {
     title: general.title,
     htmlAttrs: {
