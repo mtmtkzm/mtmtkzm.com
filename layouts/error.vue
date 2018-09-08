@@ -6,10 +6,7 @@
         <h2>NOT FOUND</h2>
         <p>This page is no longer available. Please look for the page from the following list. Sorry for inconvenience.</p>
         <p>
-          アクセスされたページはすでに削除されたか、ご利用いただけません。 下記リストよりお目当のページをお探しください。
-          また、サイト内のリンク切れを発見した場合、Twitter <a href="//twitter.com/mtmtkzm" target="_blank"><icon :id="`twitter`"/></a>、
-          もしくはメール <a href="mailto:hello@mtmtkzm.com"><icon :id="`mail`"/></a>にて
-          管理者までご一報いただけますと幸いです。早急に対応させていただきます。
+          アクセスされたページはすでに削除されたか、ご利用いただけません。下記リストよりお目当のページをお探しください。また、サイト内のリンク切れを発見した場合、<a href="//twitter.com/mtmtkzm" target="_blank">Twitter <icon :id="`twitter`"/></a>、もしくは<a href="mailto:hello@mtmtkzm.com">メール <icon :id="`mail`"/></a>にて管理者までご一報いただけますと幸いです。早急に対応させていただきます。
         </p>
       </template>
       <template v-else>
@@ -51,23 +48,11 @@
   }
 </script>
 
-<style scoped>
+<sstyle scoped>
   .error {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 24px;
-  }
-
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    .icon {
-      width: 14px;
-      transform: translate(-4px, 4px);
-    }
   }
 
   h2 {
@@ -76,9 +61,24 @@
     padding: 48px 0 10px;
   }
 
+  p {
+    & + p {
+      margin-top: 24px;
+    }
 
-  p + p {
-    margin-top: 24px;
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 1em;
+      border-bottom: 1px solid var(--secondary-color);
+
+      .icon {
+        width: 14px;
+        margin: -2px 4px 0;
+      }
+    }
+
   }
 
   ul {
@@ -87,4 +87,4 @@
     list-style-type: circle;
   }
 
-</style>
+</sstyle>
