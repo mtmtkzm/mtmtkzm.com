@@ -48,7 +48,7 @@
   }
 </script>
 
-<sstyle scoped>
+<style scoped>
   .error {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -87,4 +87,4 @@
     list-style-type: circle;
   }
 
-</sstyle>
+</style>
