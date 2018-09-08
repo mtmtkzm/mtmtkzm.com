@@ -11,6 +11,9 @@ const general = {
 module.exports = {
   head: {
     title: general.title,
+    htmlAttrs: {
+      lang: 'ja'
+    },
     meta: [
       // Basic
       { charset: 'UTF-8' },
