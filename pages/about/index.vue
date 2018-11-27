@@ -23,9 +23,9 @@
             <icon :id="`twitter`"/>
             @mtmtkzm
           </a>
-          <a href="mailto:hello@mtmtkzm.com">
+          <a href="mailto:mtmtkzm00@gmail.com">
             <icon :id="`mail`"/>
-            hello@mtmtkzm.com
+            mtmtkzm00@gmail.com
           </a>
         </p>
       </section>
