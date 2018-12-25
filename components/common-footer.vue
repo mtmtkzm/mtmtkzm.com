@@ -14,7 +14,7 @@
             <a href="//www.wantedly.com/users/17812476">Wantedly</a>
           </li>
           <li>
-            <p>hello@mtmtkzm.com</p>
+            <p>mtmtkzm00@gmail.com</p>
           </li>
         </ul>
       </div>
