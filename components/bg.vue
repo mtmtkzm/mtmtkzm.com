@@ -32,7 +32,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .bg {
     position: relative;
     width: 100%;

@@ -28,7 +28,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
   .footer {
     padding: 32px 24px 48px;

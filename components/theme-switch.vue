@@ -71,7 +71,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .theme-switch {
     display: flex;
     flex-direction: row-reverse;

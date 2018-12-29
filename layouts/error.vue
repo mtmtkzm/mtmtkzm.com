@@ -44,7 +44,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .error {
     max-width: var(--max-width);
     margin: 0 auto;

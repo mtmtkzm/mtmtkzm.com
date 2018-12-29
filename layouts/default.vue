@@ -46,7 +46,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .l-contents {
     width: 100%;
     min-height: 100vh;
