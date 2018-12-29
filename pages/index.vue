@@ -14,26 +14,39 @@
     </section>
     <section class="history">
       <h2>Career</h2>
-      <dl>
-        <dt>2018</dt>
-        <dd>留学　LIG Philippines. Inc</dd>
+      <div>
+        <p class="history-year">2018</p>
+        <ul>
+          <li>参画　Vue.js 日本ユーザグループ コアスタッフ</li>
+          <li>留学　LIG Philippines. Inc</li>
+        </ul>
 
-        <dt>2017</dt>
-        <dd>入社　株式会社LIG</dd>
-        <dd>卒業　名古屋市立大学 芸術工学部</dd>
+        <p class="history-year">2017</p>
+        <ul>
+          <li>入社　株式会社LIG</li>
+          <li>卒業　名古屋市立大学 芸術工学部</li>
+        </ul>
 
-        <dt>2016</dt>
-        <dd>創設　OthloTech（学生コミュニティ）</dd>
+        <p class="history-year">2016</p>
+        <ul>
+          <li>創設　OthloTech（学生コミュニティ）</li>
+        </ul>
 
-        <dt>2015</dt>
-        <dd>入社　株式会社LIG　アルバイト</dd>
+        <p class="history-year">2015</p>
+        <ul>
+          <li>入社　株式会社LIG　アルバイト</li>
+        </ul>
 
-        <dt>2013</dt>
-        <dd>入学　名古屋市立大学 芸術工学部</dd>
+        <p class="history-year">2013</p>
+        <ul>
+          <li>入学　名古屋市立大学 芸術工学部</li>
+        </ul>
 
-        <dt>2012</dt>
-        <dd>卒業　京都府立向陽高等学校</dd>
-      </dl>
+        <p class="history-year">2012</p>
+        <ul>
+          <li>卒業　京都府立向陽高等学校</li>
+        </ul>
+      </div>
     </section>
     <section class="works">
       <h2>Works</h2>
@@ -101,30 +114,40 @@
       padding: 36px 0 0;
     }
 
-    dl {
+    .history-year {
+      margin-top: 30px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
 
-      dt {
-        margin-top: 15px;
-
-        display: flex;
-        align-items: center;
-
-        &::after {
-          content: '';
-          display: block;
-          flex: 1;
-          height: 1px;
-          background-color: var(--secondary-color);
-          margin-left: 10px;
-          transform: scaleY(0.3);
-
-          transition: background-color var(--base-transition);
-        }
+      &::before {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        margin-right: 10px;
       }
 
-      dd {
-        font-size: 13px;
+      &::after {
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: var(--secondary-color);
+        transform: scaleY(0.3);
+        flex: 1;
+        margin-left: 10px;
+        transition: background-color var(--base-transition);
       }
+    }
+
+    ul {
+      margin-top: 5px;
+    }
+
+    li {
+      font-size: 13px;
     }
   }
 
