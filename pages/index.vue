@@ -1,59 +1,68 @@
 <template>
-  <div>
-    <main class="main">
-      <section class="hello">
-        <h2>Hello,</h2>
-        <p>
-          My name is Rider. I am a Front-End Developer engaging in development of Webservice / Website at LIG inc which
-          has Motto "LIFE IS GOOD".<br>
-          Not just coding as an engineer, I'd like to lead products along with my friends/partners/clients to success.
-        </p>
-        <p>
-          初めまして、ライダーです。株式会社LIGでフロントエンドエンジニアとして働いています。じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで得意です。
-        </p>
-        <p class="link-about">
-          <nuxt-link to="/about">
-            More profile
-            <AppIcon name="arrow-right"/>
-          </nuxt-link>
-        </p>
-      </section>
+  <div class="l-page-index">
+    <section class="hello">
+      <h2>Hello,</h2>
+      <p>
+        初めまして、ライダーです。株式会社LIGでフロントエンドエンジニアとして働いています。じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで得意です。
+      </p>
+      <p class="link-about">
+        <nuxt-link to="/about">
+          More profile
+          <AppIcon name="arrow-right"/>
+        </nuxt-link>
+      </p>
+    </section>
+    <section class="history">
+      <h2>Career</h2>
+      <dl>
+        <dt>2018</dt>
+        <dd>留学　LIG Philippines. Inc</dd>
 
-      <section class="works">
-        <h2>Works</h2>
+        <dt>2017</dt>
+        <dd>入社　株式会社LIG</dd>
+        <dd>卒業　名古屋市立大学 芸術工学部</dd>
 
-        <div class="works-list">
-          <a
-            href="//maner.gallery"
-            target="_blank"
-            rel="noopener"
-            class="work work-l work-maner"
-          ></a>
-          <a
-            href="//liginc.co.jp/author/kazuma"
-            target="_blank"
-            rel="noopener"
-            class="work work-m work-lig-articles"
-          ></a>
-          <a
-            href="//liginc.co.jp/works/index/user/rider/"
-            target="_blank"
-            rel="noopener"
-            class="work work-m work-lig-projects"
-          ></a>
-        </div>
-      </section>
+        <dt>2016</dt>
+        <dd>創設　OthloTech（学生コミュニティ）</dd>
 
-    </main>
+        <dt>2015</dt>
+        <dd>入社　株式会社LIG　アルバイト</dd>
+
+        <dt>2013</dt>
+        <dd>入学　名古屋市立大学 芸術工学部</dd>
+
+        <dt>2012</dt>
+        <dd>卒業　京都府立向陽高等学校</dd>
+      </dl>
+    </section>
+    <section class="works">
+      <h2>Works</h2>
+
+      <div class="works-list">
+        <a
+          href="//maner.gallery"
+          target="_blank"
+          rel="noopener"
+          class="work work-l work-maner"
+        ></a>
+        <a
+          href="//liginc.co.jp/author/kazuma"
+          target="_blank"
+          rel="noopener"
+          class="work work-m work-lig-articles"
+        ></a>
+        <a
+          href="//liginc.co.jp/works/index/user/rider/"
+          target="_blank"
+          rel="noopener"
+          class="work work-m work-lig-projects"
+        ></a>
+      </div>
+    </section>
   </div>
 </template>
 
 <style scoped lang="scss">
-  .main {
-    max-width: var(--max-width);
-    margin: 0 auto;
-  }
-
   .hello {
     padding: 0 24px;
 
@@ -79,6 +88,42 @@
 
       .icon {
         margin-left: 12px;
+      }
+    }
+  }
+
+  .history {
+    padding: 0 24px;
+
+    h2 {
+      font-size: 56px;
+      font-weight: bold;
+      padding: 36px 0 0;
+    }
+
+    dl {
+
+      dt {
+        margin-top: 15px;
+
+        display: flex;
+        align-items: center;
+
+        &::after {
+          content: '';
+          display: block;
+          flex: 1;
+          height: 1px;
+          background-color: var(--secondary-color);
+          margin-left: 10px;
+          transform: scaleY(0.3);
+
+          transition: background-color var(--base-transition);
+        }
+      }
+
+      dd {
+        font-size: 13px;
       }
     }
   }

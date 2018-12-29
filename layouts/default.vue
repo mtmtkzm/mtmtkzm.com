@@ -6,8 +6,11 @@
     >
       <div class="l-content">
         <TheHeader/>
-        <nuxt/>
+        <main class="l-main">
+          <nuxt/>
+        </main>
       </div>
+
       <TheBg class="l-bg"/>
     </div>
 
@@ -47,14 +50,18 @@
 </script>
 
 <style scoped lang="scss">
+  .l-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
   .l-contents {
     width: 100%;
     min-height: 100vh;
     background-color: var(--primary-color);
     position: relative;
     z-index: 1;
-    box-shadow: -3px 4px 16px 4px #00000055;
-
+    box-shadow: -3px 4px 16px 4px rgba(#000, .5);
     transition: background-color var(--base-transition);
 
     .l-bg {
