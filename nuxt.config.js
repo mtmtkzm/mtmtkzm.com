@@ -62,23 +62,20 @@ module.exports = {
       require('autoprefixer')(),
       require('postcss-nested')(),
     ],
-    /*
-     ** Run ESLint on save
-     */
-    extend(config, {isDev, isClient}) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/,
-        })
-      }
-    },
-    extend(config, ctx) {
-      if (ctx.isServer) {
-        spriteSvg.run(path.join(__dirname, 'assets/svg/icons.svg'),
-          path.join(__dirname, '.nuxt/views/app.template.html'))
+    extend(config, {isDev, isClient, isServer}) {
+      // if (isDev && isClient) {
+      //   config.module.rules.push({
+      //     enforce: 'pre',
+      //     test: /\.(js|vue)$/,
+      //     loader: 'eslint-loader',
+      //     exclude: /(node_modules)/,
+      //   })
+      // }
+      if (isServer) {
+        spriteSvg.run(
+          path.join(__dirname, 'assets/svg/icons.svg'),
+          path.join(__dirname, '.nuxt/views/app.template.html')
+        )
       }
     },
   },

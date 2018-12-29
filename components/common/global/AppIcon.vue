@@ -1,11 +1,13 @@
 <template>
-  <svg class="icon"><use :xlink:href="`#icon-${id}`"/></svg>
+  <svg class="icon">
+    <use :xlink:href="`#icon-${name}`"/>
+  </svg>
 </template>
 
 <script>
   export default {
     props: {
-      id: {
+      name: {
         type: String,
         default: ""
       }
