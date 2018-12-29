@@ -33,8 +33,8 @@
 </template>
 
 <script>
-  import themes from '../assets/data/color-themes';
-  import themeSwitcher from '../assets/js/theme-switcher';
+  import themes from '../../assets/data/color-themes';
+  import themeSwitcher from '../../assets/js/theme-switcher';
 
   export default {
     data() {

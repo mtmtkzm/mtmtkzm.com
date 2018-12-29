@@ -5,33 +5,33 @@
       :style="`margin-bottom: ${footerHeight}`"
     >
       <div class="l-content">
-        <my-header/>
+        <TheHeader/>
         <nuxt/>
       </div>
-      <bg class="l-bg"/>
+      <TheBg class="l-bg"/>
     </div>
 
-    <my-footer
+    <TheFooter
       class="l-footer"
       ref="footer"
     />
 
-    <theme-switch class="l-theme-switch"/>
+    <TheThemeSwitcher class="l-theme-switch"/>
   </div>
 </template>
 
 <script>
-  import MyHeader from '~/components/common-header'
-  import MyFooter from '~/components/common-footer'
-  import Bg from '~/components/bg'
-  import ThemeSwitch from '~/components/theme-switch'
+  import TheHeader from '~/components/common/TheHeader'
+  import TheFooter from '~/components/common/TheFooter'
+  import TheBg from '~/components/common/TheBg'
+  import TheThemeSwitcher from '~/components//common/TheThemeSwitcher'
 
   export default {
     components: {
-      MyFooter,
-      MyHeader,
-      Bg,
-      ThemeSwitch,
+      TheFooter,
+      TheHeader,
+      TheBg,
+      TheThemeSwitcher,
     },
 
     data() {
