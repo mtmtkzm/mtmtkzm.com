@@ -5,22 +5,52 @@
         <h2>Say Hello.</h2>
         <ul>
           <li>
-            <a href="//github.com/mtmtkzm">GitHub</a>
+            <a
+              href="//github.com/mtmtkzm"
+              @click="sendGaEvent('gitHub')"
+            >
+              GitHub
+            </a>
           </li>
           <li>
-            <a href="//twitter.com/mtmtkzm">Twitter</a>
+            <a
+              href="//twitter.com/mtmtkzm"
+              @click="sendGaEvent('twitter')"
+            >
+              Twitter
+            </a>
           </li>
           <li>
-            <a href="//www.wantedly.com/users/17812476">Wantedly</a>
+            <a
+              href="//www.wantedly.com/users/17812476"
+              @click="sendGaEvent('wantedly')"
+            >
+              Wantedly
+            </a>
           </li>
           <li>
-            <p>mtmtkzm00@gmail.com</p>
+            <p @click="sendGaEvent('mail')">mtmtkzm00@gmail.com</p>
           </li>
         </ul>
       </div>
     </footer>
   </div>
 </template>
+
+<script>
+  export default {
+    methods: {
+      sendGaEvent: function(type) {
+        this.$ga.event({
+          eventCategory: 'Click Contact at Footer',
+          eventAction: 'Clicked',
+          eventLabel: type, // mail | twitter | github | wantedly
+          eventValue: 1
+        })
+      }
+    }
+  }
+</script>
 
 <style scoped lang="scss">
 

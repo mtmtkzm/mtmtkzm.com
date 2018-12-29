@@ -50,11 +50,17 @@
 
         <h3>仕事をください</h3>
         <p class="social-links">
-          <a href="//twitter.com/mtmtkzm">
+          <a
+            href="//twitter.com/mtmtkzm"
+            @click="sendGaEvent('twitter')"
+          >
             <AppIcon name="twitter"/>
             @mtmtkzm
           </a>
-          <a href="mailto:mtmtkzm00@gmail.com">
+          <a
+            href="mailto:mtmtkzm00@gmail.com"
+            @click="sendGaEvent('mail')"
+          >
             <AppIcon name="mail"/>
             mtmtkzm00@gmail.com
           </a>
@@ -70,6 +76,16 @@
   export default {
     components: {
       ArticleBody
+    },
+    methods: {
+      sendGaEvent: function(type) {
+        this.$ga.event({
+          eventCategory: 'Click Contact at About',
+          eventAction: 'Clicked',
+          eventLabel: type, // mail | twitter
+          eventValue: 1
+        })
+      }
     }
   }
 </script>

@@ -47,6 +47,7 @@
         this.isChoicesOpen = !this.isChoicesOpen;
       },
       choiceClickHandler: function (colors) {
+        this.sendGaEvent(colors.icon);
         this.setTheme(colors);
         this.toggleChoices();
       },
@@ -62,13 +63,16 @@
       // enter が終わるか中止されたらディレイを消す
       afterEnter(el) {
         el.style.transitionDelay = ''
+      },
+      sendGaEvent: function(colorIconName) {
+        this.$ga.event({
+          eventCategory: 'Switching Color Theme',
+          eventAction: 'Switched',
+          eventLabel: colorIconName,
+          eventValue: 1
+        })
       }
-    },
-    mounted: function () {
-      // random でテーマを変えてみる
-      // const random = Math.floor(Math.random() * this.themes.length);
-      // this.setTheme(this.themes[random].colors);
-    },
+    }
   }
 </script>
 
