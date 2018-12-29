@@ -20,11 +20,11 @@
 
         <p class="social-links">
           <a href="//twitter.com/mtmtkzm">
-            <icon :id="`twitter`"/>
+            <AppIcon name="twitter"/>
             @mtmtkzm
           </a>
           <a href="mailto:mtmtkzm00@gmail.com">
-            <icon :id="`mail`"/>
+            <AppIcon name="mail"/>
             mtmtkzm00@gmail.com
           </a>
         </p>
@@ -55,16 +55,6 @@
     </main>
   </div>
 </template>
-
-<script>
-  import icon from '@/components/icon';
-
-  export default {
-    components: {
-      icon,
-    },
-  }
-</script>
 
 <style scoped>
   .main {

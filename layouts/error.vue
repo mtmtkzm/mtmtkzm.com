@@ -37,13 +37,9 @@
   </div>
 </template>
 <script>
-  import icon from '@/components/icon';
   export default {
     props: {
       error: {},
-    },
-    components: {
-      icon,
     },
   }
 </script>

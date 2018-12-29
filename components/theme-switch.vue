@@ -6,7 +6,7 @@
         class="toggle"
         @click="toggleChoices"
       >
-        <icon :id="`command`"/>
+        <AppIcon name="command"/>
       </div>
 
       <transition-group
@@ -24,7 +24,7 @@
           :data-index="index"
           @click="() => choiceClickHandler(theme.colors)"
         >
-          <icon :id="theme.icon"/>
+          <AppIcon :name="theme.icon"/>
         </li>
       </transition-group>
 
@@ -35,7 +35,6 @@
 <script>
   import themes from '../assets/data/color-themes';
   import themeSwitcher from '../assets/js/theme-switcher';
-  import icon from '@/components/icon';
 
   export default {
     data() {
@@ -43,9 +42,6 @@
         themes,
         isChoicesOpen: false,
       }
-    },
-    components: {
-      icon
     },
     methods: {
       toggleChoices: function () {

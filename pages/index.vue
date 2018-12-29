@@ -14,7 +14,7 @@
         <p class="link-about">
           <nuxt-link to="/about">
             More profile
-            <icon :id="`arrow-right`"/>
+            <AppIcon name="arrow-right"/>
           </nuxt-link>
         </p>
       </section>
@@ -47,16 +47,6 @@
     </main>
   </div>
 </template>
-
-<script>
-  import icon from '@/components/icon';
-
-  export default {
-    components: {
-      icon,
-    },
-  }
-</script>
 
 <style scoped>
   .main {
