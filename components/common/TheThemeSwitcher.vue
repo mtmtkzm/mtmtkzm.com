@@ -33,8 +33,7 @@
 </template>
 
 <script>
-  import themes from '../../assets/data/color-themes';
-  import themeSwitcher from '../../assets/js/theme-switcher';
+  import themes from '~/assets/data/color-themes';
 
   export default {
     data() {
@@ -52,7 +51,9 @@
         this.toggleChoices();
       },
       setTheme: function (colors) {
-        themeSwitcher.update(colors);
+        Object.keys(colors).forEach(key => {
+          document.documentElement.style.setProperty(`--${key}-color`, colors[key]);
+        })
       },
       // enter の初めにインデックス×100でディレイを付ける
       beforeEnter(el) {
