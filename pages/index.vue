@@ -14,27 +14,32 @@
           </span>
         </transition>
       </h2>
-      <p>
-        初めまして、ライダーです。<br>
-        株式会社LIG のフロントエンドエンジニアとして、受託でWebサイトやWebサービスの開発をしています。
-      </p>
-      <p>
-        2019年、
-      </p>
-      <ul>
-        <li>週末フリーランスな動き</li>
-        <li>OSSへのコミット</li>
-      </ul>
-      <p>
-        へ少しずつ力を入れていきたいと思っています。
-      </p>
+      <ArticleBody>
+        <p>
+          初めまして、ライダーです。<br>
+          株式会社LIG のフロントエンドエンジニアとして、受託でWebサイトやWebサービスの開発をしています。
+        </p>
 
-      <p class="more-about">
-        <nuxt-link to="/about">
-          More profile
-          <AppIcon name="arrow-right"/>
-        </nuxt-link>
-      </p>
+        <p>
+          2019年、<br>これらに少しずつ、力を入れていきたいと思っています。
+        </p>
+
+        <ul>
+          <li>OSSへのコミット</li>
+          <li>週末フリーランスな動き</li>
+          <li>趣味らしい趣味を見つける</li>
+          <li>年収大幅アップ</li>
+          <li>健康管理をする</li>
+          <li>Sketch/Figmaをツールとして使いこなす</li>
+        </ul>
+
+        <p class="more-about">
+          <nuxt-link to="/about">
+            More profile
+            <AppIcon name="arrow-right"/>
+          </nuxt-link>
+        </p>
+      </ArticleBody>
     </section>
 
     <section class="history">
@@ -103,7 +108,11 @@
 </template>
 
 <script>
+  import ArticleBody from '~/components/common/ArticleBody';
   export default {
+    components: {
+      ArticleBody
+    },
     data () {
       return {
         showWorld: false,
@@ -151,16 +160,11 @@
       }
     }
 
-    p {
-      + p {
-        margin-top: 24px;
-      }
-    }
-
     .more-about {
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      margin-top: 12px;
 
       a {
         display: flex;
@@ -188,16 +192,7 @@
       display: flex;
       align-items: center;
 
-      &::before {
-        content: '';
-        display: block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: var(--secondary-color);
-        margin-right: 10px;
-      }
-
+      &::before,
       &::after {
         content: '';
         display: block;
@@ -205,8 +200,17 @@
         background-color: var(--secondary-color);
         transform: scaleY(0.3);
         flex: 1;
-        margin-left: 10px;
         transition: background-color var(--base-transition);
+      }
+
+      &::before {
+        flex: 1;
+        margin-right: 10px;
+      }
+
+      &::after {
+        flex: 32;
+        margin-left: 10px;
       }
     }
 
