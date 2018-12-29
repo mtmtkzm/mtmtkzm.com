@@ -82,6 +82,9 @@ module.exports = {
       }
     },
   },
+  plugins: [
+    { src: "~/plugins/app-icon.js", ssr: true },
+  ],
   modules: [
     ['@nuxtjs/google-analytics', {
       id: 'UA-59102929-1'
