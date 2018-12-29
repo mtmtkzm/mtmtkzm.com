@@ -1,53 +1,73 @@
 <template>
   <div class="l-page-index">
     <section class="hello">
-      <h2>Hello,</h2>
+      <h2 @click="toggleShowWorld">
+        <span>Hello,</span>
+        <transition
+          name="hello-world"
+        >
+          <span
+            class="hello-world"
+            v-show="showWorld"
+          >
+            <AppIcon name="globe"/>
+          </span>
+        </transition>
+      </h2>
       <p>
-        初めまして、ライダーです。株式会社LIGでフロントエンドエンジニアとして働いています。じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで得意です。
+        初めまして、ライダーです。<br>
+        株式会社LIG のフロントエンドエンジニアとして、受託でWebサイトやWebサービスの開発をしています。
       </p>
-      <p class="link-about">
+      <p>
+        2019年、週末フリーランス的な動きとOSSへのコミットをやっていきたいと思っています。
+      </p>
+
+      <p class="more-about">
         <nuxt-link to="/about">
           More profile
           <AppIcon name="arrow-right"/>
         </nuxt-link>
       </p>
     </section>
+
     <section class="history">
       <h2>Career</h2>
       <div>
         <p class="history-year">2018</p>
         <ul>
-          <li>参画　Vue.js 日本ユーザグループ コアスタッフ</li>
-          <li>留学　LIG Philippines. Inc</li>
+          <li>参画 Vue.js JP コアスタッフ</li>
+          <li>講師 デジハリ STUDIO上野 by LIG</li>
+          <li>留学 LIG Philippines. Inc</li>
         </ul>
 
         <p class="history-year">2017</p>
         <ul>
-          <li>入社　株式会社LIG</li>
-          <li>卒業　名古屋市立大学 芸術工学部</li>
+          <li>入社 株式会社LIG</li>
+          <li>卒業 名古屋市立大学 芸術工学部</li>
         </ul>
 
         <p class="history-year">2016</p>
         <ul>
-          <li>創設　OthloTech（学生コミュニティ）</li>
+          <li>創設 OthloTech（学生コミュニティ）</li>
         </ul>
 
         <p class="history-year">2015</p>
         <ul>
-          <li>入社　株式会社LIG　アルバイト</li>
+          <li>入社 株式会社LIG アルバイト</li>
         </ul>
 
         <p class="history-year">2013</p>
         <ul>
-          <li>入学　名古屋市立大学 芸術工学部</li>
+          <li>入学 名古屋市立大学 芸術工学部</li>
         </ul>
 
         <p class="history-year">2012</p>
         <ul>
-          <li>卒業　京都府立向陽高等学校</li>
+          <li>卒業 京都府立向陽高等学校</li>
         </ul>
       </div>
     </section>
+
     <section class="works">
       <h2>Works</h2>
 
@@ -75,6 +95,21 @@
   </div>
 </template>
 
+<script>
+  export default {
+    data () {
+      return {
+        showWorld: false,
+      }
+    },
+    methods: {
+      toggleShowWorld: function () {
+        this.showWorld = !this.showWorld;
+      }
+    }
+  }
+</script>
+
 <style scoped lang="scss">
   .hello {
     padding: 0 24px;
@@ -83,13 +118,39 @@
       font-size: 56px;
       font-weight: bold;
       padding: 48px 0 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+
+      .hello-world {
+        display: flex;
+        align-items: center;
+        margin-left: 12px;
+
+        .icon {
+          width: 48px;
+          height: 48px;
+        }
+      }
+
+      .hello-world-enter-active,
+      .hello-world-leave-active {
+        transition: all var(--base-transition);
+      }
+      .hello-world-enter,
+      .hello-world-leave-to {
+        opacity: 0;
+        transform: scale(.95);
+      }
     }
 
-    p + p {
-      margin-top: 36px;
+    p {
+      + p {
+        margin-top: 32px;
+      }
     }
 
-    .link-about {
+    .more-about {
       display: flex;
       align-items: center;
       justify-content: flex-end;
