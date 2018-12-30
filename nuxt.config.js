@@ -85,7 +85,8 @@ module.exports = {
   modules: [
     ['@nuxtjs/google-analytics', {
       id: 'UA-59102929-1'
-    }]
+    }],
+    'nuxt-clipboard2',
   ],
   css: [
     'reset-css',

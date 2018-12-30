@@ -24,6 +24,7 @@
     "autoprefixer": "^9.1.2",
     "axios": "^0.18.0",
     "nuxt": "^2.0.0",
+    "nuxt-clipboard2": "^0.2.1",
     "path": "^0.12.7",
     "postcss-custom-properties": "^7.0.0",
     "postcss-nested": "^3.0.0",

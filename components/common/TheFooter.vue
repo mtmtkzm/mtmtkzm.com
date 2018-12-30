@@ -32,7 +32,12 @@
             </a>
           </li>
           <li>
-            <p @click="sendGaEvent('mail')">mtmtkzm00@gmail.com</p>
+            <p
+              class="footer-link-mail"
+              @click="mailClickHandler('mail', 'mtmtkzm00@gmail.com')"
+            >
+              mtmtkzm00@gmail.com
+            </p>
           </li>
         </ul>
       </div>
@@ -43,6 +48,10 @@
 <script>
   export default {
     methods: {
+      mailClickHandler: function (gaEventType, copyingText) {
+        this.sendGaEvent(gaEventType);
+        this.copyText(copyingText);
+      },
       sendGaEvent: function(type) {
         this.$ga.event({
           eventCategory: 'Click Contact at Footer',
@@ -50,6 +59,13 @@
           eventLabel: type, // mail | twitter | github | wantedly
           eventValue: 1
         })
+      },
+      async copyText(text) {
+        try {
+          await this.$copyText(text);
+        } catch (e) {
+          console.error(e);
+        }
       }
     }
   }
@@ -66,6 +82,11 @@
   .footer-inner {
     max-width: var(--max-width);
     margin: 0 auto;
+  }
+
+  .footer-link-mail {
+    display: inline-block;
+    cursor: pointer;
   }
 
   h2 {
