@@ -51,6 +51,10 @@
       mailClickHandler: function (gaEventType, copyingText) {
         this.sendGaEvent(gaEventType);
         this.copyText(copyingText);
+        this.$store.commit('setToast', {
+          text: 'Copied!',
+          icon: 'check'
+        });
       },
       sendGaEvent: function(type) {
         this.$ga.event({

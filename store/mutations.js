@@ -1,7 +1,6 @@
 export default {
-  SET_LANG(state, locale) {
-    if (state.locales.indexOf(locale) !== -1) {
-      state.locale = locale;
-    }
+  setToast(state, {text, icon}) {
+    state.toast.isShow = true;
+    state.toast.body = { text, icon };
   }
 };
