@@ -1,9 +1,9 @@
 export default () => ({
   toast: {
-    isShow: true,
+    isShow: false,
     body: {
-      text: 'toast text.',
-      icon: 'command'
+      text: '',
+      icon: ''
     }
   }
 });

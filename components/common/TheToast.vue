@@ -1,10 +1,16 @@
 <template>
-  <div class="toast">
-    <p class="toast-inner">
-      <AppIcon :name="body.icon"/>
-      {{ body.text }}
-    </p>
-  </div>
+  <transition name="toast">
+    <div
+      v-show="isShow"
+      class="toast"
+      @click="clickHandler"
+    >
+      <p class="toast-inner">
+        <AppIcon :name="body.icon"/>
+        {{ body.text }}
+      </p>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -12,6 +18,14 @@
     computed: {
       body: function () {
         return this.$store.state.toast.body;
+      },
+      isShow: function () {
+        return this.$store.state.toast.isShow;
+      }
+    },
+    methods: {
+      clickHandler: function () {
+        this.$store.commit('destroyToast');
       }
     }
   }

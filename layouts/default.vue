@@ -47,12 +47,6 @@
       }
     },
 
-    computed: {
-      // showToast: function () {
-      //   return this.$store.state.toast.isShow;
-      // }
-    },
-
     mounted: function () {
       this.footerHeight = `${this.$refs.footer.$el.clientHeight}px`;
     },
