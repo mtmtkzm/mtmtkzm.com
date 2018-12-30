@@ -52,6 +52,7 @@
         <p class="social-links">
           <a
             href="//twitter.com/mtmtkzm"
+            target="_blank"
             @click="sendGaEvent('twitter')"
           >
             <AppIcon name="twitter"/>

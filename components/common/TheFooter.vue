@@ -7,6 +7,7 @@
           <li>
             <a
               href="//github.com/mtmtkzm"
+              target="_blank"
               @click="sendGaEvent('gitHub')"
             >
               GitHub
@@ -15,6 +16,7 @@
           <li>
             <a
               href="//twitter.com/mtmtkzm"
+              target="_blank"
               @click="sendGaEvent('twitter')"
             >
               Twitter
@@ -23,6 +25,7 @@
           <li>
             <a
               href="//www.wantedly.com/users/17812476"
+              target="_blank"
               @click="sendGaEvent('wantedly')"
             >
               Wantedly
