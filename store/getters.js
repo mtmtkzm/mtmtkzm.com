@@ -1,7 +1,5 @@
-export const activities = state => {
-  return state.activities;
-};
-
-export const isLoaded = state => {
-  return state.isLoaded;
+export default {
+  otherLocales: function(state) {
+    return state.locales.filter(locale => locale !== this.$i18n.fallbackLocale);
+  }
 };
