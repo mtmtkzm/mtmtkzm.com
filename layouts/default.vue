@@ -20,6 +20,8 @@
     />
 
     <TheThemeSwitcher class="l-theme-switch"/>
+
+    <TheToast/>
   </div>
 </template>
 
@@ -27,7 +29,8 @@
   import TheHeader from '~/components/common/TheHeader'
   import TheFooter from '~/components/common/TheFooter'
   import TheBg from '~/components/common/TheBg'
-  import TheThemeSwitcher from '~/components//common/TheThemeSwitcher'
+  import TheThemeSwitcher from '~/components/common/TheThemeSwitcher'
+  import TheToast from '~/components/common/TheToast'
 
   export default {
     components: {
@@ -35,12 +38,19 @@
       TheHeader,
       TheBg,
       TheThemeSwitcher,
+      TheToast,
     },
 
     data() {
       return {
         footerHeight: '0',
       }
+    },
+
+    computed: {
+      // showToast: function () {
+      //   return this.$store.state.toast.isShow;
+      // }
     },
 
     mounted: function () {
