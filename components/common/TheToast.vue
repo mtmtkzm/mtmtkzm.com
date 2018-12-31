@@ -23,8 +23,19 @@
         return this.$store.state.toast.isShow;
       }
     },
+    watch: {
+      isShow: function () {
+        // Toast 消すときは何もしない
+        if(!this.isShow) return;
+        // 3秒後に Toast を非表示にする
+        setTimeout(this.destroySelf, 3000);
+      }
+    },
     methods: {
       clickHandler: function () {
+        this.destroySelf();
+      },
+      destroySelf: function () {
         this.$store.commit('destroyToast');
       }
     }
