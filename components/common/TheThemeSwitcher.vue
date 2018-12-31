@@ -5,7 +5,7 @@
         class="toggle"
         @click="toggleChoices"
       >
-        <AppIcon name="cloud"/>
+        <AppIcon :name="weatherCurrent"/>
       </div>
 
       <transition-group
@@ -18,7 +18,7 @@
       >
         <li
           v-show="isChoicesOpen"
-          v-for="(weather, index) in weathers"
+          v-for="(weather, index) in weatherList"
           :key="weather.icon"
           :data-index="index"
           @click="() => choiceClickHandler(weather)"
@@ -32,13 +32,18 @@
 </template>
 
 <script>
-  import weathers from '~/assets/data/weather-themes';
-
   export default {
     data() {
       return {
-        weathers,
         isChoicesOpen: false,
+      }
+    },
+    computed: {
+      weatherList: function () {
+        return this.$store.getters.weathers
+      },
+      weatherCurrent: function () {
+        return this.$store.state.weather
       }
     },
     methods: {
@@ -47,13 +52,11 @@
       },
       choiceClickHandler: function (weather) {
         this.sendGaEvent(weather.icon);
-        this.setTheme(weather.colors);
+        this.updateWeather(weather);
         this.toggleChoices();
       },
-      setTheme: function (colors) {
-        Object.keys(colors).forEach(key => {
-          document.documentElement.style.setProperty(`--${key}-color`, colors[key]);
-        })
+      updateWeather: function (weather) {
+        this.$store.commit('updateWeather', weather)
       },
       // enter の初めにインデックス×100でディレイを付ける
       beforeEnter(el) {
