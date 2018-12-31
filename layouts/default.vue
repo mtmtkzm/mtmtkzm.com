@@ -19,7 +19,7 @@
       ref="footer"
     />
 
-    <TheThemeSwitcher class="l-theme-switch"/>
+    <TheWeatherSwitcher class="l-weather-switch"/>
 
     <TheToast/>
   </div>
@@ -29,7 +29,7 @@
   import TheHeader from '~/components/common/TheHeader'
   import TheFooter from '~/components/common/TheFooter'
   import TheBg from '~/components/common/TheBg'
-  import TheThemeSwitcher from '~/components/common/TheThemeSwitcher'
+  import TheWeatherSwitcher from '~/components/common/TheWeatherSwitcher'
   import TheToast from '~/components/common/TheToast'
 
   export default {
@@ -37,7 +37,7 @@
       TheFooter,
       TheHeader,
       TheBg,
-      TheThemeSwitcher,
+      TheWeatherSwitcher,
       TheToast,
     },
 
@@ -94,7 +94,7 @@
     left: 0;
   }
 
-  .l-theme-switch {
+  .l-weather-switch {
     position: fixed;
     bottom: 40px;
     right: 20px;

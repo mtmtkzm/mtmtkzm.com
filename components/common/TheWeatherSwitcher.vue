@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="theme-switch">
+    <div class="weather-switch">
       <div
         class="toggle"
         @click="toggleChoices"
@@ -38,6 +38,7 @@
         isChoicesOpen: false,
       }
     },
+
     computed: {
       weatherList: function () {
         return this.$store.getters.weathers
@@ -46,31 +47,32 @@
         return this.$store.state.weather
       }
     },
+
     methods: {
       toggleChoices: function () {
         this.isChoicesOpen = !this.isChoicesOpen;
       },
       choiceClickHandler: function (weather) {
-        this.sendGaEvent(weather);
         this.updateWeather(weather);
         this.toggleChoices();
       },
       updateWeather: function (weather) {
-        this.$store.commit('updateWeather', weather)
+        this.$store.commit('updateWeather', weather);
+        this.sendGaEvent(weather);
       },
-      // enter の初めにインデックス×100でディレイを付ける
+      // enter の初めにインデックス×75でディレイを付ける
       beforeEnter(el) {
-        el.style.transitionDelay = `${100 * el.dataset.index}ms`
+        el.style.transitionDelay = `${75 * el.dataset.index}ms`
       },
       // enter が終わるか中止されたらディレイを消す
       afterEnter(el) {
         el.style.transitionDelay = ''
       },
-      sendGaEvent: function(colorIconName) {
+      sendGaEvent: function(weather) {
         this.$ga.event({
-          eventCategory: 'Switching Color Theme',
+          eventCategory: 'Switching Color Weather',
           eventAction: 'Switched',
-          eventLabel: colorIconName,
+          eventLabel: weather,
           eventValue: 1
         })
       }
@@ -79,7 +81,7 @@
 </script>
 
 <style scoped lang="scss">
-  .theme-switch {
+  .weather-switch {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
