@@ -18,12 +18,12 @@
       >
         <li
           v-show="isChoicesOpen"
-          v-for="(theme, index) in themes"
-          :key="theme.icon"
+          v-for="(weather, index) in weathers"
+          :key="weather.icon"
           :data-index="index"
-          @click="() => choiceClickHandler(theme.colors)"
+          @click="() => choiceClickHandler(weather.colors)"
         >
-          <AppIcon :name="theme.icon"/>
+          <AppIcon :name="weather.icon"/>
         </li>
       </transition-group>
 
@@ -32,12 +32,12 @@
 </template>
 
 <script>
-  import themes from '~/assets/data/color-themes';
+  import weathers from '~/assets/data/weather-themes';
 
   export default {
     data() {
       return {
-        themes,
+        weathers,
         isChoicesOpen: false,
       }
     },
