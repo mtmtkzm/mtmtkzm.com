@@ -1,12 +1,11 @@
 <template>
   <div>
     <div class="theme-switch">
-
       <div
         class="toggle"
         @click="toggleChoices"
       >
-        <AppIcon name="command"/>
+        <AppIcon name="cloud"/>
       </div>
 
       <transition-group
