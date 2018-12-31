@@ -21,7 +21,7 @@
           v-for="(weather, index) in weathers"
           :key="weather.icon"
           :data-index="index"
-          @click="() => choiceClickHandler(weather.colors)"
+          @click="() => choiceClickHandler(weather)"
         >
           <AppIcon :name="weather.icon"/>
         </li>
@@ -45,9 +45,9 @@
       toggleChoices: function () {
         this.isChoicesOpen = !this.isChoicesOpen;
       },
-      choiceClickHandler: function (colors) {
-        this.sendGaEvent(colors.icon);
-        this.setTheme(colors);
+      choiceClickHandler: function (weather) {
+        this.sendGaEvent(weather.icon);
+        this.setTheme(weather.colors);
         this.toggleChoices();
       },
       setTheme: function (colors) {
