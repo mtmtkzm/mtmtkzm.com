@@ -1,5 +1,6 @@
+const weathers = ['sun', 'cloud', 'cloud-rain', 'cloud-lightning'];
 export default {
   weathers: state => {
-    return ['sun', 'cloud', 'cloud-rain', 'cloud-lightning'].filter(weather => weather !== state.weather);
+    return weathers.filter(weather => weather !== state.weather);
   }
 };
