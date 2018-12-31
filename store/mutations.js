@@ -1,3 +1,5 @@
+import weathers from '~/assets/data/weather-themes';
+
 export default {
   setToast(state, {text, icon}) {
     state.toast.isShow = true;
@@ -10,8 +12,11 @@ export default {
     state.weather = weather.icon;
 
     // CSS変数を直接変更する
-    Object.keys(weather.colors).forEach(key => {
-      document.documentElement.style.setProperty(`--${key}-color`, weather.colors[key]);
+    ['primary', 'secondary'].forEach(key => {
+      document.documentElement.style.setProperty(
+        `--${key}-color`,
+        `var(--${weather.icon}-${key}-color)`
+      );
     })
   }
 };

@@ -1,9 +1,19 @@
 :root {
+  /* WEATHER COLOR THEMES */
+  --sun-primary-color:#C01212;
+  --sun-secondary-color:#ffffff;
+  --cloud-primary-color:#f5f5f5;
+  --cloud-secondary-color:#3f3f3f;
+  --cloud-rain-primary-color:#1B3E91;
+  --cloud-rain-secondary-color:#00FFD9;
+  --cloud-lightning-primary-color:#757575;
+  --cloud-lightning-secondary-color:#F2C94C;
+
   /* COMMON STYLES */
   --base-transition: .3s ease-in-out;
   --color-gray: #303030;
   --max-width: 500px;
 
-  --primary-color: #f5f5f5;
-  --secondary-color: #3f3f3f;
+  --primary-color: var(--cloud-primary-color);
+  --secondary-color: var(--cloud-secondary-color);
 }
