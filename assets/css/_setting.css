@@ -9,11 +9,11 @@
   --color-cloud-lightning-primary:#757575;
   --color-cloud-lightning-secondary:#F2C94C;
 
+  --color-primary: var(--color-cloud-primary);
+  --color-secondary: var(--color-cloud-secondary);
+
   /* COMMON STYLES */
   --base-transition: .3s ease-in-out;
   --color-gray: #303030;
   --max-width: 500px;
-
-  --color-primary: var(--color-cloud-primary);
-  --color-secondary: var(--color-cloud-secondary);
 }

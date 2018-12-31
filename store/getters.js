@@ -1,7 +1,5 @@
-import weathers from '~/assets/data/weather-themes';
-
 export default {
   weathers: state => {
-    return weathers.filter(weather => weather.icon !== state.weather);
+    return ['sun', 'cloud', 'cloud-rain', 'cloud-lightning'].filter(weather => weather !== state.weather);
   }
 };

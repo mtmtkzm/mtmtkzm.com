@@ -19,11 +19,11 @@
         <li
           v-show="isChoicesOpen"
           v-for="(weather, index) in weatherList"
-          :key="weather.icon"
+          :key="weather"
           :data-index="index"
           @click="() => choiceClickHandler(weather)"
         >
-          <AppIcon :name="weather.icon"/>
+          <AppIcon :name="weather"/>
         </li>
       </transition-group>
 
@@ -51,7 +51,7 @@
         this.isChoicesOpen = !this.isChoicesOpen;
       },
       choiceClickHandler: function (weather) {
-        this.sendGaEvent(weather.icon);
+        this.sendGaEvent(weather);
         this.updateWeather(weather);
         this.toggleChoices();
       },
