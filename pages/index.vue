@@ -41,38 +41,42 @@
       </ArticleBody>
     </section>
 
-    <section class="history">
+    <section class="career">
       <h2>Career</h2>
       <div>
-        <p class="history-year">2018</p>
+        <p class="career-year">2019</p>
+        <ul>
+          <li>未定 なにしようかな！</li>
+        </ul>
+        <p class="career-year">2018</p>
         <ul>
           <li>参画 Vue.js JP コアスタッフ</li>
           <li>講師 デジハリ STUDIO上野 by LIG</li>
           <li>留学 LIG Philippines. Inc</li>
         </ul>
 
-        <p class="history-year">2017</p>
+        <p class="career-year">2017</p>
         <ul>
           <li>入社 株式会社LIG</li>
           <li>卒業 名古屋市立大学 芸術工学部</li>
         </ul>
 
-        <p class="history-year">2016</p>
+        <p class="career-year">2016</p>
         <ul>
           <li>創設 OthloTech（学生コミュニティ）</li>
         </ul>
 
-        <p class="history-year">2015</p>
+        <p class="career-year">2015</p>
         <ul>
           <li>入社 株式会社LIG アルバイト</li>
         </ul>
 
-        <p class="history-year">2013</p>
+        <p class="career-year">2013</p>
         <ul>
           <li>入学 名古屋市立大学 芸術工学部</li>
         </ul>
 
-        <p class="history-year">2012</p>
+        <p class="career-year">2012</p>
         <ul>
           <li>卒業 京都府立向陽高等学校</li>
         </ul>
@@ -176,7 +180,7 @@
     }
   }
 
-  .history {
+  .career {
     padding: 0 24px;
 
     h2 {
@@ -185,7 +189,7 @@
       padding: 36px 0 0;
     }
 
-    .history-year {
+    .career-year {
       margin-top: 30px;
       font-weight: bold;
       display: flex;
