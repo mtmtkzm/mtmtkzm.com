@@ -19,6 +19,6 @@
   .icon {
     width: 18px;
     height: 18px;
-    fill: var(--secondary-color);
+    fill: var(--color-secondary);
   }
 </style>

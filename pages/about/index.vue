@@ -151,7 +151,7 @@
       display: block;
       width: 100%;
       padding-top: 42.9%;
-      background-color: var(--primary-color);
+      background-color: var(--color-primary);
 
       transition: background-color var(--base-transition);
     }

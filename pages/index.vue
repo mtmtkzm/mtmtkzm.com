@@ -200,7 +200,7 @@
         content: '';
         display: block;
         height: 1px;
-        background-color: var(--secondary-color);
+        background-color: var(--color-secondary);
         transform: scaleY(0.3);
         flex: 1;
         transition: background-color var(--base-transition);

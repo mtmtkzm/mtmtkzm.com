@@ -9,7 +9,7 @@ body {
   font-size: 14px;
   letter-spacing: .1em;
   line-height: 1.75;
-  color: var(--secondary-color);
+  color: var(--color-secondary);
 }
 
 a {

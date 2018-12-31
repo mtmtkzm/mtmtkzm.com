@@ -47,7 +47,7 @@
   }
 
   path {
-    fill: var(--primary-color);
+    fill: var(--color-primary);
     mix-blend-mode: multiply;
     animation: fuwa 9s infinite alternate-reverse;
 

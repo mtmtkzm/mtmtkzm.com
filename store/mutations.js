@@ -12,10 +12,10 @@ export default {
     state.weather = weather.icon;
 
     // CSS変数を直接変更する
-    ['primary', 'secondary'].forEach(key => {
+    ['primary', 'secondary'].forEach(level => {
       document.documentElement.style.setProperty(
-        `--${key}-color`,
-        `var(--${weather.icon}-${key}-color)`
+        `--color-${level}`,
+        `var(--color-${weather.icon}-${level})`
       );
     })
   }

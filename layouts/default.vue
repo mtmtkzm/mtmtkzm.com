@@ -62,7 +62,7 @@
   .l-contents {
     width: 100%;
     min-height: 100vh;
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
     position: relative;
     z-index: 1;
     box-shadow: -3px 4px 16px 4px rgba(#000, .5);

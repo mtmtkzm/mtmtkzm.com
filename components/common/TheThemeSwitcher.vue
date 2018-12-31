@@ -85,7 +85,7 @@
     align-items: center;
 
     .icon {
-      fill: var(--primary-color);
+      fill: var(--color-primary);
     }
   }
 
@@ -93,8 +93,8 @@
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,8 +114,8 @@
       width: 36px;
       height: 36px;
       border-radius: 20px;
-      background-color: var(--secondary-color);
-      color: var(--primary-color);
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
 
       display: flex;
       align-items: center;
