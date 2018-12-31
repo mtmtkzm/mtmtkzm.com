@@ -64,6 +64,7 @@
       width: 16px;
       height: 16px;
       margin-right: 6px;
+      fill: var(--color-gray);
     }
   }
 
