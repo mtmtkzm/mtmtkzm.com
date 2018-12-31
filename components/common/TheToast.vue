@@ -66,4 +66,14 @@
       margin-right: 6px;
     }
   }
+
+  .toast-enter-active,
+  .toast-leave-active {
+    transition: opacity var(--base-transition), transform var(--base-transition);
+  }
+  .toast-enter,
+  .toast-leave-to {
+    opacity: 0;
+    transform:  translateX(-5px);
+  }
 </style>
