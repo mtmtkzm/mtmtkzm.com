@@ -96,7 +96,7 @@
 
   .l-weather-switch {
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
     right: 20px;
     z-index: 3;
   }
