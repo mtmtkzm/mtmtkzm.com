@@ -3,7 +3,6 @@
     netlify
     name="instance-message"
     class="instance-message"
-    :action="`${$route.path}?sent-instance-message`"
   >
     <textarea
       name="message"
