@@ -45,8 +45,8 @@
 <style scoped lang="scss">
   .toast {
     position: fixed;
-    bottom: 10px;
-    left: 10px;
+    bottom: 20px;
+    left: 20px;
     z-index: 5;
     border-radius: 5px;
     padding: 5px 15px;
