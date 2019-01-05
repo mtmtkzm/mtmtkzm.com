@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Montserrat:800',
+        href: 'https://fonts.googleapis.com/css?family=Montserrat:400,800',
       },
       {
         rel: 'stylesheet',
