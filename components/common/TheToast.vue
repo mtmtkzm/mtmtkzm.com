@@ -49,7 +49,7 @@
     left: 20px;
     z-index: 5;
     border-radius: 5px;
-    padding: 5px 15px;
+    padding: 10px 20px;
     color: var(--color-gray);
     background-color: #fff;
     box-shadow: 0 2px 10px 0 rgba(#303030, .5);
