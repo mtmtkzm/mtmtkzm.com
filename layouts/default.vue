@@ -48,8 +48,24 @@
     },
 
     mounted: function () {
-      this.footerHeight = `${this.$refs.footer.$el.clientHeight}px`;
+      this.setFooterHeight();
+      this.setToastByQuery();
     },
+
+    methods: {
+      setFooterHeight: function () {
+        this.footerHeight = `${this.$refs.footer.$el.clientHeight}px`;
+      },
+      setToastByQuery: function () {
+        // Query に sent-instance-message があったら
+        if (!this.$route.query.hasOwnProperty('sent-instance-message')) return;
+        this.$store.commit('setToast', {
+          text: 'Thank you for the message!',
+          icon: 'send'
+        });
+      }
+
+    }
   }
 </script>
 
