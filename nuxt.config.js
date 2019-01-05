@@ -1,66 +1,21 @@
-const fs = require('fs');
-const path = require('path');
-
-function customizeAppTemplate () {
-  fs.readFile(path.join(__dirname, 'assets/svg/icons.svg'), 'utf8', function (err, data) {
-    if (err) throw err;
-
-    fs.open(path.join(__dirname, '.nuxt/views/app.template.html'), 'w', function (err, fd) {
-      if (err) throw err;
-
-      const resultStr =
-        '<!--' +
-        '\n __    __ _______ __    __ _______ _   ________ __    __' +
-        '\n|  \\  /  |__   __|  \\  /  |__   __| | / /___  /|  \\  /  |' +
-        '\n| \\ \\/ / |  | |  | \\ \\/ / |  | |  | |/ /   / / | \\ \\/ / |' +
-        '\n| |\\  /| |  | |  | |\\  /| |  | |  |  _ \\  / /__| |\\  /| |' +
-        '\n|_| \\/ |_|  |_|  |_| \\/ |_|  |_|  |_| \\_\\/_____|_| \\/ |_|' +
-        '\n-->' +
-        '<!DOCTYPE html>\n' +
-        '<html {{ HTML_ATTRS }}>\n' +
-        '  <head>\n' +
-        '    {{ HEAD }}\n' +
-        '  </head>\n' +
-        '  <body {{ BODY_ATTRS }}>\n' +
-        data +
-        '    {{ APP }}\n' +
-        '  </body>\n' +
-        '</html>';
-      const buffer = new Buffer(resultStr);
-
-      fs.write(fd, buffer, 0, buffer.length, null, function (err) {
-        if (err) throw err;
-        fs.close(fd, function () {
-          // done!
-        })
-      })
-    })
-
-  })
-}
-
-const general = {
-  title: 'MTMTKZM - Front-End Developer ライダーのポートフォリオサイト',
-  description: '東京で働くフロントエンドエンジニア、ライダーのポートフォリオサイトです。じっくりひとつの技術極めることが得意ではない一方、サービスの案を考えたり作ったりすることが好きで得意です。',
-  url: 'https://mtmtkzm.com',
-  account: '@mtmtkzm'
-};
+import general from './config/head';
+import customizeAppTemplate from './config/customize-app-template';
 
 module.exports = {
   generate: {
     fallback: true,
   },
   head: {
-    title: general.title,
     htmlAttrs: {
       lang: 'ja'
     },
+    title: general.title,
     meta: [
       // Basic
       { charset: 'UTF-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: general.description },
-      { name: 'apple-mobile-web-app-title', content: 'maner' },
+      { name: 'description', content: general.description },
+      { name: 'apple-mobile-web-app-title', content: 'mtmtkzm' },
       // Open Graph
       { property: 'og:title', content: general.title },
       { property: 'og:description', content: general.description },
@@ -84,7 +39,7 @@ module.exports = {
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Montserrat:400,800',
+        href: 'https://fonts.googleapis.com/css?family=Montserrat:800',
       },
       {
         rel: 'stylesheet',
@@ -94,6 +49,7 @@ module.exports = {
   },
   loading: {color: '#ffffff'},
   build: {
+    publicPath: '/mtmtkzm/',
     postcss: [
       require('postcss-sass-color-functions')(),
       require('postcss-custom-properties')(),
