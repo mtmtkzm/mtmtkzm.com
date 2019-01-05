@@ -1,52 +1,51 @@
 <template>
-  <div>
-    <footer class="footer">
-      <div class="footer-inner">
-        <h2>Say Hello.</h2>
-        <ul>
-          <li>
-            <a
-              href="//github.com/mtmtkzm"
-              target="_blank"
-              @click="sendGaEvent('gitHub')"
-            >
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a
-              href="//twitter.com/mtmtkzm"
-              target="_blank"
-              @click="sendGaEvent('twitter')"
-            >
-              Twitter
-            </a>
-          </li>
-          <li>
-            <a
-              href="//www.wantedly.com/users/17812476"
-              target="_blank"
-              @click="sendGaEvent('wantedly')"
-            >
-              Wantedly
-            </a>
-          </li>
-          <li>
-            <p
-              class="footer-link-mail"
-              @click="mailClickHandler('mail', 'mtmtkzm00@gmail.com')"
-            >
-              mtmtkzm00@gmail.com
-            </p>
-          </li>
-        </ul>
+  <footer class="footer">
+    <div class="footer-inner">
+      <h2>Say Hello.</h2>
+      <ul>
+        <li>
+          <a
+            href="//twitter.com/mtmtkzm"
+            target="_blank"
+            @click="sendGaEvent('twitter')"
+          >Twitter</a>
+        </li>
+        <li>
+          <a
+            href="//github.com/mtmtkzm"
+            target="_blank"
+            @click="sendGaEvent('gitHub')"
+          >GitHub</a>
+        </li>
+        <li>
+          <a
+            href="//www.wantedly.com/users/17812476"
+            target="_blank"
+            @click="sendGaEvent('wantedly')"
+          >Wantedly</a>
+        </li>
+        <li>
+          <p
+            class="footer-link-mail"
+            @click="mailClickHandler('mail', 'mtmtkzm00@gmail.com')"
+          >mtmtkzm00@gmail.com</p>
+        </li>
+      </ul>
+
+      <div class="footer-message">
+        <InstanceMessage/>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </template>
 
 <script>
+  import InstanceMessage from '~/components/common/InstanceMessage';
+
   export default {
+    components: {
+      InstanceMessage
+    },
     methods: {
       mailClickHandler: function (gaEventType, copyingText) {
         this.sendGaEvent(gaEventType);
@@ -78,9 +77,31 @@
 <style scoped lang="scss">
 
   .footer {
-    padding: 32px 24px 48px;
+    box-sizing: border-box;
+    padding: 36px 24px 72px;
     background-color: var(--color-gray);
     color: white;
+
+    h2 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    ul {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      li {
+        &:not(:last-of-type) {
+          &::after {
+            content: '|';
+            margin: 0 10px;
+          }
+        }
+      }
+    }
   }
 
   .footer-inner {
@@ -93,16 +114,11 @@
     cursor: pointer;
   }
 
-  h2 {
-    font-size: 36px;
-    font-weight: bold;
+  .footer-message {
+    margin-top: 20px;
   }
 
-  ul {
-    margin-top: 16px;
-    margin-left: 20px;
-
-    list-style: circle;
+  .footer-copy {
+    margin-top: 20px;
   }
-
 </style>
