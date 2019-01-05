@@ -27,8 +27,8 @@
       isShow: function () {
         // Toast 消すときは何もしない
         if(!this.isShow) return;
-        // 3秒後に Toast を非表示にする
-        setTimeout(this.destroySelf, 3000);
+        // 数秒後に Toast を非表示にする
+        setTimeout(this.destroySelf, 4500);
       }
     },
     methods: {

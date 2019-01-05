@@ -56,19 +56,29 @@
     display: flex;
     align-items: center;
     color: #fff;
+    fill: #fff;
     background-color: transparent;
     padding: 10px 20px;
     font-family: unset;
     font-size: 14px;
     letter-spacing: 0.05em;
     border: 1px solid #fff;
+    outline: none;
     cursor: pointer;
 
+    &:focus {
+      .icon {
+        transform: rotate(45deg);
+        margin-right: 12px;
+      }
+    }
+
     .icon {
-      fill: #fff;
+      fill: inherit;
       margin-right: 5px;
       width: 14px;
       height: 14px;
+      transition: all var(--base-transition);
     }
   }
 </style>
