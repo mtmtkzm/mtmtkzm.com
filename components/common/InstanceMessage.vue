@@ -38,6 +38,7 @@
       outline: none;
       font-size: 16px;
       font-family: unset;
+      border-radius: 0;
     }
   }
 
