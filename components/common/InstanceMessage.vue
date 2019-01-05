@@ -1,9 +1,13 @@
 <template>
   <form
-    netlify
-    name="instance-message"
     class="instance-message"
+    name="instance-message"
+    netlify-honeypot="bot-field"
+    :action="`${$route.path}?sent-instance-message`"
+    data-netlify="true"
+    method="post"
   >
+    <input type="hidden" name="form-name" value="instance-message" />
     <textarea
       name="message"
       placeholder="Say Hello!"
