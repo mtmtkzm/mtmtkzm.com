@@ -6,7 +6,7 @@
   "private": true,
   "config": {
     "nuxt": {
-      "host": "0.0.0.0",
+      "host": "localhost",
       "port": "3333"
     }
   },
@@ -24,7 +24,7 @@
     "autoprefixer": "^9.1.2",
     "axios": "^0.18.0",
     "fs": "0.0.1-security",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.4.2",
     "nuxt-clipboard2": "^0.2.1",
     "path": "^0.12.7",
     "postcss-custom-properties": "^7.0.0",
