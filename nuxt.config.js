@@ -52,11 +52,11 @@ module.exports = {
     publicPath: '/mtmtkzm/',
     postcss: {
       plugins: {
+        'postcss-import': {},
         'postcss-sass-color-functions': {},
         'postcss-custom-properties': {},
         'autoprefixer': {},
         'postcss-nested': {},
-        'postcss-import': {},
       },
     },
     extend(config, {isDev, isClient, isServer}) {
@@ -76,6 +76,6 @@ module.exports = {
   ],
   css: [
     'reset-css',
-    '@/assets/css/style.css',
+    '~/assets/css/style.css',
   ],
 };
