@@ -111,6 +111,8 @@
   }
 
   .l-weather-switch {
+    width: 100%;
+    padding: 0 calc((100% - 650px) / 2);
     position: fixed;
     bottom: 20px;
     right: 20px;
