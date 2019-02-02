@@ -117,8 +117,4 @@
   .footer-message {
     margin-top: 20px;
   }
-
-  .footer-copy {
-    margin-top: 20px;
-  }
 </style>

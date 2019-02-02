@@ -18,7 +18,7 @@
         <AppIcon name="send"/>
         <span>Submit</span>
       </button>
-      <p>匿名のため返信はありません。</p>
+      <p>匿名のため返信はありません</p>
     </div>
   </form>
 </template>
@@ -34,11 +34,12 @@
       box-sizing: border-box;
       background-color: transparent;
       border: 1px solid #fff;
-      color: #fff;
-      outline: none;
-      font-size: 16px;
-      font-family: unset;
       border-radius: 0;
+      outline: none;
+      color: #fff;
+      font-family: unset;
+      font-size: 16px;
+      letter-spacing: 0.05em;
     }
   }
 

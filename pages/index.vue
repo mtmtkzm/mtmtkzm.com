@@ -20,15 +20,7 @@
           株式会社LIGでフロントエンドエンジニアとして、受託でWebサイトやWebサービスの開発をしています。
         </p>
 
-        <p>これから力を入れて頑張っていきたいことです。</p>
-
-        <ul>
-          <li>健康管理をする</li>
-          <li>週末フリーランスな動き</li>
-          <li>OSSへのコミット</li>
-          <li>趣味らしい趣味を見つける</li>
-          <li>デザインツールを使いこなす</li>
-        </ul>
+        <p>仕事（会社）では、かっこいいものより便利なものを作ることに携わりたいと思っています。</p>
 
         <p class="more-about">
           <nuxt-link to="/about">
@@ -46,6 +38,7 @@
         <ul>
           <li>未定 なにしようかな！</li>
         </ul>
+
         <p class="career-year">2018</p>
         <ul>
           <li>参画 Vue.js JP コアスタッフ</li>
@@ -199,7 +192,7 @@
         display: block;
         height: 1px;
         background-color: var(--color-secondary);
-        transform: scaleY(0.3);
+        transform: scaleY(0.25);
         flex: 1;
         transition: background-color var(--base-transition);
       }
@@ -259,15 +252,15 @@
     }
 
     .work-maner {
-      background: url('/images/maner.png') center center/cover;
+      background: url('~assets/images/works/maner.png') center center/cover;
     }
 
     .work-lig-projects {
-      background: url('/images/lig-projects.png') center center/cover;
+      background: url('~assets/images/works/lig-projects.png') center center/cover;
     }
 
     .work-lig-articles {
-      background: url('/images/lig-articles.png') center center/cover;
+      background: url('~assets/images/works/lig-articles.png') center center/cover;
     }
 
   }
