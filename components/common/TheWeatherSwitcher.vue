@@ -86,7 +86,7 @@
     flex-direction: row-reverse;
     align-items: center;
 
-    .icon {
+    .app-icon {
       fill: var(--color-primary);
     }
   }

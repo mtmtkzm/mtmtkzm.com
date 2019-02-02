@@ -108,7 +108,7 @@
         align-items: center;
       }
 
-      .icon {
+      .app-icon {
         margin-right: 12px;
       }
     }

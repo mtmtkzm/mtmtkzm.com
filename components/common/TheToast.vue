@@ -60,7 +60,7 @@
     align-items: center;
     justify-content: center;
 
-    .icon {
+    .app-icon {
       width: 16px;
       height: 16px;
       margin-right: 6px;

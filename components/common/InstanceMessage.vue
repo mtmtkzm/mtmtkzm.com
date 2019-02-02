@@ -68,13 +68,13 @@
     cursor: pointer;
 
     &:focus {
-      .icon {
+      .app-icon {
         transform: rotate(45deg);
         margin-right: 12px;
       }
     }
 
-    .icon {
+    .app-icon {
       fill: inherit;
       margin-right: 5px;
       width: 14px;

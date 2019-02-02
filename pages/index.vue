@@ -144,7 +144,7 @@
         align-items: center;
         margin-left: 12px;
 
-        .icon {
+        .app-icon {
           width: 48px;
           height: 48px;
         }
@@ -172,7 +172,7 @@
         align-items: center;
       }
 
-      .icon {
+      .app-icon {
         margin-left: 12px;
       }
     }

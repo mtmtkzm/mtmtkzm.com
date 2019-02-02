@@ -1,5 +1,5 @@
 <template>
-  <svg class="icon">
+  <svg class="app-icon">
     <use :xlink:href="`#icon-${name}`"/>
   </svg>
 </template>
@@ -16,7 +16,7 @@
 </script>
 
 <style>
-  .icon {
+  .app-icon {
     width: 18px;
     height: 18px;
     fill: var(--color-secondary);
