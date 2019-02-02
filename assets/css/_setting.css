@@ -13,7 +13,7 @@
   --color-secondary: var(--color-cloud-secondary);
 
   /* COMMON STYLES */
-  --base-transition: .3s ease-in-out;
+  --base-transition: .2s ease-in-out;
   --color-gray: #303030;
   --max-width: 500px;
 }

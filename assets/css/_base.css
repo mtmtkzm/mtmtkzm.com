@@ -12,9 +12,20 @@ body {
   color: var(--color-secondary);
 }
 
+*::selection {
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+  opacity: .25;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+  transition: opacity var(--base-transition);
+
+  &:hover {
+    opacity: .5;
+  }
 }
 
 img {

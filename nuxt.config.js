@@ -47,7 +47,7 @@ module.exports = {
       },
     ],
   },
-  loading: {color: '#ffffff'},
+  loading: { color: '#ffffff' },
   build: {
     publicPath: '/mtmtkzm/',
     postcss: {
@@ -76,6 +76,6 @@ module.exports = {
   ],
   css: [
     'reset-css',
-    '~/assets/css/style.css',
+    '~/assets/css/style',
   ],
 };
