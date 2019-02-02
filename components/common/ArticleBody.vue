@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   h3 {
     margin: 30px 0 10px;
     font-size: 20px;

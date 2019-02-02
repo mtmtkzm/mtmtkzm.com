@@ -91,7 +91,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   .l-page-about {
     padding-bottom: 45px;
   }

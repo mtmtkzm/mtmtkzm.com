@@ -127,7 +127,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   .hello {
     padding: 0 24px;
 

@@ -32,7 +32,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   .bg {
     position: relative;
     width: 100%;

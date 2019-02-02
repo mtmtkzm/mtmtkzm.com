@@ -42,7 +42,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   .toast {
     position: fixed;
     bottom: 20px;

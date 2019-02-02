@@ -80,7 +80,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   .weather-switch {
     display: flex;
     flex-direction: row-reverse;

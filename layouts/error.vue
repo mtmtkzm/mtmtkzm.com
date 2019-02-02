@@ -66,7 +66,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   .introduction {
     padding: 0 0 45px;
   }

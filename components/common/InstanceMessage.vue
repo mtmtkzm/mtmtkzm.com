@@ -23,7 +23,7 @@
   </form>
 </template>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   .instance-message {
     width: 100%;
 

@@ -69,7 +69,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
   .l-main {
     max-width: var(--max-width);
     margin: 0 auto;
