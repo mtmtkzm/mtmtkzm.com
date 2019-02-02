@@ -1,18 +1,23 @@
 <template>
   <div>
     <div class="bg">
-      <svg x="0px" y="0px" width="100%" height="100%">
+      <svg
+        x="0px"
+        y="0px"
+        width="100%"
+        height="100%"
+      >
         <path
           v-for="(path, index) in paths"
           :key="index"
           :d="path[0]"
         >
           <animate
-            :repeatCount="`indefinite`"
-            :attributeName="`d`"
-            :attributeType="`XML`"
+            repeatCount="indefinite"
+            attributeName="d"
+            attributeType="XML"
             :values="path.join(';')"
-            :dur="`12s`"
+            dur="12s"
           />
         </path>
       </svg>
@@ -24,11 +29,9 @@
   import paths from '~/assets/data/animate-paths';
 
   export default {
-    data() {
-      return {
-        paths,
-      }
-    },
+    computed: {
+      paths: () => paths
+    }
   }
 </script>
 
