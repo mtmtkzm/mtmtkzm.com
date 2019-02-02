@@ -50,21 +50,16 @@ module.exports = {
   loading: {color: '#ffffff'},
   build: {
     publicPath: '/mtmtkzm/',
-    postcss: [
-      require('postcss-sass-color-functions')(),
-      require('postcss-custom-properties')(),
-      require('autoprefixer')(),
-      require('postcss-nested')(),
-    ],
+    postcss: {
+      plugins: {
+        'postcss-sass-color-functions': {},
+        'postcss-custom-properties': {},
+        'autoprefixer': {},
+        'postcss-nested': {},
+        'postcss-import': {},
+      },
+    },
     extend(config, {isDev, isClient, isServer}) {
-      // if (isDev && isClient) {
-      //   config.module.rules.push({
-      //     enforce: 'pre',
-      //     test: /\.(js|vue)$/,
-      //     loader: 'eslint-loader',
-      //     exclude: /(node_modules)/,
-      //   })
-      // }
       if (isServer) {
         customizeAppTemplate();
       }
