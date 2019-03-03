@@ -21,6 +21,7 @@ export default {
   },
 
   setArticles(state, articles) {
-    state.articles = articles;
+    state.articles.list = articles;
+    state.articles.isLoading = false;
   }
 };

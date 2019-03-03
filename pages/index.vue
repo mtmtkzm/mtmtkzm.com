@@ -33,21 +33,30 @@
 
     <section class="articles">
       <h2>Articles</h2>
-      <ul class="article-list">
-        <li
-          v-for="article in articles"
-          :key="article.url"
-          class="article-item"
-        >
-          <a
-            :href="article.url" target="_blank"
+      <template v-if="isLoadingArticles">
+        Loading Articles ....
+      </template>
+      <template v-else>
+        <ul class="article-list">
+          <li
+            v-for="article in articles"
+            :key="article.url"
+            class="article-item"
           >
-            <article>
-              <h4>{{ article.title }}</h4>
-            </article>
-          </a>
-        </li>
-      </ul>
+            <a :href="article.url" target="_blank">
+              <article>
+                <div class="article-item-header">
+                  <time>{{ article.dateText }}</time>
+                  <span>#{{ article.type }}</span>
+                </div>
+                <div class="article-item-body">
+                  <h3>{{ article.title }}</h3>
+                </div>
+              </article>
+            </a>
+          </li>
+        </ul>
+      </template>
     </section>
 
     <section class="career">
@@ -135,6 +144,9 @@
     computed: {
       articles: function () {
         return this.$store.getters.recentArticles;
+      },
+      isLoadingArticles: function () {
+        return this.$store.state.articles.isLoading;
       }
     },
     mounted: function () {
@@ -209,7 +221,14 @@
     }
 
     .article-item {
-      border-top: 1px solid black;
+      border-top: 1px solid var(--color-gray);
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 24px;
+      }
     }
   }
 
