@@ -40,12 +40,10 @@
           class="article-item"
         >
           <a
-            :href="article.url"
-            target="_blank"
+            :href="article.url" target="_blank"
           >
             <article>
-              <h3>{{ article.title }}</h3>
-              <p>{{ article.desc }}</p>
+              <h4>{{ article.title }}</h4>
             </article>
           </a>
         </li>
@@ -134,6 +132,11 @@
         showWorld: false,
       }
     },
+    computed: {
+      articles: function () {
+        return this.$store.getters.recentArticles;
+      }
+    },
     mounted: function () {
       this.$store.dispatch('getArticles');
     },
@@ -142,11 +145,6 @@
         this.showWorld = !this.showWorld;
       }
     },
-    computed: {
-      articles: function () {
-        return this.$store.state.articles;
-      }
-    }
   }
 </script>
 
@@ -204,11 +202,15 @@
   .articles {
     padding: 0 24px;
 
-  h2 {
-    font-size: 56px;
-    font-weight: bold;
-    padding: 36px 0 0;
-  }
+    h2 {
+      font-size: 56px;
+      font-weight: bold;
+      padding: 36px 0 0;
+    }
+
+    .article-item {
+      border-top: 1px solid black;
+    }
   }
 
   .career {

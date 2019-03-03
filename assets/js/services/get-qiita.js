@@ -1,5 +1,5 @@
 import * as u from '../utils'
-const axios = require('axios');
+import axios from 'axios';
 const API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
 
 export default function () {
@@ -19,16 +19,11 @@ export default function () {
 }
 
 function selectNecessaryData (response) {
-  let necessaryData = [];
-  response.data.forEach( item => {
-    necessaryData.push({
-      type: 'qiita',
-      date: Date.parse(item.updated_at),
-      title: item.title,
-      desc: u.extractDescription(item.rendered_body),
-      url: item.url,
-    });
-  });
-
-  return necessaryData;
+  return response.data.map(item => ({
+    type: 'qiita',
+    date: Date.parse(item.updated_at),
+    title: item.title,
+    desc: u.extractDescription(item.rendered_body),
+    url: item.url,
+  }));
 }

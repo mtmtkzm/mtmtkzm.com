@@ -6,7 +6,7 @@ export default function () {
   return axios.get(API_PATH, {
     params: {
       'author': '396',
-      'per_page': '5'
+      'per_page': '10'
     }
   })
     .then(response => {
@@ -19,16 +19,11 @@ export default function () {
 }
 
 function selectNecessaryData (response) {
-  let necessaryData = [];
-  response.data.forEach( item => {
-    necessaryData.push({
-      type: 'ligblog',
-      date: Date.parse(item.date),
-      title: item.title.rendered,
-      desc: u.extractDescription(item.excerpt.rendered, 60),
-      url: item.link,
-    });
-
-  });
-  return necessaryData;
+  return response.data.map(item => ({
+    type: 'ligblog',
+    date: Date.parse(item.date),
+    title: item.title.rendered,
+    desc: u.extractDescription(item.excerpt.rendered, 60),
+    url: item.link,
+  }));
 }
