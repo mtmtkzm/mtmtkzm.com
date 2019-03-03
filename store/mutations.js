@@ -3,9 +3,11 @@ export default {
     state.toast.isShow = true;
     state.toast.body = { text, icon };
   },
+
   destroyToast(state) {
     state.toast.isShow = false;
   },
+
   updateWeather(state, weather) {
     state.weather = weather;
 
@@ -16,5 +18,9 @@ export default {
         `var(--color-${weather}-${level})`
       );
     })
+  },
+
+  setArticles(state, articles) {
+    state.articles = articles;
   }
 };

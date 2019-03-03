@@ -31,6 +31,27 @@
       </ArticleBody>
     </section>
 
+    <section class="articles">
+      <h2>Articles</h2>
+      <ul class="article-list">
+        <li
+          v-for="article in articles"
+          :key="article.url"
+          class="article-item"
+        >
+          <a
+            :href="article.url"
+            target="_blank"
+          >
+            <article>
+              <h3>{{ article.title }}</h3>
+              <p>{{ article.desc }}</p>
+            </article>
+          </a>
+        </li>
+      </ul>
+    </section>
+
     <section class="career">
       <h2>Career</h2>
       <div>
@@ -103,6 +124,7 @@
 
 <script>
   import ArticleBody from '~/components/common/ArticleBody';
+
   export default {
     components: {
       ArticleBody
@@ -112,9 +134,17 @@
         showWorld: false,
       }
     },
+    mounted: function () {
+      this.$store.dispatch('getArticles');
+    },
     methods: {
       toggleShowWorld: function () {
         this.showWorld = !this.showWorld;
+      }
+    },
+    computed: {
+      articles: function () {
+        return this.$store.state.articles;
       }
     }
   }
@@ -124,144 +154,154 @@
   .hello {
     padding: 0 24px;
 
-    h2 {
-      font-size: 56px;
-      font-weight: bold;
-      padding: 48px 0 10px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
+  h2 {
+    font-size: 56px;
+    font-weight: bold;
+    padding: 48px 0 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
 
-      .hello-world {
-        display: flex;
-        align-items: center;
-        margin-left: 12px;
+  .hello-world {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
 
-        .app-icon {
-          width: 48px;
-          height: 48px;
-        }
-      }
+  .app-icon {
+    width: 48px;
+    height: 48px;
+  }
+  }
 
-      .hello-world-enter-active,
-      .hello-world-leave-active {
-        transition: all var(--base-transition);
-      }
-      .hello-world-enter,
-      .hello-world-leave-to {
-        opacity: 0;
-        transform: scale(.95);
-      }
-    }
+  .hello-world-enter-active,
+  .hello-world-leave-active {
+    transition: all var(--base-transition);
+  }
+  .hello-world-enter,
+  .hello-world-leave-to {
+    opacity: 0;
+    transform: scale(.95);
+  }
+  }
 
-    .more-about {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      margin-top: 12px;
+  .more-about {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 12px;
 
-      a {
-        display: flex;
-        align-items: center;
-      }
+  a {
+    display: flex;
+    align-items: center;
+  }
 
-      .app-icon {
-        margin-left: 12px;
-      }
-    }
+  .app-icon {
+    margin-left: 12px;
+  }
+  }
+  }
+
+  .articles {
+    padding: 0 24px;
+
+  h2 {
+    font-size: 56px;
+    font-weight: bold;
+    padding: 36px 0 0;
+  }
   }
 
   .career {
     padding: 0 24px;
 
-    h2 {
-      font-size: 56px;
-      font-weight: bold;
-      padding: 36px 0 0;
-    }
+  h2 {
+    font-size: 56px;
+    font-weight: bold;
+    padding: 36px 0 0;
+  }
 
-    .career-year {
-      margin-top: 30px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
+  .career-year {
+    margin-top: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 
-      &::before,
-      &::after {
-        content: '';
-        display: block;
-        height: 1px;
-        background-color: var(--color-secondary);
-        transform: scaleY(0.25);
-        flex: 1;
-        transition: background-color var(--base-transition);
-      }
+  &::before,
+  &::after {
+     content: '';
+     display: block;
+     height: 1px;
+     background-color: var(--color-secondary);
+     transform: scaleY(0.25);
+     flex: 1;
+     transition: background-color var(--base-transition);
+   }
 
-      &::before {
-        flex: 1;
-        margin-right: 10px;
-      }
+  &::before {
+     flex: 1;
+     margin-right: 10px;
+   }
 
-      &::after {
-        flex: 32;
-        margin-left: 10px;
-      }
-    }
+  &::after {
+     flex: 32;
+     margin-left: 10px;
+   }
+  }
 
-    ul {
-      margin-top: 5px;
-    }
+  ul {
+    margin-top: 5px;
+  }
 
-    li {
-      font-size: 13px;
-    }
+  li {
+    font-size: 13px;
+  }
   }
 
   .works {
 
-    h2 {
-      font-size: 56px;
-      font-weight: bold;
-      padding: 48px 24px 12px;
-    }
+  h2 {
+    font-size: 56px;
+    font-weight: bold;
+    padding: 48px 24px 12px;
+  }
 
-    .works-list {
-      display: flex;
-      flex-wrap: wrap;
-    }
+  .works-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-    .work {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 50vw;
-      max-height: calc(var(--max-width) / 2);
+  .work {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vw;
+    max-height: calc(var(--max-width) / 2);
 
-      &-l {
-        width: 100%;
-      }
+  &-l {
+     width: 100%;
+   }
 
-      &-m {
-        width: 50%;
-      }
+  &-m {
+     width: 50%;
+   }
 
-      &-s {
-        width: 33.3333%;
-      }
+  &-s {
+     width: 33.3333%;
+   }
 
-    }
+  }
 
-    .work-maner {
-      background: url('~assets/images/works/maner.png') center center/cover;
-    }
+  .work-maner {
+    background: url('~assets/images/works/maner.png') center center/cover;
+  }
 
-    .work-lig-projects {
-      background: url('~assets/images/works/lig-projects.png') center center/cover;
-    }
+  .work-lig-projects {
+    background: url('~assets/images/works/lig-projects.png') center center/cover;
+  }
 
-    .work-lig-articles {
-      background: url('~assets/images/works/lig-articles.png') center center/cover;
-    }
+  .work-lig-articles {
+    background: url('~assets/images/works/lig-articles.png') center center/cover;
+  }
 
   }
 </style>
