@@ -1,4 +1,5 @@
 export default () => ({
+  weathers: ['sun', 'cloud', 'cloud-rain', 'cloud-lightning'],
   weather: 'cloud',
   toast: {
     isShow: false,
