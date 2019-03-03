@@ -6,7 +6,7 @@ export default {
   recentArticles: state => {
     const sortedArticles = state.articles;
     return sortedArticles
-      .filter(article => Date.parse(new Date()) - article.date < 1000*60*60*24*365)
+      .filter(article => Date.parse(new Date()) - article.date < 1000*60*60*24*365/2)
       .sort((a, b) => b.date - a.date);
   }
 };
