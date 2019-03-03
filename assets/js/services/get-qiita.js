@@ -1,16 +1,16 @@
-import * as u from '../utils'
-import axios from 'axios';
-const API_PATH = 'http://qiita.com/api/v2/users/mtmtkzm/items';
+import * as u from '../utils';
+import http from '../utils/http';
+const API_PATH = 'https://qiita.com/api/v2/users/mtmtkzm/items';
 
 export default function () {
-  return axios.get(API_PATH, {
+  return http.get(API_PATH, {
     params: {
       'page': 1,
       'per_page': 10
     }
   })
     .then(response => {
-      return selectNecessaryData(response);
+      return formatData(response);
     })
     .catch(error => {
       console.error(error);
@@ -18,7 +18,7 @@ export default function () {
     });
 }
 
-function selectNecessaryData (response) {
+function formatData (response) {
   return response.data.map(item => ({
     type: 'qiita',
     date: Date.parse(item.updated_at),

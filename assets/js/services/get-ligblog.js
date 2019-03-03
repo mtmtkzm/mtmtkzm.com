@@ -1,16 +1,16 @@
-import * as u from '../utils'
-import axios from 'axios'
+import * as u from '../utils';
+import http from '../utils/http';
 const API_PATH = 'https://liginc.co.jp/wp-json/wp/v2/posts';
 
 export default function () {
-  return axios.get(API_PATH, {
+  return http.get(API_PATH, {
     params: {
       'author': '396',
       'per_page': '10'
     }
   })
     .then(response => {
-      return selectNecessaryData(response);
+      return formatData(response);
     })
     .catch(error => {
       console.error(error);
@@ -18,7 +18,7 @@ export default function () {
     });
 }
 
-function selectNecessaryData (response) {
+function formatData (response) {
   return response.data.map(item => ({
     type: 'ligblog',
     date: Date.parse(item.date),
