@@ -1,11 +1,11 @@
-const fs = require('fs');
+const fs = require('fs')
 
-export default function customizeAppTemplate () {
-  fs.readFile('./assets/svg/icons.svg', 'utf8', function (err, data) {
-    if (err) throw err;
+export default function customizeAppTemplate() {
+  fs.readFile('./assets/svg/icons.svg', 'utf8', function(err, data) {
+    if (err) throw err
 
-    fs.open('./.nuxt/views/app.template.html', 'w', function (err, fd) {
-      if (err) throw err;
+    fs.open('./.nuxt/views/app.template.html', 'w', function(err, fd) {
+      if (err) throw err
 
       const resultStr =
         '<!--' +
@@ -24,16 +24,15 @@ export default function customizeAppTemplate () {
         data +
         '    {{ APP }}\n' +
         '  </body>\n' +
-        '</html>';
-      const buffer = new Buffer(resultStr);
+        '</html>'
+      const buffer = new Buffer(resultStr)
 
-      fs.write(fd, buffer, 0, buffer.length, null, function (err) {
-        if (err) throw err;
-        fs.close(fd, function () {
+      fs.write(fd, buffer, 0, buffer.length, null, function(err) {
+        if (err) throw err
+        fs.close(fd, function() {
           // done!
         })
       })
     })
-
   })
 }
