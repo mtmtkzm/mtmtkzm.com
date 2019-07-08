@@ -17,7 +17,15 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
     "nuxt": "^2.0.0",
-    "ts-node": "^8.3.0"
+    "ts-node": "^8.3.0",
+    "@nuxtjs/google-analytics": "^2.0.2",
+    "axios": "^0.18.0",
+    "dayjs": "^1.8.8",
+    "fs": "0.0.1-security",
+    "nuxt-clipboard2": "^0.2.1",
+    "path": "^0.12.7",
+    "reset-css": "^4.0.1",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "@nuxt/typescript": "^2.8.1",
