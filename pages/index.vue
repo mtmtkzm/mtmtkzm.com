@@ -51,7 +51,7 @@
       <div>
         <p class="career-year">2019</p>
         <ul>
-          <li>未定 なにしようかな！</li>
+          <li>就任 LIG フロントエンド リーダー</li>
         </ul>
 
         <p class="career-year">2018</p>

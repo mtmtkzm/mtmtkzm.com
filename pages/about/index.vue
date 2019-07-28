@@ -34,16 +34,19 @@
 
         <h3>スキルセット</h3>
         <ul class="skills">
-          <li>ES2015+</li>
+          <li>JavaScript</li>
+          <li>TypeScript</li>
           <li>Vue</li>
           <li>Nuxt</li>
           <li>jQuery</li>
           <li>SCSS</li>
           <li>Post CSS</li>
           <li>Node</li>
+          <li>Express</li>
           <li>WordPress</li>
           <li>Laravel</li>
           <li>Sketch</li>
+          <li>Figma</li>
           <li>UI Design</li>
           <li>English</li>
         </ul>
