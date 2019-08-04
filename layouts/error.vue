@@ -61,7 +61,10 @@ export default {
     ArticleBody
   },
   props: {
-    error: {}
+    error: {
+      type: Object,
+      default: () => ({})
+    }
   }
 }
 </script>
