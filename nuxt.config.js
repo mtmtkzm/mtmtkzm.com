@@ -1,12 +1,12 @@
-import { Configuration } from '@nuxt/types'
-
 const head = {
   title: 'mtmtkzm.com',
   description: 'Hello, mtmtkzm.com',
 }
 
-const nuxtConfig: Configuration = {
+export default {
   mode: 'universal',
+
+  serverMiddleware: [{ path: '/api/v1/', handler: '~/api/' }],
 
   head: {
     title: head.title,
@@ -46,5 +46,3 @@ const nuxtConfig: Configuration = {
 
   build: {},
 }
-
-module.exports = nuxtConfig
